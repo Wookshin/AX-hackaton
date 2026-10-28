@@ -8,6 +8,7 @@
 
 ## 문서
 
+- [웹에서 바로 보는 기획서](https://wookshin.github.io/AX-hackaton-pages/): GitHub Pages에 배포한 렌더링 페이지.
 - [읽기 편한 HTML 기획서](AX-hackathon-proposal.html): 목차·핵심 요약·전체 기획서와 접을 수 있는 심사 검증 기록. 파일을 내려받아 브라우저에서 열면 되며 모바일 보기와 인쇄·PDF 저장을 지원한다.
 - [제출용 기획서](AX-hackathon-proposal.md): 해커톤 제출 양식의 7개 항목에 맞춘 문제·AI 활용·2일 구현 범위·기대효과·데이터 계획.
 - [제품·AI 설계 메모](AX-hackathon-implementation-notes.md): 기존 구현 범위, 업무 복원 흐름, 데이터 구조, 모델 연결과 검증 방법.
@@ -37,3 +38,17 @@
 ```powershell
 pwsh -NoProfile -File ./scripts/export-proposal-html.ps1
 ```
+
+## GitHub Pages 배포
+
+렌더링 페이지: **https://wookshin.github.io/AX-hackaton-pages/**
+
+현재 계정의 GitHub Pages는 이 비공개 저장소에서 사용할 수 없어, 렌더링한 HTML을 [별도 공개 저장소](https://github.com/Wookshin/AX-hackaton-pages)에 배포한다. 이 저장소는 비공개로 유지하고, 공개 저장소에는 `index.html`과 `.nojekyll`만 둔다. 페이지에는 HTML 기획서와 접을 수 있는 심사 검증 기록이 포함되며, Markdown 원문 링크는 이 저장소의 GitHub 파일로 연결된다.
+
+배포 파일을 갱신할 때는 새 폴더 또는 빈 폴더를 지정해 아래 명령을 실행한다.
+
+```powershell
+pwsh -NoProfile -File ./scripts/export-pages.ps1 -OutputDirectory C:\temp\workmemory-pages
+```
+
+생성된 두 파일을 공개 저장소의 `main`에 반영하면 GitHub Pages가 다시 배포한다. 기획서·검증 기록을 수정한 뒤에는 로컬 HTML과 공개 페이지를 각각 갱신한다.
