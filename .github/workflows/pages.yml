@@ -1,0 +1,46 @@
+name: Publish proposal to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - AX-hackathon-proposal.md
+      - AX-hackathon-review.md
+      - scripts/**
+      - .github/workflows/pages.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out proposal sources
+        uses: actions/checkout@v7.0.1
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v6.0.0
+
+      - name: Render the proposal and review
+        shell: pwsh
+        run: ./scripts/export-pages.ps1 -OutputDirectory (Join-Path $env:RUNNER_TEMP 'proposal-pages')
+
+      - name: Upload the rendered page
+        uses: actions/upload-pages-artifact@v5.0.0
+        with:
+          path: ${{ runner.temp }}/proposal-pages
+
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5.0.1
