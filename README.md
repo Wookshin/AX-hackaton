@@ -9,7 +9,8 @@
 ## 문서
 
 - [웹에서 바로 보는 기획서](https://wookshin.github.io/AX-hackaton/): GitHub Pages에 배포한 렌더링 페이지.
-- [읽기 편한 HTML 기획서](AX-hackathon-proposal.html): 목차·핵심 요약·전체 기획서와 접을 수 있는 심사 검증 기록. 파일을 내려받아 브라우저에서 열면 되며 모바일 보기와 인쇄·PDF 저장을 지원한다.
+- [읽기 편한 HTML 기획서](AX-hackathon-proposal.html): 목차·핵심 요약·전체 기획서와 접을 수 있는 심사 검증 기록. 파일을 내려받아 브라우저에서 열면 되며 모바일 보기, 텍스트 다운로드와 인쇄·PDF 저장을 지원한다.
+- [Word 복사용 텍스트 기획서](AX-hackathon-proposal.txt): 기획서 본문 7개 항목을 담은 순수 텍스트. 마크다운 서식을 제거하고 표를 항목명과 내용으로 풀어 썼다. 메모장에서 열어 전체 선택(Ctrl+A)·복사(Ctrl+C) 후 Word 제출 양식에 붙여 넣으면 된다. HTML 상단의 ‘텍스트 다운로드’ 버튼으로도 같은 파일을 받을 수 있다.
 - [제출용 기획서](AX-hackathon-proposal.md): 해커톤 제출 양식의 7개 항목에 맞춘 문제·AI 활용·2일 구현 범위·기대효과·데이터 계획.
 - [제품·AI 설계 메모](AX-hackathon-implementation-notes.md): 기존 구현 범위, 업무 복원 흐름, 데이터 구조, 모델 연결과 검증 방법.
 - [심사기준 기반 검증 기록](AX-hackathon-review.md): 독립 검증 에이전트 3개의 검토 결과, 평가항목별 보완 내용과 남은 검증 과제.
@@ -33,7 +34,7 @@
 
 ## HTML 문서 갱신
 
-기획서·검증 기록의 Markdown을 수정한 뒤 PowerShell 7.2 이상에서 아래 명령을 실행한다. 추가 패키지 설치 없이 두 원문을 하나의 HTML로 다시 생성한다. HTML은 외부 폰트·스크립트나 별도 서버 없이 열 수 있다.
+기획서·검증 기록의 Markdown을 수정한 뒤 PowerShell 7.2 이상에서 아래 명령을 실행한다. 추가 패키지 설치 없이 두 원문을 하나의 HTML로 다시 생성하고, 기획서 본문의 TXT 파일도 함께 갱신한다. HTML은 외부 폰트·스크립트나 별도 서버 없이 열 수 있고, 텍스트 다운로드도 단독으로 동작한다. TXT는 한글 호환을 위해 UTF-8 BOM과 Windows 줄바꿈으로 저장한다.
 
 ```powershell
 pwsh -NoProfile -File ./scripts/export-proposal-html.ps1
@@ -45,7 +46,7 @@ pwsh -NoProfile -File ./scripts/export-proposal-html.ps1
 
 이 공개 저장소에서 기획 문서와 Pages 배포를 함께 관리한다. 기획서·검증 기록이나 생성 스크립트를 `main`에 푸시하면 [GitHub Actions](.github/workflows/pages.yml)가 최신 Markdown을 HTML로 생성하고 Pages에 자동 배포한다. Actions 화면에서 수동으로 다시 실행할 수도 있다.
 
-배포 대상은 생성된 `index.html`과 `.nojekyll`이다. 페이지에는 전체 기획서와 접을 수 있는 심사 검증 기록이 포함되며, 원문 링크는 이 저장소의 GitHub 파일로 연결된다. 별도 배포 저장소에 파일을 복사할 필요가 없다.
+배포 대상은 생성된 `index.html`, `AX-hackathon-proposal.txt`와 `.nojekyll`이다. 페이지에는 전체 기획서와 접을 수 있는 심사 검증 기록이 포함되며, 원문 링크는 이 저장소의 GitHub 파일로 연결된다. 별도 배포 저장소에 파일을 복사할 필요가 없다.
 
 로컬에서 배포 파일을 확인하려면 새 폴더 또는 빈 폴더를 지정해 아래 명령을 실행한다.
 

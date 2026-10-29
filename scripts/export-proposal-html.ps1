@@ -19,6 +19,45 @@ function Convert-DocumentFragment([string]$Markdown) {
     return [regex]::Replace($html, '<a href="(https?://[^\"]+)"', '<a target="_blank" rel="noopener noreferrer" href="$1"')
 }
 
+function Convert-InlinePlainText([string]$Text) {
+    $text = [regex]::Replace($Text, '\[([^\]]+)\]\((https?://[^)\s]+)\)', '$1 ($2)')
+    return $text.Replace('**', '').Replace('`', '')
+}
+
+function Convert-ProposalPlainText([string]$Markdown) {
+    $lines = [System.Collections.Generic.List[string]]::new()
+    $tableHeaders = $null
+    foreach ($line in ($Markdown -split '\r?\n')) {
+        if ($line.Trim() -match '^\|.*\|$') {
+            $cells = @($line.Trim().Trim('|').Split('|') | ForEach-Object { Convert-InlinePlainText $_.Trim() })
+            if (@($cells | Where-Object { $_ -notmatch '^:?-{3,}:?$' }).Count -eq 0) { continue }
+            if ($null -eq $tableHeaders) {
+                $tableHeaders = $cells
+                continue
+            }
+            if ($cells.Count -ne $tableHeaders.Count) { throw '텍스트로 변환할 표의 열 수를 확인해 주세요.' }
+            for ($column = 0; $column -lt $cells.Count; $column++) {
+                $lines.Add(('{0}: {1}' -f $tableHeaders[$column], $cells[$column]))
+            }
+            $lines.Add('')
+            continue
+        }
+        $tableHeaders = $null
+        $text = [regex]::Replace($line, '^\s{0,3}#{1,6}\s+', '')
+        $text = [regex]::Replace($text, '^\s*[-+*]\s+', '• ')
+        $lines.Add((Convert-InlinePlainText $text))
+    }
+    $text = [regex]::Replace(($lines -join "`n").Trim(), '\n{3,}', "`n`n")
+    return $text.Replace("`n", "`r`n") + "`r`n"
+}
+
+$proposalText = Convert-ProposalPlainText $proposal
+# UTF-8 BOM과 Windows 줄바꿈으로 메모장과 Word에서 한글을 바로 읽을 수 있게 한다.
+$textEncoding = [System.Text.UTF8Encoding]::new($true)
+$proposalTextBytes = [byte[]]($textEncoding.GetPreamble() + $textEncoding.GetBytes($proposalText))
+$proposalTextBase64 = [Convert]::ToBase64String($proposalTextBytes)
+$textOutputPath = Join-Path (Split-Path -Parent ([System.IO.Path]::GetFullPath($OutputPath))) 'AX-hackathon-proposal.txt'
+
 $sectionTitles = @('문제와 첫 사용자', 'AI 활용 계획', '2일 구현 범위', '기대효과와 검증', '한 줄 제안', '데이터와 보호', '확장과 차별점')
 $questions = [regex]::Matches($proposal, '(?m)^\*\*([1-7])\. (.+)\*\*\r?$')
 if ($questions.Count -ne 7) { throw '기획서의 제출 질문 7개를 찾을 수 없습니다.' }
@@ -97,6 +136,7 @@ $template = @'
     .top-actions { display:flex; align-items:center; gap:19px; font-size:13px; }
     .top-actions a { color:var(--muted); text-decoration:none; }
     .print-button { background:var(--ink); color:white; border:0; border-radius:8px; padding:9px 16px; line-height:1.6; font-size:13px; }
+    .text-download-button { background:var(--white); color:var(--green); border:1px solid var(--line); border-radius:8px; padding:8px 14px; line-height:1.6; font-size:13px; white-space:nowrap; }
     .layout { max-width:1380px; margin:0 auto; padding:0 42px; display:grid; grid-template-columns:210px minmax(0,1fr); gap:55px; }
     .sidebar { position:sticky; top:106px; align-self:start; padding-top:54px; }
     .nav-label,.eyebrow { font-size:11px; font-weight:750; letter-spacing:2px; color:var(--muted); }
@@ -176,7 +216,7 @@ $template = @'
       .topbar-inner { padding:0 20px; }
       .brand { font-size:17px; gap:9px; } .brand small { display:none; }
       .top-actions { gap:12px; } .top-actions .source-link { display:none; }
-      .print-button { padding:7px 11px; font-size:11px; }
+      .print-button,.text-download-button { padding:7px 11px; font-size:11px; }
       .layout { display:block; padding:0 21px; }
       .sidebar { top:65px; margin:0 -21px; padding:0 15px; z-index:15; background:var(--paper); border-bottom:1px solid var(--line); }
       .nav-label,.sidebar-note { display:none; }
@@ -197,6 +237,13 @@ $template = @'
       #proposal-5 .prose { font-size:19px; padding:22px; }
       .review-item > .prose { padding:17px; }
       .footer { flex-direction:column; gap:7px; }
+    }
+    @media(max-width:480px) {
+      html { scroll-padding-top:165px; }
+      .topbar { height:105px; }
+      .topbar-inner { flex-direction:column; align-items:flex-start; justify-content:center; gap:8px; }
+      .brand-mark { display:none; }
+      .sidebar { top:105px; }
     }
     @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
     @media print {
@@ -238,7 +285,7 @@ $template = @'
   <header class="topbar screen-only">
     <div class="topbar-inner">
       <a class="brand" href="#main-content"><span class="brand-mark" aria-hidden="true">wm</span>WorkMemory AI <small>PROPOSAL</small></a>
-      <div class="top-actions"><a class="source-link" href="AX-hackathon-proposal.md">Markdown 원문</a><button class="print-button" id="print-document" type="button">인쇄 / PDF 저장</button></div>
+      <div class="top-actions"><button class="text-download-button" id="download-text" type="button" title="기획서 본문을 Word에 복사할 수 있는 순수 텍스트로 저장">텍스트 다운로드</button><button class="print-button" id="print-document" type="button">인쇄 / PDF 저장</button></div>
     </div>
   </header>
   <div class="layout">
@@ -312,6 +359,17 @@ $template = @'
         scheduleUpdate();
       });
       document.getElementById('print-document').addEventListener('click', () => window.print());
+      document.getElementById('download-text').addEventListener('click', () => {
+        const bytes = Uint8Array.from(atob('<!--PROPOSAL_TEXT_BASE64-->'), character => character.charCodeAt(0));
+        const url = URL.createObjectURL(new Blob([bytes], { type: 'text/plain;charset=utf-8' }));
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'AX-hackathon-proposal.txt';
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      });
       updateReadingPosition();
     })();
   </script>
@@ -326,6 +384,9 @@ $html = $html.Replace('<!--DISCOVERY_QUOTE-->', $discoveryQuote).Replace('<!--DI
 $html = $html.Replace('<!--PROPOSAL_SECTIONS-->', ($sections -join "`n"))
 $html = $html.Replace('<!--REVIEW_LEAD-->', $reviewLeadHtml)
 $html = $html.Replace('<!--REVIEW_SECTIONS-->', ($reviewSections -join "`n"))
+$html = $html.Replace('<!--PROPOSAL_TEXT_BASE64-->', $proposalTextBase64)
 if ($html -match '<!--[A-Z_]+-->') { throw '채워지지 않은 HTML 템플릿 항목이 있습니다.' }
 [System.IO.File]::WriteAllText([System.IO.Path]::GetFullPath($OutputPath), $html, [System.Text.UTF8Encoding]::new($false))
+[System.IO.File]::WriteAllBytes($textOutputPath, $proposalTextBytes)
 Write-Output "HTML 생성 완료: $([System.IO.Path]::GetFullPath($OutputPath))"
+Write-Output "텍스트 생성 완료: $textOutputPath"
