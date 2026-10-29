@@ -58,7 +58,7 @@ $proposalTextBytes = [byte[]]($textEncoding.GetPreamble() + $textEncoding.GetByt
 $proposalTextBase64 = [Convert]::ToBase64String($proposalTextBytes)
 $textOutputPath = Join-Path (Split-Path -Parent ([System.IO.Path]::GetFullPath($OutputPath))) 'AX-hackathon-proposal.txt'
 
-$sectionTitles = @('문제와 첫 사용자', 'AI 활용 계획', '2일 구현 범위', '기대효과와 검증', '한 줄 제안', '데이터와 보호', '확장과 차별점')
+$sectionTitles = @('문제와 주요 사용자', 'AI 활용 계획', '2일 개발 계획', '기대효과와 검증', '한 줄 제안', '데이터와 보호', '확장과 차별점')
 $questions = [regex]::Matches($proposal, '(?m)^\*\*([1-7])\. (.+)\*\*\r?$')
 if ($questions.Count -ne 7) { throw '기획서의 제출 질문 7개를 찾을 수 없습니다.' }
 $sections = for ($index = 0; $index -lt $questions.Count; $index++) {
@@ -310,7 +310,7 @@ $template = @'
           <article class="journey-card"><span>02 · DISCOVER</span><h3>반복하던 일을 발견하고</h3><p>작은 조회와 응답이 내가 맡아온 지원업무였다는 점을 확인합니다.</p></article>
           <article class="journey-card"><span>03 · REPORT</span><h3>확인한 일을 보고로</h3><p>근거가 쌓인 업무 기억을 주간·월간 보고에 다시 활용합니다.</p></article>
         </div>
-        <div class="flow" aria-label="필수 MVP 흐름"><b>실제 로그</b><span>→</span><b>업무 카드</b><span>→</span><b>간단한 확인</b><span>→</span><b>근거 있는 주간보고</b></div>
+        <div class="flow" aria-label="해커톤 개발 목표"><b>기록 수집·저장</b><span>→</span><b>AI 업무 카드</b><span>→</span><b>간단한 확인</b><span>→</span><b>근거 있는 주간보고</b></div>
       </section>
       <!--PROPOSAL_SECTIONS-->
       <section id="review" class="review-section" aria-labelledby="review-title">
