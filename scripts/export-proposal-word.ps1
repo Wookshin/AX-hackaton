@@ -48,7 +48,6 @@ function Convert-WordInline([System.Xml.XmlNode]$Node, [bool]$Bold = $false) {
 function New-WordParagraph([System.Xml.XmlNode]$Node, [string]$Style = 'Normal', [string]$Prefix = '', [bool]$InTable = $false, [bool]$Bold = $false) {
     $properties = '<w:pStyle w:val="' + $Style + '"/>'
     if ($InTable) { $properties += '<w:spacing w:after="40" w:line="280" w:lineRule="auto"/>' }
-    if ($InTable -and $Bold) { $properties += '<w:keepNext/>' }
     if ($Prefix) { $properties += '<w:ind w:left="420" w:hanging="420"/>' }
     $runs = if ($Prefix) { New-WordRun $Prefix } else { '' }
     $runs += Convert-WordInline $Node $Bold
@@ -120,11 +119,12 @@ foreach ($node in $fragment.DocumentElement.ChildNodes) {
 $document = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="' + $wordNamespace + '" xmlns:r="' + $relationshipsNamespace + '"><w:body>' + $body.ToString() + '<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1020" w:right="1020" w:bottom="1020" w:left="1020" w:header="480" w:footer="480" w:gutter="0"/></w:sectPr></w:body></w:document>'
 $styles = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:styles xmlns:w="' + $wordNamespace + '"><w:docDefaults><w:rPrDefault><w:rPr>' + $fontProperties + '</w:rPr></w:rPrDefault><w:pPrDefault><w:pPr><w:spacing w:after="120" w:line="320" w:lineRule="auto"/></w:pPr></w:pPrDefault></w:docDefaults>'
 $styles += '<w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/><w:qFormat/><w:rPr>' + $fontProperties + '</w:rPr></w:style>'
-$styles += '<w:style w:type="paragraph" w:styleId="Guidance"><w:name w:val="양식 안내"/><w:basedOn w:val="Normal"/><w:next w:val="Normal"/><w:pPr><w:keepNext/><w:keepLines/><w:ind w:left="120" w:right="120"/><w:shd w:val="clear" w:fill="F2F4F1"/></w:pPr><w:rPr>' + $fontProperties + '<w:color w:val="59635B"/></w:rPr></w:style>'
+$styles += '<w:style w:type="paragraph" w:styleId="Guidance"><w:name w:val="양식 안내"/><w:basedOn w:val="Normal"/><w:next w:val="Normal"/><w:pPr><w:ind w:left="120" w:right="120"/><w:shd w:val="clear" w:fill="F2F4F1"/></w:pPr><w:rPr>' + $fontProperties + '<w:color w:val="59635B"/></w:rPr></w:style>'
 # Word의 제목 접기 기능이 생기지 않도록 본문 수준의 사용자 지정 제목 서식을 사용한다.
+# 네모 편집 기호가 나타나는 문단 묶음 속성은 제목과 안내·표 문단에도 적용하지 않는다.
 foreach ($heading in @(@('DocumentTitle', '기획서 제목'), @('QuestionTitle', '문항 제목'), @('SectionTitle', '본문 소제목'))) {
     $alignment = if ($heading[0] -eq 'DocumentTitle') { '<w:jc w:val="center"/>' } else { '' }
-    $styles += '<w:style w:type="paragraph" w:styleId="' + $heading[0] + '"><w:name w:val="' + $heading[1] + '"/><w:basedOn w:val="Normal"/><w:next w:val="Normal"/><w:qFormat/><w:pPr><w:keepNext/><w:keepLines/><w:spacing w:before="240" w:after="160"/>' + $alignment + '<w:outlineLvl w:val="9"/></w:pPr><w:rPr>' + $fontProperties + '<w:b/><w:bCs/></w:rPr></w:style>'
+    $styles += '<w:style w:type="paragraph" w:styleId="' + $heading[0] + '"><w:name w:val="' + $heading[1] + '"/><w:basedOn w:val="Normal"/><w:next w:val="Normal"/><w:qFormat/><w:pPr><w:spacing w:before="240" w:after="160"/>' + $alignment + '<w:outlineLvl w:val="9"/></w:pPr><w:rPr>' + $fontProperties + '<w:b/><w:bCs/></w:rPr></w:style>'
 }
 $styles += '</w:styles>'
 $documentRelationships = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rIdStyles" Type="' + $relationshipsNamespace + '/styles" Target="styles.xml"/>'
