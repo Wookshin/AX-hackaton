@@ -48,6 +48,7 @@ function Convert-WordInline([System.Xml.XmlNode]$Node, [bool]$Bold = $false) {
 function New-WordParagraph([System.Xml.XmlNode]$Node, [string]$Style = 'Normal', [string]$Prefix = '', [bool]$InTable = $false, [bool]$Bold = $false) {
     $properties = '<w:pStyle w:val="' + $Style + '"/>'
     if ($InTable) { $properties += '<w:spacing w:after="40" w:line="280" w:lineRule="auto"/>' }
+    if ($InTable -and $Bold) { $properties += '<w:keepNext/>' }
     if ($Prefix) { $properties += '<w:ind w:left="420" w:hanging="420"/>' }
     $runs = if ($Prefix) { New-WordRun $Prefix } else { '' }
     $runs += Convert-WordInline $Node $Bold

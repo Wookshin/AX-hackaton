@@ -118,7 +118,7 @@ $template = @'
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="WorkMemory AI: 평소처럼 일하며 쌓인 데이터를 AI가 업무 성격에 맞게 분류·패턴화해 효율화 솔루션을 제안하고, 업무 회고와 문서 자동화를 돕는 AI 업무 비서.">
+  <meta name="description" content="WorkMemory AI: 업무별 수행 내역을 먼저 정리해 보여주고, 누적 기록의 반복 흐름에서 개선 방법을 제안하며 같은 기록으로 회고와 문서 작성을 돕는 AI 업무 비서입니다.">
   <meta name="proposal-source-sha256" content="<!--PROPOSAL_HASH-->">
   <meta name="review-source-sha256" content="<!--REVIEW_HASH-->">
   <title>WorkMemory AI · AX 해커톤 기획서</title>
@@ -303,25 +303,25 @@ $template = @'
     <aside class="sidebar screen-only" aria-label="문서 목차">
       <div class="nav-label">CONTENTS</div>
       <nav aria-label="기획서 목차"><!--NAVIGATION--></nav>
-      <div class="sidebar-note">AX 해커톤 아이디어 기획서<br>일상의 기록이 업무 개선으로.<a href="#review">심사기준 검증 기록 ↗</a></div>
+      <div class="sidebar-note">AX 해커톤 아이디어 기획서<br>내가 한 일을 업무별로 확인합니다.<a href="#review">심사기준 검증 기록 ↗</a></div>
     </aside>
     <main id="main-content" tabindex="-1">
       <section class="hero" aria-labelledby="document-title">
         <div class="eyebrow">AX HACKATHON · WORK MEMORY</div>
-        <h1 id="document-title">평소의 업무가<br><em>효율화 솔루션으로.</em></h1>
+        <h1 id="document-title">평소처럼 일하면<br><em>업무가 한눈에 보입니다.</em></h1>
         <div class="hero-description"><!--CORE_PROPOSAL--></div>
-        <div class="tags"><span class="tag">업무 자동 분류·패턴화</span><span class="tag">효율화 솔루션</span><span class="tag">업무 회고·문서 자동화</span><span class="tag">선택적 데이터 수집</span></div>
+        <div class="tags"><span class="tag">업무별 수행 내역</span><span class="tag">반복 패턴과 개선 제안</span><span class="tag">업무 회고·문서 자동화</span><span class="tag">선택적 데이터 수집</span></div>
         <div class="discovery">
           <div class="discovery-label">THE MOMENT OF DISCOVERY</div>
           <blockquote><!--DISCOVERY_QUOTE--></blockquote>
           <small><!--DISCOVERY_NOTE--></small>
         </div>
         <div class="journey" aria-label="핵심 가치의 흐름">
-          <article class="journey-card"><span>01 · COLLECT</span><h3>평소처럼 일하면</h3><p>허용한 범위의 데이터가 자동으로 쌓이고 업무 성격에 맞게 분류됩니다.</p></article>
-          <article class="journey-card"><span>02 · SOLVE</span><h3>패턴에서 개선 방법을</h3><p>반복 흐름을 패턴화해 적용 방법을 담은 효율화 솔루션을 제안합니다.</p></article>
-          <article class="journey-card"><span>03 · REUSE</span><h3>회고와 문서 자동화로</h3><p>같은 기록으로 나의 업무를 돌아보고 필요한 보고 문서의 초안을 만듭니다.</p></article>
+          <article class="journey-card"><span>01 · ORGANIZE</span><h3>내가 한 일을 한눈에</h3><p>허용한 범위에서 쌓인 데이터를 업무별 수행 내역으로 정리해 보여줍니다.</p></article>
+          <article class="journey-card"><span>02 · IMPROVE</span><h3>기록이 쌓이면 개선 제안</h3><p>반복 흐름이 확인되면 패턴화하고 수작업을 줄일 구체적인 방법을 제안합니다.</p></article>
+          <article class="journey-card"><span>03 · REUSE</span><h3>같은 기록으로 회고·문서</h3><p>수행 내역을 돌아보고 일일·주간 보고 등 필요한 문서 초안을 만듭니다.</p></article>
         </div>
-        <div class="flow" aria-label="해커톤 개발 목표"><b>선택 범위의 데이터 자동 축적</b><span>→</span><b>업무 분류·패턴화</b><span>→</span><b>효율화 솔루션 제안</b><span>+</span><b>업무 회고·문서 자동화</b></div>
+        <div class="flow" aria-label="해커톤 개발 목표"><b>선택 범위의 데이터 축적</b><span>→</span><b>업무별 수행 내역 표시</b><span>→</span><b>누적된 반복 패턴·개선 제안</b><span>+</span><b>같은 기록의 회고·문서 활용</b></div>
         <div class="document-download screen-only"><a href="AX-hackathon-proposal.docx" download>Word 기획서 다운로드 (.docx)</a><span>편집 가능한 표 · 바탕체 14포인트</span></div>
       </section>
       <!--PROPOSAL_SECTIONS-->
