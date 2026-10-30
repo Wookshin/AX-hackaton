@@ -44,6 +44,7 @@ function Convert-ProposalPlainText([string]$Markdown) {
         }
         $tableHeaders = $null
         $text = [regex]::Replace($line, '^\s{0,3}#{1,6}\s+', '')
+        $text = [regex]::Replace($text, '^\s{0,3}>\s?', '')
         $text = [regex]::Replace($text, '^\s*[-+*]\s+', '• ')
         $lines.Add((Convert-InlinePlainText $text))
     }
@@ -51,14 +52,19 @@ function Convert-ProposalPlainText([string]$Markdown) {
     return $text.Replace("`n", "`r`n") + "`r`n"
 }
 
-$proposalText = Convert-ProposalPlainText $proposal
+# Word와 같은 공식 제출 양식을 텍스트로 제공한다. 웹용 도입 요약은 제외한다.
+$titleMatch = [regex]::Match($proposal, '(?m)^# .+\r?$')
+$firstQuestion = [regex]::Match($proposal, '(?m)^\*\*1\. .+\*\*\r?$')
+if (-not $titleMatch.Success -or -not $firstQuestion.Success) { throw '제출 문서의 제목 또는 첫 질문을 찾을 수 없습니다.' }
+$submission = $titleMatch.Value.Trim() + "`n`n" + $proposal.Substring($firstQuestion.Index)
+$proposalText = Convert-ProposalPlainText $submission
 # UTF-8 BOM과 Windows 줄바꿈으로 메모장과 Word에서 한글을 바로 읽을 수 있게 한다.
 $textEncoding = [System.Text.UTF8Encoding]::new($true)
 $proposalTextBytes = [byte[]]($textEncoding.GetPreamble() + $textEncoding.GetBytes($proposalText))
 $proposalTextBase64 = [Convert]::ToBase64String($proposalTextBytes)
 $textOutputPath = Join-Path (Split-Path -Parent ([System.IO.Path]::GetFullPath($OutputPath))) 'AX-hackathon-proposal.txt'
 
-$sectionTitles = @('문제와 주요 사용자', 'AI 활용 계획', '2일 개발 계획', '기대효과와 검증', '한 줄 제안', '데이터와 보호', '확장과 차별점')
+$sectionTitles = @('문제와 주요 사용자', 'AI 활용 계획', '2일 구현 기능', '기대효과와 검증', '한 줄 제안', '데이터와 지원', '개인정보 보호·확장')
 $questions = [regex]::Matches($proposal, '(?m)^\*\*([1-7])\. (.+)\*\*\r?$')
 if ($questions.Count -ne 7) { throw '기획서의 제출 질문 7개를 찾을 수 없습니다.' }
 $sections = for ($index = 0; $index -lt $questions.Count; $index++) {
@@ -179,6 +185,8 @@ $template = @'
     .question { font-size:12px; line-height:1.8; color:var(--muted); margin:10px 0 25px 45px; }
     .prose { font-size:15px; }
     .prose p { margin:0 0 17px; }
+    .prose blockquote { margin:0 0 22px; padding:12px 16px; border-left:3px solid var(--line); background:#eef2eb; color:var(--muted); font-size:13px; }
+    .prose blockquote p { margin:0; }
     .prose strong { color:var(--ink); font-weight:700; }
     .prose h3 { font-size:18px; color:var(--ink); margin:30px 0 15px; line-height:1.6; letter-spacing:-.3px; }
     .prose h3:first-child { margin-top:0; }

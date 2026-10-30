@@ -8,7 +8,12 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 $proposalPath = Join-Path (Split-Path -Parent $PSScriptRoot) 'AX-hackathon-proposal.md'
 $proposal = [System.IO.File]::ReadAllText($proposalPath)
-$fragment = [xml]('<root>' + (ConvertFrom-Markdown -InputObject $proposal).Html + '</root>')
+# 제출 문서는 제목과 공식 질문 1~7번으로 구성한다. 웹용 핵심 요약은 제외한다.
+$titleMatch = [regex]::Match($proposal, '(?m)^# .+\r?$')
+$firstQuestion = [regex]::Match($proposal, '(?m)^\*\*1\. .+\*\*\r?$')
+if (-not $titleMatch.Success -or -not $firstQuestion.Success) { throw '제출 문서의 제목 또는 첫 질문을 찾을 수 없습니다.' }
+$submission = $titleMatch.Value.Trim() + "`n`n" + $proposal.Substring($firstQuestion.Index)
+$fragment = [xml]('<root>' + (ConvertFrom-Markdown -InputObject $submission).Html + '</root>')
 $script:wordLinks = [System.Collections.Generic.List[object]]::new()
 $wordNamespace = 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'
 $relationshipsNamespace = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships'
@@ -105,7 +110,7 @@ foreach ($node in $fragment.DocumentElement.ChildNodes) {
                 $number++
             }
         }
-        'blockquote' { foreach ($paragraph in $node.SelectNodes('p')) { [void]$body.Append((New-WordParagraph $paragraph)) } }
+        'blockquote' { foreach ($paragraph in $node.SelectNodes('p')) { [void]$body.Append((New-WordParagraph $paragraph 'Guidance')) } }
         '#whitespace' { }
         default { throw "지원하지 않는 Word 변환 요소입니다: $($node.Name)" }
     }
@@ -114,6 +119,7 @@ foreach ($node in $fragment.DocumentElement.ChildNodes) {
 $document = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="' + $wordNamespace + '" xmlns:r="' + $relationshipsNamespace + '"><w:body>' + $body.ToString() + '<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1020" w:right="1020" w:bottom="1020" w:left="1020" w:header="480" w:footer="480" w:gutter="0"/></w:sectPr></w:body></w:document>'
 $styles = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:styles xmlns:w="' + $wordNamespace + '"><w:docDefaults><w:rPrDefault><w:rPr>' + $fontProperties + '</w:rPr></w:rPrDefault><w:pPrDefault><w:pPr><w:spacing w:after="120" w:line="320" w:lineRule="auto"/></w:pPr></w:pPrDefault></w:docDefaults>'
 $styles += '<w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/><w:qFormat/><w:rPr>' + $fontProperties + '</w:rPr></w:style>'
+$styles += '<w:style w:type="paragraph" w:styleId="Guidance"><w:name w:val="양식 안내"/><w:basedOn w:val="Normal"/><w:next w:val="Normal"/><w:pPr><w:keepNext/><w:keepLines/><w:ind w:left="120" w:right="120"/><w:shd w:val="clear" w:fill="F2F4F1"/></w:pPr><w:rPr>' + $fontProperties + '<w:color w:val="59635B"/></w:rPr></w:style>'
 foreach ($heading in @(@('Title', '제목', '0'), @('Heading1', 'heading 1', '0'), @('Heading2', 'heading 2', '1'))) {
     $alignment = if ($heading[0] -eq 'Title') { '<w:jc w:val="center"/>' } else { '' }
     $styles += '<w:style w:type="paragraph" w:styleId="' + $heading[0] + '"><w:name w:val="' + $heading[1] + '"/><w:basedOn w:val="Normal"/><w:next w:val="Normal"/><w:qFormat/><w:pPr><w:keepNext/><w:keepLines/><w:spacing w:before="240" w:after="160"/>' + $alignment + '<w:outlineLvl w:val="' + $heading[2] + '"/></w:pPr><w:rPr>' + $fontProperties + '<w:b/><w:bCs/></w:rPr></w:style>'

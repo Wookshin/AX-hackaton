@@ -9,7 +9,7 @@
 ## 문서
 
 - [웹에서 바로 보는 기획서](https://wookshin.github.io/AX-hackaton/): GitHub Pages에 배포한 렌더링 페이지.
-- [제출용 Word 기획서](AX-hackathon-proposal.docx): 바탕체 14포인트로 작성한 Word 문서. 제목·강조와 8개 표를 유지하며, 표는 Word에서 직접 편집할 수 있다. HTML의 ‘Word 기획서 다운로드’ 링크로도 받을 수 있다.
+- [제출용 Word 기획서](AX-hackathon-proposal.docx): 제공된 공식 양식의 제목·질문 7개·안내 문구·데이터 표에 맞춘 바탕체 14포인트 Word 문서. 안내 문구는 배경색으로 구분하고, 7개 표는 Word에서 직접 편집할 수 있다. HTML의 ‘Word 기획서 다운로드’ 링크로도 받을 수 있다.
 - [읽기 편한 HTML 기획서](AX-hackathon-proposal.html): 목차·핵심 요약·전체 기획서와 접을 수 있는 심사 검증 기록. 파일을 내려받아 브라우저에서 열면 되며 모바일 보기, 텍스트 다운로드와 인쇄·PDF 저장을 지원한다.
 - [Word 복사용 텍스트 기획서](AX-hackathon-proposal.txt): 기획서 본문 7개 항목을 담은 순수 텍스트. 마크다운 서식을 제거하고 표를 항목명과 내용으로 풀어 썼다. 메모장에서 열어 전체 선택(Ctrl+A)·복사(Ctrl+C) 후 Word 제출 양식에 붙여 넣으면 된다. HTML 상단의 ‘텍스트 다운로드’ 버튼으로도 같은 파일을 받을 수 있다.
 - [제출용 기획서](AX-hackathon-proposal.md): 해커톤 제출 양식의 7개 항목에 맞춘 문제·AI 활용·2일 구현 범위·기대효과·데이터 계획.
@@ -37,7 +37,7 @@
 
 ## Word·HTML·TXT 문서 갱신
 
-기획서·검증 기록의 Markdown을 수정한 뒤 PowerShell 7.2 이상에서 아래 명령을 실행한다. 추가 패키지나 Word 설치 없이 HTML과 기획서 본문의 DOCX·TXT 파일을 함께 갱신한다. Word 문서는 A4, 바탕체 14포인트로 생성하며 편집 가능한 표를 유지한다. HTML은 외부 폰트·스크립트나 별도 서버 없이 열 수 있고, 텍스트 다운로드도 단독으로 동작한다. Word 다운로드 링크를 사용하려면 HTML과 DOCX를 같은 폴더에 둔다. TXT는 UTF-8 BOM과 Windows 줄바꿈으로 저장한다.
+기획서·검증 기록의 Markdown을 수정한 뒤 PowerShell 7.2 이상에서 아래 명령을 실행한다. 추가 패키지나 Word 설치 없이 HTML과 기획서 본문의 DOCX·TXT 파일을 함께 갱신한다. Word·TXT는 웹용 도입 요약을 제외하고 제목과 공식 질문 1~7번·안내 문구·답변으로 구성한다. 6번 데이터 표는 ‘구분’, ‘항목명’, ‘현재 위치 / 시스템’, ‘데이터 포맷’의 4개 열로 구성한다. Word 문서는 A4, 바탕체 14포인트로 생성하며 편집 가능한 표를 유지한다. HTML은 외부 폰트·스크립트나 별도 서버 없이 열 수 있고, 텍스트 다운로드도 단독으로 동작한다. Word 다운로드 링크를 사용하려면 HTML과 DOCX를 같은 폴더에 둔다. TXT는 UTF-8 BOM과 Windows 줄바꿈으로 저장한다.
 
 ```powershell
 pwsh -NoProfile -File ./scripts/export-proposal-html.ps1
