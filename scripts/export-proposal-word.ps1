@@ -96,10 +96,10 @@ function Convert-WordTable([System.Xml.XmlNode]$Node) {
 $body = [System.Text.StringBuilder]::new()
 foreach ($node in $fragment.DocumentElement.ChildNodes) {
     switch ($node.Name) {
-        'h1' { [void]$body.Append((New-WordParagraph $node 'Title')) }
-        { $_ -in @('h2', 'h3', 'h4') } { [void]$body.Append((New-WordParagraph $node 'Heading2')) }
+        'h1' { [void]$body.Append((New-WordParagraph $node 'DocumentTitle')) }
+        { $_ -in @('h2', 'h3', 'h4') } { [void]$body.Append((New-WordParagraph $node 'SectionTitle')) }
         'p' {
-            $style = if ($node.InnerText -match '^[1-7]\. ') { 'Heading1' } elseif ($node.InnerText -match '^[①②③④] ') { 'Heading2' } else { 'Normal' }
+            $style = if ($node.InnerText -match '^[1-7]\. ') { 'QuestionTitle' } elseif ($node.InnerText -match '^[①②③④] ') { 'SectionTitle' } else { 'Normal' }
             [void]$body.Append((New-WordParagraph $node $style))
         }
         'table' { [void]$body.Append((Convert-WordTable $node)) }
@@ -121,9 +121,10 @@ $document = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document 
 $styles = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:styles xmlns:w="' + $wordNamespace + '"><w:docDefaults><w:rPrDefault><w:rPr>' + $fontProperties + '</w:rPr></w:rPrDefault><w:pPrDefault><w:pPr><w:spacing w:after="120" w:line="320" w:lineRule="auto"/></w:pPr></w:pPrDefault></w:docDefaults>'
 $styles += '<w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/><w:qFormat/><w:rPr>' + $fontProperties + '</w:rPr></w:style>'
 $styles += '<w:style w:type="paragraph" w:styleId="Guidance"><w:name w:val="양식 안내"/><w:basedOn w:val="Normal"/><w:next w:val="Normal"/><w:pPr><w:keepNext/><w:keepLines/><w:ind w:left="120" w:right="120"/><w:shd w:val="clear" w:fill="F2F4F1"/></w:pPr><w:rPr>' + $fontProperties + '<w:color w:val="59635B"/></w:rPr></w:style>'
-foreach ($heading in @(@('Title', '제목', '0'), @('Heading1', 'heading 1', '0'), @('Heading2', 'heading 2', '1'))) {
-    $alignment = if ($heading[0] -eq 'Title') { '<w:jc w:val="center"/>' } else { '' }
-    $styles += '<w:style w:type="paragraph" w:styleId="' + $heading[0] + '"><w:name w:val="' + $heading[1] + '"/><w:basedOn w:val="Normal"/><w:next w:val="Normal"/><w:qFormat/><w:pPr><w:keepNext/><w:keepLines/><w:spacing w:before="240" w:after="160"/>' + $alignment + '<w:outlineLvl w:val="' + $heading[2] + '"/></w:pPr><w:rPr>' + $fontProperties + '<w:b/><w:bCs/></w:rPr></w:style>'
+# Word의 제목 접기 기능이 생기지 않도록 본문 수준의 사용자 지정 제목 서식을 사용한다.
+foreach ($heading in @(@('DocumentTitle', '기획서 제목'), @('QuestionTitle', '문항 제목'), @('SectionTitle', '본문 소제목'))) {
+    $alignment = if ($heading[0] -eq 'DocumentTitle') { '<w:jc w:val="center"/>' } else { '' }
+    $styles += '<w:style w:type="paragraph" w:styleId="' + $heading[0] + '"><w:name w:val="' + $heading[1] + '"/><w:basedOn w:val="Normal"/><w:next w:val="Normal"/><w:qFormat/><w:pPr><w:keepNext/><w:keepLines/><w:spacing w:before="240" w:after="160"/>' + $alignment + '<w:outlineLvl w:val="9"/></w:pPr><w:rPr>' + $fontProperties + '<w:b/><w:bCs/></w:rPr></w:style>'
 }
 $styles += '</w:styles>'
 $documentRelationships = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rIdStyles" Type="' + $relationshipsNamespace + '/styles" Target="styles.xml"/>'

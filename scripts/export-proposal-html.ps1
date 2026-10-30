@@ -97,7 +97,7 @@ $reviewSections = for ($index = 0; $index -lt $reviewHeadings.Count; $index++) {
     $bodyEnd = if ($index + 1 -lt $reviewHeadings.Count) { $reviewHeadings[$index + 1].Index } else { $review.Length }
     $content = Convert-DocumentFragment ($review.Substring($bodyStart, $bodyEnd - $bodyStart).Trim())
     $heading = [System.Net.WebUtility]::HtmlEncode($reviewHeadings[$index].Groups[2].Value.Trim())
-    '<details class="review-item"><summary>{0}</summary><div class="prose">{1}</div></details>' -f $heading, $content
+    '<section class="review-item" aria-labelledby="review-heading-{0}"><h3 class="review-item-title" id="review-heading-{0}">{1}</h3><div class="prose">{2}</div></section>' -f ($index + 1), $heading, $content
 }
 $reviewLead = $review.Substring(0, $reviewHeadings[0].Index)
 $reviewLead = [regex]::Replace($reviewLead, '(?m)^# .+\r?\n', '').Trim()
@@ -207,9 +207,7 @@ $template = @'
     .review-intro { margin:20px 0; font-size:12px; color:var(--muted); }
     .review-intro p { margin:0; }
     .review-item { border:1px solid var(--line); border-radius:9px; margin-bottom:10px; background:var(--white); }
-    .review-item summary { padding:16px 20px; color:var(--ink); font-size:14px; font-weight:650; cursor:pointer; }
-    .review-item summary::marker { color:var(--green); }
-    .review-item[open] summary { border-bottom:1px solid var(--line); }
+    .review-item-title { margin:0; padding:16px 20px; color:var(--ink); font-size:14px; font-weight:650; border-bottom:1px solid var(--line); }
     .review-item > .prose { padding:22px; font-size:14px; }
     .review-item > .prose > :last-child { margin-bottom:0; }
     .footer { border-top:1px solid var(--line); margin-top:42px; padding-top:24px; display:flex; justify-content:space-between; gap:16px; font-size:11px; color:var(--muted); }
@@ -271,7 +269,7 @@ $template = @'
       .discovery blockquote { font-size:15pt; }
       .journey { display:none; }
       .proposal-section { padding:22px 0; }
-      .section-heading,.prose h3,.review-item summary { break-after:avoid; }
+      .section-heading,.prose h3,.review-item-title { break-after:avoid; }
       h2 { font-size:17pt; }
       .question { font-size:9pt; margin-bottom:16px; }
       .table-wrap { overflow:visible; border-radius:0; }
@@ -284,7 +282,7 @@ $template = @'
       .review-section { break-before:page; }
       .review-item { border:0; border-bottom:1px solid var(--line); border-radius:0; }
       .review-item > .prose { padding:12px 0; font-size:9pt; }
-      .review-item summary { padding:14px 0 8px; list-style:none; }
+      .review-item-title { padding:14px 0 8px; }
       .footer { font-size:8pt; }
       a { color:inherit; text-decoration:none; }
     }
@@ -327,7 +325,7 @@ $template = @'
       <!--PROPOSAL_SECTIONS-->
       <section id="review" class="review-section" aria-labelledby="review-title">
         <div class="section-heading"><span class="section-number">+</span><h2 id="review-title">심사기준 기반 검증</h2></div>
-        <p>기존 검증 에이전트 3개의 검토 이력과 사용자 피드백 반영 내용, 심사기준과의 연결, 남은 검증 과제입니다. 각 항목을 펼쳐 읽을 수 있습니다.</p>
+        <p>기존 검증 에이전트 3개의 검토 이력과 사용자 피드백 반영 내용, 심사기준과의 연결, 남은 검증 과제입니다.</p>
         <div class="review-intro"><!--REVIEW_LEAD--></div>
         <!--REVIEW_SECTIONS-->
       </section>
@@ -358,18 +356,6 @@ $template = @'
       }
       window.addEventListener('scroll', scheduleUpdate, { passive: true });
       window.addEventListener('resize', scheduleUpdate);
-      document.querySelectorAll('details').forEach(detail => detail.addEventListener('toggle', scheduleUpdate));
-      let printState = null;
-      window.addEventListener('beforeprint', () => {
-        if (printState) return;
-        printState = [...document.querySelectorAll('details')].map(detail => [detail, detail.open]);
-        printState.forEach(([detail]) => { detail.open = true; });
-      });
-      window.addEventListener('afterprint', () => {
-        if (printState) printState.forEach(([detail, wasOpen]) => { detail.open = wasOpen; });
-        printState = null;
-        scheduleUpdate();
-      });
       document.getElementById('print-document').addEventListener('click', () => window.print());
       document.getElementById('download-text').addEventListener('click', () => {
         const bytes = Uint8Array.from(atob('<!--PROPOSAL_TEXT_BASE64-->'), character => character.charCodeAt(0));
