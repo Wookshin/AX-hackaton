@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="WorkMemory AI: 흩어진 작업 기록에서 빠뜨린 일과 반복 업무를 발견하고, 근거 있는 주간·월간 보고로 연결하는 AI 업무 기억 비서.">
-  <meta name="proposal-source-sha256" content="6d5727cc8146093ce817d41be94c5eec1c3e7cc1674722241d7fff049dd245e3">
-  <meta name="review-source-sha256" content="59a0dabfbd820d8cc711449c6544d0a7c4878672e96604f8d5f2f3170d68883f">
+  <meta name="description" content="WorkMemory AI: SDS 임직원의 PC 업무를 기억·분류하고, 평가노트에 활용할 근거와 반복 작업 개선 인사이트를 제공하는 AI 업무 기억 비서.">
+  <meta name="proposal-source-sha256" content="97c17a71ba26b6ac526f53018dd7d0210163c75cbc860db0a2eb1eb0d63694ba">
+  <meta name="review-source-sha256" content="3046b675cf1af2639648e964df40fbc92fc81fd73802119cc3c39e451de9e5f1">
   <title>WorkMemory AI · AX 해커톤 기획서</title>
   <style>
     :root { color-scheme: light; --paper:#f6f7f3; --white:#fff; --ink:#18382f; --text:#35443e; --muted:#637269; --line:#dde5dc; --green:#14735b; --wash:#eaf2e9; --warm:#fbf4e7; --gold:#855714; }
@@ -60,6 +60,9 @@
     .flow { display:flex; align-items:center; flex-wrap:wrap; gap:9px; font-size:12px; margin-top:23px; color:var(--green); }
     .flow b { font-weight:600; }
     .flow span { color:#93a493; }
+    .document-download { margin-top:18px; display:flex; flex-wrap:wrap; align-items:center; gap:12px; font-size:12px; }
+    .document-download a { font-weight:700; }
+    .document-download span { color:var(--muted); }
     .proposal-section { padding:39px 0 40px; border-top:1px solid var(--line); }
     .section-heading { display:flex; align-items:center; gap:15px; }
     .section-number { font-size:12px; font-weight:750; color:var(--green); width:30px; height:30px; display:grid; place-items:center; background:var(--wash); border-radius:8px; flex-shrink:0; }
@@ -195,36 +198,37 @@
       <section class="hero" aria-labelledby="document-title">
         <div class="eyebrow">AX HACKATHON · WORK MEMORY</div>
         <h1 id="document-title">나도 몰랐던<br><em>나의 일을 발견하다.</em></h1>
-        <div class="hero-description"><p>평소처럼 일하면 AI가 흩어진 조회·입력·응답 작성 기록을 연결해, 내가 미처 기록하지 못한 일과 반복해서 맡고 있던 업무를 보여주는 서비스를 개발하고자 한다. 사용자는 하루 업무 목록을 짧게 검토하고, 확인한 내용을 주간·월간 보고에 재사용할 수 있다. 일상의 작은 행동에서 나의 업무를 새롭게 이해하고, 반복되는 일을 개선할 단서를 얻는 업무 기억 비서를 제안한다.</p>
+        <div class="hero-description"><p>PC에서 평소처럼 일하면 AI가 키보드·마우스 조작과 작업 맥락을 연결해, 내가 어떤 업무를 했는지 기억하고 분류해주는 서비스를 개발하고자 한다. Excel, 웹브라우저, 문서 편집기 등 여러 도구에 흩어진 일을 업무 단위로 정리하고, 평가노트에 활용할 업무·기여 사례와 반복 작업을 개선할 인사이트를 제공하는 업무 기억 비서를 제안한다.</p>
 </div>
-        <div class="tags"><span class="tag">AI 업무 기억 비서</span><span class="tag">개인 업무 발견</span><span class="tag">근거 있는 보고</span></div>
+        <div class="tags"><span class="tag">PC 업무 기억·분류</span><span class="tag">평가노트 활용</span><span class="tag">반복 작업 개선</span></div>
         <div class="discovery">
           <div class="discovery-label">THE MOMENT OF DISCOVERY</div>
-          <blockquote>“자료 작성과 설비 조회만 했다고 생각했는데, 그 사이에 조회 방법을 안내하는 지원 업무도 반복해서 하고 있었네.”</blockquote>
-          <small>이 발견이 근거가 연결된 업무 기록과 주간보고로 이어진다. 아래 사례와 결과는 제품 경험을 설명하기 위한 가상의 예시다.</small>
+          <blockquote>“자료 정리만 했다고 생각했는데, 여러 파일과 시스템 사이에서 데이터를 옮기고 형식을 맞추는 일을 계속 반복하고 있었네.”</blockquote>
+          <small>AI가 업무의 흐름과 반복 패턴을 보여주면, 사용자는 자신의 일을 다시 이해하고 표준 양식이나 자동화를 검토할 수 있다. 확인한 기록은 평가노트에 쓸 업무 사례로도 활용한다. 아래 사례와 결과는 제품 경험을 설명하기 위한 가상의 예시다.</small>
         </div>
         <div class="journey" aria-label="핵심 가치의 흐름">
-          <article class="journey-card"><span>01 · RESTORE</span><h3>빠뜨린 일을 복원하고</h3><p>흩어진 입력·클릭을 연결해 기록하지 못한 업무를 떠올립니다.</p></article>
-          <article class="journey-card"><span>02 · DISCOVER</span><h3>반복하던 일을 발견하고</h3><p>작은 조회와 응답이 내가 맡아온 지원업무였다는 점을 확인합니다.</p></article>
-          <article class="journey-card"><span>03 · REPORT</span><h3>확인한 일을 보고로</h3><p>근거가 쌓인 업무 기억을 주간·월간 보고에 다시 활용합니다.</p></article>
+          <article class="journey-card"><span>01 · REMEMBER</span><h3>나의 일을 기억하고</h3><p>여러 PC 도구의 조작과 맥락을 연결해 업무를 복원하고 분류합니다.</p></article>
+          <article class="journey-card"><span>02 · DISCOVER</span><h3>반복 작업을 발견하고</h3><p>자료 이동·입력·정리의 반복에서 표준화와 자동화의 단서를 찾습니다.</p></article>
+          <article class="journey-card"><span>03 · REUSE</span><h3>평가노트의 근거로</h3><p>확인한 업무·기여·개선 사례를 축적하고 필요한 보고에도 활용합니다.</p></article>
         </div>
-        <div class="flow" aria-label="해커톤 개발 목표"><b>기록 수집·저장</b><span>→</span><b>AI 업무 카드</b><span>→</span><b>간단한 확인</b><span>→</span><b>근거 있는 주간보고</b></div>
+        <div class="flow" aria-label="해커톤 개발 목표"><b>PC 조작·맥락 기록</b><span>→</span><b>업무 복원·분류</b><span>→</span><b>반복 작업 개선</b><span>→</span><b>평가노트에 활용</b></div>
+        <div class="document-download screen-only"><a href="AX-hackathon-proposal.docx" download>Word 기획서 다운로드 (.docx)</a><span>편집 가능한 표 · 바탕체 14포인트</span></div>
       </section>
       <section class="proposal-section" id="proposal-1" aria-labelledby="heading-1">
   <div class="section-heading"><span class="section-number">01</span><h2 id="heading-1">문제와 주요 사용자</h2></div>
   <p class="question">AI로 해결하고자 하는 문제 상황 또는 새롭게 시도해보고 싶은 업무/서비스는 무엇인가요?</p>
   <div class="prose"><p>“하루 종일 바빴는데, 정작 무엇을 했는지 쓰려니 생각나지 않는다.”</p>
-<p>주요 대상 사용자는 <strong>사내 시스템의 조회·문의 대응을 반복하면서 주간보고를 작성하는 운영·지원 담당자</strong>다. Windows와 Chrome을 오가며 자료를 조회하고, 응답을 작성하고, 문서 내용을 보완한다. 이 과정에서 생기는 짧은 문의 대응, 자료 확인, 동료 지원은 업무 티켓이나 개인 메모에 모두 남기기 어렵다. 일을 수행하는 것과 별개로 무엇을 했는지 기억해 기록해야 하는 부담이 있다.</p>
-<p>기록에서 빠진 일은 주간·월간 보고와 평가 준비에서도 놓치기 쉽다. 같은 조회와 안내를 반복하고 있어도 개별 요청으로만 기억하면, 어떤 업무를 개선할 수 있을지 발견하기 어렵다. 프로그램별 사용 시간을 알아도 그 안에서 어떤 일을 했는지 설명하려면 추가적인 해석이 필요하다.</p>
-<p>WorkMemory AI는 <strong>작업 중 자동으로 쌓이는 기록을, 사용자가 이해하고 활용할 수 있는 업무 기억으로 바꾸는 서비스</strong>를 제안한다. 먼저 하루의 업무를 복원해 기억에서 빠진 일을 확인하도록 돕는다. 이어서 개별 조회와 응답으로만 여겼던 행동들이 어떤 반복 업무를 이루는지 보여준다. 사용자가 나중에 기억을 모아 보고를 작성하던 과정을, 작업 기록에서 만들어진 업무 목록을 검토하고 보고에 활용하는 과정으로 바꾼다.</p>
-<p>이를 위해 PC와 브라우저에서 사용자가 선택한 작업 기록을 수집하고, AI가 업무 단위로 정리하는 기능을 개발할 계획이다. 모호한 업무는 사용자가 짧게 수정하거나 확인할 수 있게 한다. 해커톤에서는 기록 수집·저장부터 AI 업무 복원과 주간보고 생성까지 이어지는 프로토타입을 구현해, 별도의 업무 일지를 매번 작성하지 않아도 활용할 수 있는지 검증하고자 한다.</p>
+<p>주요 대상 사용자는 <strong>PC로 업무를 수행하는 SDS 임직원</strong>이다. 자료를 정리하는 사람, 문서를 작성하는 사람, 개발하는 사람, 시스템을 운영하는 사람 모두 여러 프로그램을 오가며 일한다. 짧은 자료 확인, 문서 수정, 동료 지원과 문제 해결 과정은 별도의 업무 기록에 빠짐없이 남기기 어렵다. 일을 수행하는 것과 별개로 무엇을 했는지 기억하고 정리해야 하는 부담이 있다.</p>
+<p>평가노트를 작성할 때에는 몇 달 동안 수행한 업무와 기여 사례를 다시 떠올려야 한다. 눈에 띄는 결과물은 기억해도 그 과정의 자료 정리, 검토, 협업과 작은 개선 시도는 놓치기 쉽다. 비슷한 복사·입력·서식 변경을 반복하고 있어도 각각의 작업으로만 기억하면 어떤 과정을 개선할 수 있을지 발견하기 어렵다. 프로그램별 사용 시간이나 입력 횟수만으로는 실제 업무의 목적과 의미를 설명하기도 어렵다.</p>
+<p>WorkMemory AI는 <strong>PC 조작의 맥락을 업무의 기억·분류·개선으로 연결하는 서비스</strong>를 제안한다. 하루의 일을 업무 단위로 복원하고, 여러 프로그램에서 이어진 행동을 같은 목적의 일로 연결하고자 한다. 누적된 기록에서는 반복 작업과 업무 흐름을 찾아 개선 후보를 제시한다. 사용자가 확인한 내용은 평가노트의 업무·기여 사례로 축적하고, 필요한 경우 업무 일지나 주간·월간 보고에도 재사용할 수 있게 한다.</p>
+<p>적용 대상은 PC를 사용하는 업무 전반으로 설정한다. 해커톤에서는 대표 업무 시나리오와 프로그램 조합을 정해 기록 수집·저장부터 AI 업무 분류, 반복 패턴 발견, 평가노트용 사례 정리까지 이어지는 프로토타입을 개발할 계획이다. 모호한 업무는 사용자가 짧게 수정하거나 확인하도록 설계한다.</p>
 </div>
 </section>
 <section class="proposal-section" id="proposal-2" aria-labelledby="heading-2">
   <div class="section-heading"><span class="section-number">02</span><h2 id="heading-2">AI 활용 계획</h2></div>
   <p class="question">제안한 아이디어를 실현하기 위해 AI를 어떻게 활용할 계획인가요?</p>
   <div class="prose"><h3 id="section">① 흩어진 행동을 업무로 복원: “오늘 내가 한 일”</h3>
-<p>AI가 입력 내용, 클릭한 요소, 프로그램 또는 사이트, 발생 시각을 함께 분석해 관련 기록을 업무 후보로 묶도록 할 계획이다. 여러 작업 화면에서 이어진 행동도 연결 근거가 있을 때 같은 업무의 일부로 제안하도록 설계한다.</p>
+<p>키보드·마우스 조작, 사용 중인 프로그램과 문서·페이지, 조작 대상, 발생 시각을 함께 분석해 관련 기록을 업무 후보로 묶도록 할 계획이다. 키 입력 횟수나 마우스 좌표에 더해 선택·입력·클릭 대상의 맥락을 활용해, 여러 프로그램에서 이어진 작업의 목적을 해석하고자 한다.</p>
 <p>다음은 기능을 설명하기 위한 가상의 기록이다.</p>
 <div class="table-wrap" role="region" aria-label="가로로 넘겨 볼 수 있는 표" tabindex="0"><table>
 <thead>
@@ -235,19 +239,23 @@
 </thead>
 <tbody>
 <tr>
-<td>사내 웹페이지에서 설비번호 <code>EQ-102</code> 입력, ‘조회’ 클릭</td>
-<td>EQ-102 관련 정보 조회</td>
+<td>Excel의 ‘프로젝트 A’ 자료에서 범위 선택·복사</td>
+<td>프로젝트 A 자료 취합 후보</td>
 </tr>
 <tr>
-<td>이후 테스트 웹페이지의 응답 작성 필드에서 ‘EQ-102 조회 조건을 확인해 주세요’ 입력값 변경 관측</td>
-<td>앞선 조회와 관련된 문의 응답 작성 가능성</td>
+<td>브라우저에서 ‘프로젝트 A’ 관련 정보를 조회</td>
+<td>앞선 자료와 관련된 정보 확인 후보</td>
+</tr>
+<tr>
+<td>문서 편집기에서 ‘프로젝트 A’ 내용을 입력하고 표를 정리</td>
+<td>여러 도구의 작업이 이어진 프로젝트 A 자료 작성 후보</td>
 </tr>
 </tbody>
 </table></div>
-<p>사용자는 두 기록을 보고 ‘설비 조회 문의 대응’이라는 하나의 업무로 확인하거나, 잘못 연결된 항목을 제외할 수 있다. 원본 이벤트 대신 하루의 업무 목록을 먼저 보고, 선택한 카드 묶음을 한 번에 확인한다. 근거는 필요할 때만 펼치고, 모호한 제목이나 연결만 짧게 고친다. 여러 번의 입력 수정과 클릭을 곧바로 여러 건의 업무로 세지 않는다. 고급 합치기·분리 편집은 후속 기능으로 확장한다.</p>
-<p>AI의 핵심 역할은 표현과 목적을 함께 해석하는 것이다. ‘날짜 범위를 바꿔 조회’와 ‘조회 기간 안내’를 같은 유형의 지원 업무 후보로 연결하고, 같은 설비번호가 있어도 ‘정기점검 자료 작성’은 별도 목적의 업무로 구분하도록 한다. 이런 사례를 포함해 프로그램별 시간 집계와 공통 단어만으로 묶은 결과보다 업무 의미를 잘 복원하는지 검증한다.</p>
+<p>사용자는 연결된 기록을 보고 ‘프로젝트 A 자료 작성’이라는 하나의 업무로 확인하거나, 잘못 연결된 항목을 제외할 수 있다. 업무는 자료 작성·분석·개발·검토·협업 등 목적에 따라 분류하고, 사용자가 이름과 분류를 수정할 수 있게 한다. 하루의 업무 목록을 먼저 보여주고 근거는 필요할 때 펼치도록 설계한다. 여러 번의 입력 수정과 클릭을 곧바로 여러 건의 업무로 세지 않는다.</p>
+<p>AI의 핵심 역할은 작업의 맥락과 목적을 함께 해석하는 것이다. Excel의 자료 취합과 문서 편집기의 표 정리를 하나의 자료 작성 업무로 연결하고, 같은 프로젝트 이름이 있어도 ‘개발 오류 수정’은 별도 목적의 업무로 구분하도록 한다. 프로그램별 사용 시간 집계나 공통 단어만으로 묶은 결과와 비교해 업무 의미를 잘 복원하는지 검증할 계획이다.</p>
 <h3 id="section-1">② 빠뜨린 일과 인식하지 못했던 반복 업무 발견: “이런 일을 계속하고 있었네요”</h3>
-<p>발견은 두 단계로 제공하고자 한다. 먼저 복원된 업무 목록에서 잊고 있던 문의 대응·자료 확인·지원 업무를 떠올린다. 다음으로 각기 다른 작은 일로 기억했던 기록들이 비슷한 목적의 반복 업무였다는 점을 확인한다. 다음은 여러 날의 가상 기록과 사용자 확인을 전제로 한 예상 결과물이다.</p>
+<p>발견은 두 단계로 제공하고자 한다. 먼저 복원된 업무 목록에서 잊고 있던 자료 확인·검토·협업 등을 떠올린다. 다음으로 개별 조작으로만 여겼던 행동이 어떤 반복 업무를 이루는지 확인한다. 다음은 여러 날의 가상 기록과 사용자 확인을 전제로 한 예상 결과물이다.</p>
 <div class="table-wrap" role="region" aria-label="가로로 넘겨 볼 수 있는 표" tabindex="0"><table>
 <thead>
 <tr>
@@ -258,31 +266,31 @@
 <tbody>
 <tr>
 <td>사용자가 기억한 일</td>
-<td>‘주간 자료 작성’, ‘설비 조회’</td>
+<td>‘프로젝트 자료 작성’</td>
 </tr>
 <tr>
 <td>기록에서 복원한 일</td>
-<td>서로 다른 시점의 조회 조건 확인과 안내 응답 작성 후보</td>
+<td>여러 파일에서 자료 취합, 시스템 조회, 문서의 표·형식 정리</td>
 </tr>
 <tr>
 <td>사용자가 확인한 업무</td>
-<td>서로 다른 요청에 대한 ‘조회 방법 안내’ 3건. 입력 수정본은 별도 건수로 세지 않음</td>
+<td>서로 다른 자료 작성 과정에서 비슷한 ‘자료 취합·서식 맞춤’을 3회 수행</td>
 </tr>
 <tr>
 <td>새롭게 알게 된 점</td>
-<td>따로 기록하지 않았던 시스템 사용 지원을 반복해서 맡고 있었음</td>
+<td>여러 프로그램 사이에서 데이터를 옮기고 형식을 맞추는 수작업이 반복되고 있음</td>
 </tr>
 <tr>
-<td>개선과 보고에 활용</td>
-<td>공통 안내문을 검토할 후보로 남기고, 확인된 3건을 근거와 함께 주간보고에 반영</td>
+<td>개선과 기록에 활용</td>
+<td>표준 양식·자료 취합 자동화를 검토할 후보로 남기고, 수행한 업무는 평가노트용 사례로 축적</td>
 </tr>
 </tbody>
 </table></div>
 <p>이 비교 목록은 발견을 설명하고 효과를 검증하기 위한 자료다. 실제 사용 때 매일 기억으로 작성한 별도 일지를 요구하지 않는다.</p>
-<p>확인된 업무가 누적되면 AI가 비슷한 목적의 작업과 반복되는 처리 흐름을 찾아 개선 후보를 제시한다. 예를 들어 서로 다른 날의 조회·안내 업무가 유사하다면 “비슷한 조회와 안내 흐름이 반복됐습니다. 자주 쓰는 안내문이나 조회 절차를 정리해볼까요?”라고 제안한다. 카드에서 어떤 업무들이 근거인지와 묶은 이유를 확인하고, 잘못 연결된 항목을 제외할 수 있다.</p>
+<p>확인된 업무가 누적되면 AI가 비슷한 목적과 순서가 반복되는 흐름을 찾아 개선 후보를 제시하도록 할 계획이다. 예를 들어 “여러 파일의 값을 옮기고 같은 형식으로 정리하는 흐름이 반복됐습니다. 공통 템플릿이나 자동 취합을 검토해볼까요?”라고 제안한다. 개발·분석·문서 작성·시스템 운영 등 각 업무에서도 반복되는 준비·확인·정리 과정을 찾아볼 수 있다. 어떤 업무들이 근거인지와 묶은 이유를 확인하고 잘못 연결된 항목은 제외할 수 있게 한다.</p>
 <p>원시 이벤트의 반복과 실제 업무의 반복을 구분한다. 반복 횟수는 사용자가 확인한 업무 단위를 기준으로 집계하며, 아직 확인하지 않은 묶음은 후보로 표시한다. 개선 제안은 업무를 바꿔볼 가설로 제공하고, 절감 시간이나 효과는 실제 적용 후 확인한다.</p>
-<h3 id="section-2">③ 같은 기억을 기간별 보고로 활용: “이번 주와 이번 달의 나”</h3>
-<p>사용자가 확인한 업무와 보완한 내용을 바탕으로 AI가 목적에 맞는 보고서 초안을 작성하도록 할 계획이다. 기간과 서식을 선택해 같은 업무 기록을 여러 번 활용할 수 있게 한다.</p>
+<h3 id="section-2">③ 같은 기억을 평가노트와 필요한 보고에 활용: “그동안 내가 한 일”</h3>
+<p>사용자가 확인한 업무를 기간·프로젝트·업무 유형별로 모으고, 평가노트에 활용할 업무·기여 사례를 정리하도록 할 계획이다. 사용자가 실제 결과와 기여를 보완하면 이를 반영해 초안을 작성한다. 주간·월간 보고는 업무에 따라 선택할 수 있는 활용 방식으로 둔다.</p>
 <div class="table-wrap" role="region" aria-label="가로로 넘겨 볼 수 있는 표" tabindex="0"><table>
 <thead>
 <tr>
@@ -294,38 +302,38 @@
 <tbody>
 <tr>
 <td>일일 업무 정리</td>
-<td>오늘 수행한 업무, 관련 기록, 추가 확인이 필요한 항목</td>
+<td>오늘 수행한 업무와 분류, 관련 기록, 확인할 항목</td>
 <td>하루를 잊기 전에 짧게 확인하고 수정</td>
 </tr>
 <tr>
-<td>주간 업무보고</td>
-<td>주요 업무, 사용자 확인 결과·이슈, 진행 내용</td>
-<td>지난 기록을 다시 모으는 시간 절약</td>
+<td>평가노트용 업무·기여 사례</td>
+<td>선택 기간의 수행 업무, 사용자가 확인한 결과·기여, 개선 시도와 근거</td>
+<td>평가노트 작성 시 기억을 다시 모으는 부담 감소</td>
 </tr>
 <tr>
-<td>월간 업무보고</td>
-<td>주제별 업무 흐름, 반복 업무, 확인된 변화와 개선 시도</td>
-<td>여러 주에 걸친 일을 연결해 한 달의 흐름 파악</td>
+<td>반복 작업 인사이트</td>
+<td>비슷한 목적·순서의 업무, 반복된 수작업, 개선 후보</td>
+<td>표준화·자동화를 검토할 단서 제공</td>
 </tr>
 <tr>
-<td>향후 평가노트</td>
-<td>선택한 기간의 업무·지원·개선 사례와 근거</td>
-<td>몇 달 전의 일을 다시 떠올릴 자료 축적</td>
+<td>선택적 주간·월간 보고</td>
+<td>담당 업무에 필요한 기간별 진행 내용과 이슈</td>
+<td>같은 기록을 직무별 보고에 재사용</td>
 </tr>
 </tbody>
 </table></div>
-<p>해커톤의 필수 결과물은 근거가 연결된 주간보고 한 종류로 정한다. 일일 정리는 업무 카드 화면으로 제공하고, 월간은 같은 확인 업무를 더 긴 기간으로 묶는 선택 구현 항목으로 둔다. 월간·평가노트까지 이어지는 기억의 축적은 제품의 확장 방향이다.</p>
-<p>MVP는 보고의 업무 항목마다 관련 카드와 원본 근거를 연결하고, 문장별 상세 연결은 선택 구현으로 둔다. 완료 여부, 해결 결과, 실제 기여와 다음 계획은 사용자 확인이나 추가 자료가 있을 때 포함한다. 부족한 정보는 보완 항목으로 남기고, 확인되지 않은 후보는 별도로 보여준다. 일상적인 검토는 업무 이름과 묶음을 확인하는 수준으로 시작하고, 결과 설명은 보고에 필요한 시점에 보완할 수 있게 한다.</p>
+<p>해커톤에서는 업무 카드, 근거가 연결된 평가노트용 사례 초안 한 종류, 반복 흐름과 개선 후보 한 개를 핵심 결과물로 구현할 계획이다. 짧은 시연에서는 실제 관측한 업무와 보완할 내용을 보여주고, 장기 축적의 모습은 별도의 가상 누적 자료로 설명한다. 평가노트 전체 서식과 주간·월간 보고 서식은 확장 항목으로 둔다.</p>
+<p>초안의 업무 항목마다 관련 카드와 원본 근거를 연결할 계획이다. 완료 여부, 해결 결과와 실제 기여는 사용자가 확인하거나 추가 자료가 있을 때 포함한다. 부족한 정보는 보완 항목으로 남긴다. 일상적인 검토는 업무 이름과 분류를 확인하는 수준으로 시작하고, 결과·기여 설명은 평가노트 작성에 필요한 시점에 보완할 수 있게 한다.</p>
 <h3 id="ai">④ AI 해석을 확인 가능한 결과로 제공</h3>
-<p>처리 흐름은 <strong>기록 수집·저장 → 업무 후보 구성 → 사용자 확인·수정 → 반복 흐름 분석 → 기간별 보고 생성</strong>으로 설계한다. 건수·날짜 등은 코드로 계산하고, AI는 의미에 따른 묶음·요약·개선 후보·문서 초안을 생성하도록 역할을 나눈다. 사용자의 수정 내용을 이후 보고의 기준으로 유지할 계획이다.</p>
-<p>구현에는 <strong>Chrome 확장과 JavaScript의 DOM 이벤트</strong>를 활용해 지정한 테스트 웹페이지의 입력값 변경·클릭·시각을 수집하고, <strong>.NET/WPF와 SQLite</strong>로 로컬 저장과 업무 카드 화면을 개발할 계획이다. <strong>LLM API</strong>에는 필요한 기록을 JSON으로 전달하고, 업무 후보·요약·보고 초안을 구조화된 형식으로 받아 원본 기록 ID와 대조할 예정이다. Windows 앱의 기록 수집에는 <strong>UI Automation</strong>을 활용하는 방안을 후속 확장으로 검토한다.</p>
-<p>수집 항목은 업무 해석에 필요한 입력·클릭·시각·사이트 등의 정보로 설계하고, 전체 화면과 전체 페이지 내용은 기본 수집 대상에서 제외할 계획이다. AI가 관측한 행동과 업무에 대한 해석을 구분하도록 한다. 예를 들어 ‘전송’ 클릭을 전송 성공으로, 조회 기록을 문제 해결 완료로 표현하지 않게 한다. 업무별 시간은 관련 구간을 연결할 수 있는 경우에만 추정 근거와 함께 제공하는 선택 기능으로 검토한다.</p>
+<p>처리 흐름은 <strong>PC 조작·맥락 기록 → 업무 복원·분류 → 사용자 확인·수정 → 반복 흐름 분석 → 평가노트·필요한 보고에 활용</strong>으로 설계한다. 건수·날짜 등은 코드로 계산하고, AI는 목적에 따른 업무 묶음·분류·요약·개선 후보·문서 초안을 생성하도록 역할을 나눈다. 사용자의 수정 내용은 이후 분석과 초안의 기준으로 유지할 계획이다.</p>
+<p>구현에는 <strong>키보드·마우스 이벤트 수집과 접근성 API</strong>를 활용해 조작의 시각·대상과 앱·문서 전환 맥락을 연결하는 방안을 계획한다. 프로그램별 세부 정보가 필요하면 브라우저 확장이나 앱 연동을 보완 수단으로 활용한다. <strong>로컬 DB와 업무 카드 화면</strong>에서 기록과 사용자 확인을 관리하고, <strong>LLM API</strong>로 업무 분류·반복 패턴·개선 후보·평가노트용 초안을 생성할 예정이다. 수집 모듈은 운영체제와 앱별로 분리해 지원 범위를 넓혀갈 수 있도록 설계한다.</p>
+<p>기록에는 관측 가능한 정보와 수집하지 못한 범위를 함께 남기고, AI가 관측한 행동과 업무에 대한 해석을 구분하도록 할 계획이다. 예를 들어 ‘저장’ 클릭을 최종 승인으로, 입력량을 기여 수준으로 해석하지 않게 한다. 업무별 시간은 관련 구간을 연결할 수 있는 경우에만 근거와 함께 추정하는 선택 기능으로 검토한다.</p>
 </div>
 </section>
 <section class="proposal-section" id="proposal-3" aria-labelledby="heading-3">
   <div class="section-heading"><span class="section-number">03</span><h2 id="heading-3">2일 개발 계획</h2></div>
   <p class="question">해커톤 2일 동안 구현해 보고 싶은 주요 기능은 무엇인가요?</p>
-  <div class="prose"><p>2일 동안 <strong>작업 기록 수집·저장 → AI 업무 카드 → 빠뜨린 일 확인 → 근거가 연결된 주간보고</strong>로 이어지는 프로토타입을 개발하고자 한다. 구현 범위는 Chrome의 지정 테스트 웹페이지로 한정해, 조회와 응답 작성 기록을 직접 수집하고 AI가 의미 있는 업무로 복원할 수 있는지 확인할 계획이다.</p>
+  <div class="prose"><p>2일 동안 <strong>PC 작업 기록 수집 → 업무 복원·분류 → 반복 흐름 발견 → 평가노트용 사례 정리</strong>로 이어지는 프로토타입을 개발하고자 한다. 대표 시나리오는 ‘스프레드시트 자료 취합 → 브라우저 정보 확인 → 문서 정리’처럼 여러 프로그램을 오가는 업무로 잡는다. 해커톤에서는 수집 가능성을 확인한 두 개 이상의 프로그램에서 짧은 작업을 시연하고, 앱별 관측 범위를 표시할 계획이다.</p>
 <div class="table-wrap" role="region" aria-label="가로로 넘겨 볼 수 있는 표" tabindex="0"><table>
 <thead>
 <tr>
@@ -337,57 +345,52 @@
 <tbody>
 <tr>
 <td>필수</td>
-<td>작업 기록 수집·저장</td>
-<td>Chrome 확장으로 테스트 페이지의 입력·클릭·시각을 수집하고 로컬 DB에서 조회</td>
+<td>PC 조작·맥락 수집과 저장</td>
+<td>선정한 프로그램에서 입력·클릭·앱 전환 맥락을 수집하고 로컬에서 원본 조회</td>
 </tr>
 <tr>
 <td>필수</td>
-<td>AI 업무 카드 생성</td>
-<td>직접 수집한 기록을 모델에 전달해 업무 후보와 유효한 근거 제시</td>
+<td>업무 복원·분류 카드</td>
+<td>여러 프로그램의 관련 기록을 업무 후보로 연결하고 분류·근거 제시</td>
 </tr>
 <tr>
 <td>필수</td>
 <td>간단한 검토·확인 저장</td>
-<td>이름 수정·잘못된 연결 제외·선택 카드 묶음 확인, 수정 내용 유지</td>
+<td>이름·분류 수정, 잘못된 연결 제외, 선택 카드 확인과 수정 내용 유지</td>
 </tr>
 <tr>
 <td>필수</td>
-<td>주간보고 한 종류</td>
-<td>확인 업무로 초안 생성, 업무 항목별 근거 열기, 수정·저장·Markdown 내보내기</td>
+<td>반복 흐름과 개선 후보 한 개</td>
+<td>실제 테스트 작업에서 반복 패턴과 근거를 보여주고 템플릿·자동화 등 검토 후보 제안</td>
 </tr>
 <tr>
-<td>선택</td>
-<td>반복 업무와 개선 후보</td>
-<td>짧은 실제 작업 또는 별도 누적 시연 자료에서 반복 묶음 한 개와 근거 제시</td>
+<td>필수</td>
+<td>평가노트용 업무 사례 초안</td>
+<td>확인한 업무와 사용자 보완 내용으로 초안 생성, 근거 열기·수정·저장·텍스트 내보내기</td>
 </tr>
 <tr>
-<td>선택</td>
-<td>월간 보고와 고급 편집</td>
-<td>같은 확인 업무의 기간 확장, 합치기·분리, 문장별 상세 근거</td>
-</tr>
-<tr>
-<td>후속 확장</td>
-<td>Windows 앱 기록 수집</td>
-<td>UI Automation을 활용한 입력·클릭 수집 가능 범위 검증</td>
+<td>확장</td>
+<td>보고 서식과 지원 환경 확대</td>
+<td>주간·월간 보고, 평가노트 전체 서식, 고급 편집과 다양한 앱·운영체제 지원</td>
 </tr>
 </tbody>
 </table></div>
-<p>1일 차 오전에는 Chrome 확장과 로컬 저장을 구현해 테스트 작업의 입력·클릭 기록을 확보할 계획이다. 오후에는 LLM API를 연결하고 업무 카드 생성과 간단한 수정·확인 저장을 구현한다. 수집한 기록만으로 업무 의미를 복원하기 어려우면 테스트 업무와 수집 항목을 조정한다. 2일 차에는 주간보고 생성과 근거 열기·내보내기를 구현하고 전체 흐름을 검증한다. 반복 업무 분석 등 선택 기능은 필수 흐름이 동작한 뒤 추가할 예정이다.</p>
-<p>주간보고에는 실제 수집한 날짜와 범위를 표시할 계획이다. 여러 날의 흐름과 월간 확장은 별도로 준비한 가상 누적 자료로 보여주고 출처를 표시한다. 실제 메신저·IDE 호환성, 하루 연속 기록과 다양한 Windows 앱 지원은 후속 검증 대상으로 둔다. 정기 자동 생성, 반기 평가노트, 연간 목표 연결, 팀 분석과 외부 업무 시스템 연동도 향후 확장 방향으로 검토한다.</p>
+<p>1일 차 오전에는 시연 환경과 프로그램 조합을 정하고, 키보드·마우스 이벤트와 접근성 정보를 활용한 최소 수집·저장을 구현할 계획이다. 오후에는 LLM API를 연결해 업무 후보·분류와 간단한 수정·확인 기능을 개발한다. 2일 차에는 짧은 반복 작업에서 패턴과 개선 후보를 제시하고, 평가노트용 사례 초안과 근거 열기·내보내기를 구현한다. 수집한 정보만으로 업무 의미가 드러나지 않으면 작업 시나리오와 맥락 수집 방법을 조정할 예정이다.</p>
+<p>짧은 시연 자료에는 실제 수집한 날짜·프로그램·범위를 표시하고, 평가기간 전체를 기록한 것처럼 제시하지 않는다. 장기 누적과 다양한 직무의 활용 모습은 별도로 준비한 가상 자료로 설명할 계획이다. 다양한 앱과 운영체제의 호환성, 하루 연속 기록, 정기 자동 생성과 연간 목표 연결은 후속 구현·검증 대상으로 둔다.</p>
 <p>구현 후에는 다음 순서로 시연할 계획이다.</p>
 <ol>
-<li><strong>평소처럼 작업:</strong> 기밀 없는 Chrome 테스트 웹페이지에서 조회·응답 작성을 수행한다. 다른 목적의 작업과 같은 번호를 쓰는 별도 작업도 섞는다.</li>
+<li><strong>평소처럼 작업:</strong> 기밀 없는 테스트 자료로 스프레드시트·브라우저·문서 편집기 중 선정한 프로그램을 오가며 일한다. 다른 목적의 작업도 섞는다.</li>
 <li><strong>발견의 전후 비교:</strong> 시연자가 기억으로 적은 목록과 실제 기록에서 AI가 복원한 업무 후보를 나란히 보여준다. 계획된 시연의 비교임을 밝힌다.</li>
-<li><strong>짧게 확인:</strong> 잘못 연결된 항목 하나를 제외하거나 제목을 고친 뒤 선택 카드 묶음을 확인한다. 원본은 필요한 카드에서만 연다.</li>
-<li><strong>보고에 반영:</strong> 확인된 지원 업무가 포함된 주간보고를 생성하고, 보고의 업무 항목에서 카드와 원본으로 돌아간 뒤 저장한다.</li>
-<li><strong>누적 시 더 보이는 것:</strong> 선택 구현이 완료되면 별도 누적 시연 자료로 반복 지원업무와 안내문 검토 후보를 보여준다. 월간도 같은 업무 기억의 기간 확장으로 설명한다.</li>
+<li><strong>짧게 확인:</strong> 잘못 연결된 항목을 제외하거나 이름·분류를 고친 뒤 업무 카드를 확인한다. 원본은 필요한 카드에서만 연다.</li>
+<li><strong>반복 작업 발견:</strong> 같은 자료 취합·서식 맞춤 등을 반복한 기록에서 패턴과 표준화·자동화 검토 후보를 보여준다.</li>
+<li><strong>평가노트에 활용:</strong> 확인한 업무로 사례 초안을 만들고, 실제 결과·기여를 보완할 항목과 원본 근거를 함께 보여준다. 장기 축적의 모습은 별도 가상 자료로 설명한다.</li>
 </ol>
 </div>
 </section>
 <section class="proposal-section" id="proposal-4" aria-labelledby="heading-4">
   <div class="section-heading"><span class="section-number">04</span><h2 id="heading-4">기대효과와 검증</h2></div>
   <p class="question">이 아이디어의 주요 사용자는 누구이며, 어떤 기대효과가 있나요?</p>
-  <div class="prose"><p>주요 대상 사용자는 <strong>조회·문의 응답 작성이 반복되고 주간보고를 작성하는 사내 시스템 운영·지원 담당자</strong>다. 여러 시스템에서 수행한 짧은 업무를 기억하고 정리해야 하는 사람에게 도움이 될 것으로 기대한다. 해커톤에서는 Windows·Chrome 환경의 테스트 작업으로 핵심 흐름을 구현하고, 이후 개발자·기획자 등 다른 직무에서도 활용할 수 있는지 검토할 계획이다.</p>
+  <div class="prose"><p>주요 대상 사용자는 <strong>PC로 일하며 평가노트를 작성하는 SDS 임직원</strong>이다. 기획·개발·분석·운영·지원 등 직무와 사용하는 도구가 달라도, 자신의 일을 기억하고 설명하며 반복 작업을 개선하려는 필요에 대응하고자 한다. 주간보고 작성 여부와 관계없이 활용할 수 있고, 장기적으로는 PC로 일하는 다양한 조직과 사용자에게 확장할 수 있는 아이디어다.</p>
 <div class="table-wrap" role="region" aria-label="가로로 넘겨 볼 수 있는 표" tabindex="0"><table>
 <thead>
 <tr>
@@ -404,34 +407,39 @@
 </tr>
 <tr>
 <td>여러 앱의 행동을 다시 정리해야 함</td>
-<td>업무 단위의 하루 목록 제공</td>
-<td>사용자가 작성한 기준 목록과 업무 카드의 정확성·누락 및 수정 부담 비교</td>
+<td>업무 목적에 따른 목록과 분류 제공</td>
+<td>사용자 기준 목록과 카드의 연결·분류 정확성 및 수정 부담 비교</td>
 </tr>
 <tr>
-<td>주간·월간 보고 때 기억을 다시 모음</td>
-<td>확인한 업무를 보고 초안으로 재사용</td>
-<td>수동 작성 시간과 AI 초안 검토·수정까지의 시간 비교</td>
+<td>평가노트 작성 때 지난 업무를 다시 떠올림</td>
+<td>업무·기여 사례와 근거를 지속적으로 축적</td>
+<td>수동으로 사례를 정리할 때와 AI 초안 검토·보완까지의 시간 비교</td>
 </tr>
 <tr>
-<td>비슷한 조회·안내를 반복함</td>
-<td>개선할 업무를 발견할 기회 제공</td>
-<td>사용자가 유효하다고 판단한 반복 묶음과 실행해볼 제안 확인</td>
+<td>자료 이동·입력·확인·서식 맞춤 등을 반복함</td>
+<td>반복 흐름과 개선할 업무를 발견할 기회 제공</td>
+<td>사용자가 유효하다고 판단한 반복 패턴과 실행해볼 제안 확인</td>
 </tr>
 <tr>
-<td>조직에서 작은 지원업무의 실체를 알기 어려움</td>
-<td>사용자가 선택한 요약으로 반복 문의와 공통 안내·자동화 검토 대상을 설명할 근거 확보</td>
-<td>선택해 내보낸 요약이 개선 우선순위 논의에 도움이 되는지 검토</td>
+<td>담당 업무에 따라 주간·월간 보고가 필요함</td>
+<td>같은 업무 기억을 필요한 서식으로 재사용</td>
+<td>각 직무의 보고에 필요한 보완량과 작성 시간 확인</td>
+</tr>
+<tr>
+<td>조직에서 반복 수작업의 개선 대상을 찾기 어려움</td>
+<td>사용자가 선택한 요약으로 표준화·자동화 검토 대상을 설명할 근거 확보</td>
+<td>공유한 요약이 개선 우선순위 논의에 도움이 되는지 검토</td>
 </tr>
 </tbody>
 </table></div>
-<p>효과를 검증하기 위해 해커톤에서는 업무 묶음의 정확성·누락, 잘못된 연결을 고친 횟수, 근거의 타당성과 전체 검토 시간을 측정할 계획이다. 실제로 잊은 업무의 발견과 보고 시간 절감은 사용자 테스트로 확인하고자 한다. AI를 보기 전 작성한 목록에서 빠졌지만 실제 수행했다고 확인한 일을 집계하고, 수동 보고와 AI 활용 시의 기록 확인·수정·보고까지 총시간을 비교한다. 최초 수집 설정 시간도 별도로 기록한다. 주간보고 작성 시간 50% 감소를 검증 목표로 설정한다.</p>
+<p>해커톤에서는 업무 연결·분류의 정확성, 누락, 수정 횟수, 근거의 타당성과 전체 검토 시간을 측정할 계획이다. 사용자 테스트에서는 AI를 보기 전 목록에서 빠졌지만 실제 수행했다고 확인한 일을 집계하고, 평가노트용 업무 사례를 수동으로 정리할 때와 AI를 활용해 확인·보완할 때의 총시간을 비교하고자 한다. 반복 패턴과 개선 제안이 실제 업무에 도움이 되는지도 확인한다. 평가기간 전체의 활용 효과와 개선안의 실제 시간 절감은 후속 사용을 통해 검증할 예정이다.</p>
 <p>로그만으로 모든 업무를 관측할 수 없으므로 오프라인 업무나 미지원 앱의 작업은 사용자가 선택적으로 추가할 수 있게 한다. 활동량·입력 횟수·유휴 시간을 개인의 생산성 점수로 환산하지 않는다. 반복 업무 개선의 효과는 실제 적용과 후속 사용 기간이 필요하므로 해커톤의 발견·제안 검증과 나누어 측정한다.</p>
 </div>
 </section>
 <section class="proposal-section" id="proposal-5" aria-labelledby="heading-5">
   <div class="section-heading"><span class="section-number">05</span><h2 id="heading-5">한 줄 제안</h2></div>
   <p class="question">아이디어가 구현된 모습을 한 줄로 요약하면 어떤 모습일까요?</p>
-  <div class="prose"><p><strong>평소처럼 일하면, AI가 빠뜨린 일과 반복해서 맡고 있던 업무를 찾아내고 근거 있는 보고와 개선의 단서로 정리해주는 업무 기억 비서.</strong></p>
+  <div class="prose"><p><strong>PC에서 평소처럼 일하면, AI가 흩어진 조작 기록을 업무로 기억·분류하고 평가노트에 활용할 근거와 반복 작업을 개선할 인사이트를 제공하는 업무 기억 비서.</strong></p>
 </div>
 </section>
 <section class="proposal-section" id="proposal-6" aria-labelledby="heading-6">
@@ -449,15 +457,15 @@
 </thead>
 <tbody>
 <tr>
-<td>수집할 작업 기록</td>
-<td>작업 시각·사이트·작업 맥락</td>
-<td>개발할 Chrome 확장에서 수집해 개인 PC의 로컬 DB에 저장</td>
+<td>수집할 작업 맥락</td>
+<td>작업 시각·사용 프로그램·문서 또는 페이지·전환 맥락</td>
+<td>개발할 PC 수집 모듈에서 관측 가능한 정보를 로컬 DB에 저장</td>
 <td>JSON / SQLite</td>
 </tr>
 <tr>
-<td>수집할 상호작용 기록</td>
-<td>입력값 변경·클릭 요소·시각·수집 상태</td>
-<td>테스트 페이지의 DOM 이벤트를 수집해 로컬에 저장</td>
+<td>수집할 조작 기록</td>
+<td>키보드·마우스 조작과 입력·클릭 대상, 수집 상태</td>
+<td>운영체제 이벤트·접근성 API와 필요한 앱 연동으로 수집</td>
 <td>JSON / SQLite</td>
 </tr>
 <tr>
@@ -473,29 +481,29 @@
 <td>텍스트 / 구조화 데이터</td>
 </tr>
 <tr>
-<td>보고 과정에서 생성할 데이터</td>
-<td>분석·보고 결과와 원본 연결</td>
-<td>개발할 보고 기능에서 생성해 로컬에 저장</td>
-<td>JSON / Markdown</td>
+<td>분석·문서 생성 데이터</td>
+<td>반복 패턴·개선 후보·평가노트용 사례와 원본 연결</td>
+<td>확인 업무를 분석해 생성하고 로컬에 저장</td>
+<td>JSON / 텍스트</td>
 </tr>
 <tr>
 <td>시연·검증 자료</td>
 <td>실제 테스트 작업과 가상의 장기 기록</td>
-<td>기밀 없는 테스트 웹페이지와 별도 시연 자료로 직접 준비</td>
-<td>JSON / SQLite</td>
+<td>기밀 없는 스프레드시트·문서·테스트 페이지와 별도 시연 자료로 직접 준비</td>
+<td>문서 / JSON / SQLite</td>
 </tr>
 </tbody>
 </table></div>
-<p>기록은 사용자가 시작한 뒤 지정한 대상에서만 수집하도록 설계할 계획이다. MVP에는 기록 시작·중지, 대상 사이트 선택과 전체 삭제를 포함하고, 프로그램별 제외·세부 보관 기간 설정은 확장 기능으로 검토한다. 입력 원문을 로컬에 저장할 때는 Windows DPAPI 등 운영체제의 보호 기능을 활용할 계획이다.</p>
-<p>AI 분석 전에는 대상 기간·사이트와 전송 자료를 선택할 수 있게 할 예정이다. 외부 모델을 사용할 때는 필요한 기록만 추출하고, 전송 전 민감정보 가림 처리와 입력 자료 미리보기를 제공하도록 설계한다. 분석 결과와 사용자 확인 업무도 보관·삭제 대상에 포함한다. 로컬 모델은 실행 환경과 분석 품질을 확인한 뒤 선택지로 검토할 계획이다.</p>
-<p><strong>필요 지원 사항:</strong> 사용할 AI 모델의 호출 권한과 접속 환경, 기밀 없는 테스트 작업을 수행할 Windows·Chrome 환경, 업무 복원과 보고 초안을 검토할 사용자 협조가 필요하다. 사내 자료를 활용할 경우에는 해당 환경에서 허용된 모델과 자료 범위를 확인해 적용한다.</p>
+<p>기록은 사용자가 시작한 뒤 선택한 프로그램·작업에서 수집하도록 설계할 계획이다. 기록 시작·중지, 대상 선택, 민감 입력 제외와 전체 삭제를 제공하고, 원문을 저장할 때는 운영체제의 보호 기능을 활용하고자 한다. 전체 화면·클립보드 원문·문서 전체 내용은 기본 수집 대상에서 제외하고, 업무 해석에 필요한 맥락과 관측 범위를 기록한다.</p>
+<p>AI 분석 전에는 대상 기간·프로그램과 전송 자료를 선택할 수 있게 할 예정이다. 외부 모델을 사용할 때는 필요한 기록만 추출하고, 전송 전 민감정보 가림 처리와 입력 자료 미리보기를 제공하도록 설계한다. 분석 결과와 사용자 확인 업무도 보관·삭제 대상에 포함한다. 로컬 모델은 실행 환경과 분석 품질을 확인한 뒤 선택지로 검토할 계획이다.</p>
+<p><strong>필요 지원 사항:</strong> 사용할 AI 모델의 호출 권한과 접속 환경, 기밀 없는 테스트 업무를 수행할 PC와 프로그램, 다양한 직무의 업무 분류·개선 후보·평가노트용 사례를 검토할 SDS 임직원의 협조가 필요하다. 사내 자료를 활용할 경우에는 해당 환경에서 허용된 모델과 자료 범위를 확인해 적용한다.</p>
 </div>
 </section>
 <section class="proposal-section" id="proposal-7" aria-labelledby="heading-7">
   <div class="section-heading"><span class="section-number">07</span><h2 id="heading-7">확장과 차별점</h2></div>
   <p class="question">제안해 주신 아이디어에 대해 추가로 언급하고 싶은 내용이 있으면 작성해 주세요.</p>
   <div class="prose"><p>자동 활동 기록과 AI 요약을 제공하는 관련 서비스가 있다. <a target="_blank" rel="noopener noreferrer" href="https://www.timely.com/help/handbook/autosheet/timely-autosheet/">Timely AutoSheet</a>는 수집한 활동을 시간 블록으로 묶고 프로젝트와 요약을 제안한다. <a target="_blank" rel="noopener noreferrer" href="https://help.rescuetime.com/article/427-getting-started-with-rescuetime-timesheets">RescueTime Timesheets</a>도 활동을 프로젝트에 배정하는 자동완성 기능을 제공한다.</p>
-<p>WorkMemory AI를 통해 검증하고자 하는 가설은 <strong>사내 시스템의 입력·클릭 맥락을 이용하면 티켓에 남지 않는 조회·안내 업무와 그 반복 흐름을 유용하게 복원할 수 있는가</strong>다. 대상 사용자에게 실제로 도움이 되는 업무 의미가 나오는지, 확인 부담까지 포함해 보고 준비가 쉬워지는지를 확인할 계획이다. 다음 세 가지를 제품의 설계 방향으로 제안한다.</p>
+<p>WorkMemory AI를 통해 검증하고자 하는 가설은 <strong>여러 PC 도구의 조작과 맥락을 연결하면 사용자가 수행한 일을 의미 있는 업무로 복원·분류하고 반복 작업의 개선 기회를 찾을 수 있는가</strong>다. Excel·브라우저·문서 편집기·개발 도구는 서로 다른 작업이 이어지는 활용 예시다. 주요 가치는 사용하는 도구를 넘어 업무의 목적과 흐름을 이해하고, 그 기억을 개인이 다시 활용할 수 있게 하는 데 둔다.</p>
 <div class="table-wrap" role="region" aria-label="가로로 넘겨 볼 수 있는 표" tabindex="0"><table>
 <thead>
 <tr>
@@ -505,28 +513,28 @@
 </thead>
 <tbody>
 <tr>
-<td>나의 업무를 다시 발견</td>
-<td>빠뜨린 일을 복원하고, 개별 행동으로 여겼던 기록에서 반복해서 맡고 있던 지원 업무 확인</td>
+<td>나의 업무를 기억하고 분류</td>
+<td>여러 도구에 흩어진 행동을 업무의 목적에 따라 연결하고 빠뜨린 일 확인</td>
 </tr>
 <tr>
-<td>발견을 개선 기회로 연결</td>
-<td>사용자가 확인한 반복 업무에서 안내문·체크리스트·자동화 검토 후보 제안</td>
+<td>반복 작업을 개선 기회로 연결</td>
+<td>사용자가 확인한 반복 흐름에서 템플릿·절차 정리·자동화 검토 후보 제안</td>
 </tr>
 <tr>
 <td>근거가 쌓이는 업무 기억</td>
-<td>업무 카드의 수정·확인 내용을 유지하며 일간·주간·월간 보고로 재사용</td>
+<td>확인·수정한 업무를 평가노트용 사례로 축적하고 필요한 보고에 재사용</td>
 </tr>
 </tbody>
 </table></div>
-<p>개인이 자신의 업무를 이해하고 정리하는 제품을 목표로 한다. 사용자가 수집 범위와 분석 대상을 정하고, 공유할 보고서와 내용을 선택하도록 설계할 계획이다. 향후에는 확인한 업무를 연간 목표와 연결하거나 평가노트로 확장하고자 한다.</p>
-<p>해커톤에서 보여줄 핵심 장면은 <strong>“이런 일도 하고 있었네”라는 발견이, 근거를 확인할 수 있는 업무 기록과 바로 활용할 보고서로 이어지는 순간</strong>이다.</p>
+<p>개인이 자신의 업무를 이해하고 개선하는 제품을 목표로 한다. 사용자가 수집 범위와 분석 대상을 정하고, 평가노트나 보고에 사용할 내용을 선택하도록 설계할 계획이다. 향후에는 연간 목표와 업무 사례를 연결하고, 직무별 분류와 지원 환경을 확장하고자 한다.</p>
+<p>해커톤에서 보여줄 핵심 장면은 <strong>“이런 일을 반복하고 있었네”라는 발견이, 나의 업무를 설명할 평가노트용 사례와 개선을 시작할 단서로 이어지는 순간</strong>이다.</p>
 </div>
 </section>
       <section id="review" class="review-section" aria-labelledby="review-title">
         <div class="section-heading"><span class="section-number">+</span><h2 id="review-title">심사기준 기반 검증</h2></div>
         <p>검증 에이전트 3개가 검토한 보완점, 심사기준과의 연결, 남은 검증 과제입니다. 각 항목을 펼쳐 읽을 수 있습니다.</p>
         <div class="review-intro"><p>초안 검토일: 2026-10-29. 아이디어 제출 관점 보완일: 2026-10-30. 제출 본문은 <a href="AX-hackathon-proposal.md">기획서</a>, 개발 계획은 <a href="AX-hackathon-implementation-notes.md">설계 메모</a>에 있다.</p>
-<p>기획서와 설계 메모는 기록 수집부터 AI 분석·보고 생성까지를 해커톤에서 개발할 계획으로 정리했다. 아래에는 초안 검토 이력과 아이디어 단계에서 확인할 항목을 함께 기록한다.</p>
+<p>기획서와 설계 메모는 PC 조작·맥락 수집, 업무 복원·분류, 반복 작업 개선과 평가노트용 사례 정리를 해커톤에서 개발할 계획으로 정리했다. 대상은 PC로 일하는 SDS 임직원이며, 주간·월간 보고는 직무에 따른 선택적 활용 방식이다. 아래에는 초안 검토 이력과 이후 기획 방향의 보완 내용을 함께 기록한다.</p>
 </div>
         <details class="review-item"><summary>참조 자료와 검증 방법</summary><div class="prose"><p>사용자가 제시한 <a target="_blank" rel="noopener noreferrer" href="https://github.com/Wookshin/note/commit/0dfe6c50bcb7f1fc8a6263979db83966f0a94573">참조 커밋</a>은 <code>QUESTION_CHATGPT.md</code>의 기존 기획 양식·심사표를 삭제한 변경이다. 변경 내용과 <a target="_blank" rel="noopener noreferrer" href="https://github.com/Wookshin/note/blob/479884bbf4940a01c20e93c5c67ed0f00938b69a/QUESTION_CHATGPT.md">부모 커밋의 원문</a>을 확인해 평가 기준을 복원했다.</p>
 <p>검토 대상 초안은 <a target="_blank" rel="noopener noreferrer" href="https://github.com/Wookshin/AX-hackaton/blob/729f322/AX-hackathon-proposal.md">729f322의 기획서</a>다. 당시 세 검증 에이전트가 서로 다른 관점에서 읽기 전용으로 검토했고, 주 에이전트가 공통 지적을 정리해 문서를 수정했다.</p>
@@ -554,9 +562,9 @@
 </table></div>
 <p>이 기록은 기획·설계 검토에 관한 내용이다. 프로토타입의 실제 동작과 효과는 해커톤에서 구현한 뒤 검증할 예정이다.</p>
 </div></details>
-<details class="review-item"><summary>검토 결론</summary><div class="prose"><p><strong>아이디어 방향은 기준에 맞지만, 초안에서는 ‘로그를 업무로 묶어 보고서를 만드는 기능’이 ‘나의 업무를 새롭게 발견하는 경험’보다 강하게 읽혔다.</strong> 세 검증 모두 발견을 보여주는 전후 예시, 간단한 사용자 확인, 좁힌 초기 대상과 필수 구현 범위를 우선 보완할 것을 제안했다.</p>
-<p>‘나도 몰랐던 나의 일’은 두 가지로 정의한다. 첫째는 기억에서 빠진 업무를 복원하는 것, 둘째는 개별 조회·응답으로만 여겼던 행동이 반복 지원업무라는 점을 이해하는 것이다. 보고서는 이 발견을 일상에서 활용하고 업무 기억을 누적하는 결과물이다.</p>
-<p>추천 핵심 메시지는 **“평소처럼 일하면, AI가 빠뜨린 일과 반복해서 맡고 있던 업무를 찾아내고 근거 있는 보고와 개선의 단서로 정리한다”**로 정리했다.</p>
+<details class="review-item"><summary>검토 결론</summary><div class="prose"><p><strong>초안 검토에서는 자신의 업무를 새롭게 발견하는 경험과 간단한 사용자 확인, 구체적인 시연 사례가 필요하다는 의견이 나왔다.</strong> 이후 사용자 피드백을 반영해 주요 대상을 SDS 임직원으로 정리하고, 도구를 넘나드는 업무의 기억·분류·반복 개선과 평가노트 활용을 중심 가치로 두었다. 해커톤 시연 범위는 대표 프로그램 조합으로 구체화한다.</p>
+<p>‘나도 몰랐던 나의 일’은 기억에서 빠진 업무를 복원하고, 여러 프로그램의 개별 조작이 어떤 업무와 반복 흐름을 이루는지 이해하는 경험으로 정의한다. 업무 분류와 개선 후보를 제공하고, 확인한 업무를 평가노트용 사례로 축적한다. 필요한 직무에서는 같은 기록을 주간·월간 보고에도 활용한다.</p>
+<p>핵심 메시지는 **“PC에서 평소처럼 일하면, AI가 나의 업무를 기억·분류하고 평가노트에 활용할 근거와 반복 작업을 개선할 인사이트를 제공한다”**로 정리했다.</p>
 </div></details>
 <details class="review-item"><summary>우선순위별 발견과 반영</summary><div class="prose"><div class="table-wrap" role="region" aria-label="가로로 넘겨 볼 수 있는 표" tabindex="0"><table>
 <thead>
@@ -574,8 +582,8 @@
 </tr>
 <tr>
 <td>P1</td>
-<td>같은 설비번호가 있는 두 기록만으로 AI의 의미 분석을 설명</td>
-<td>표현이 달라도 같은 유형인 작업과, 같은 번호지만 목적이 다른 작업을 구분하는 검증 추가</td>
+<td>공통 단어만으로 AI의 의미 분석을 설명</td>
+<td>여러 프로그램의 같은 목적 작업을 연결하고 같은 프로젝트의 다른 목적 작업을 구분하는 검증 추가</td>
 </tr>
 <tr>
 <td>P1</td>
@@ -584,23 +592,28 @@
 </tr>
 <tr>
 <td>P1</td>
-<td>모델 연결·편집·세 보고 서식·반복 분석이 모두 2일 범위에 포함</td>
-<td>기록 수집·저장→업무 카드→확인 저장→주간보고를 필수로 정하고 월간·고급 편집·누적 인사이트를 선택 구현으로 구분</td>
+<td>여러 서식과 지원 환경을 한꺼번에 구현해야 함</td>
+<td>두 개 이상의 대표 프로그램에서 수집·분류·반복 후보 한 개·평가노트용 사례 한 서식을 구현하는 목표로 구체화</td>
 </tr>
 <tr>
 <td>P1</td>
-<td>메신저 사례가 실제 호환성 검증 완료처럼 기대될 수 있음</td>
-<td>해커톤에서는 지정 Chrome 테스트 페이지를 대상으로 개발하고 메신저·IDE·Windows 앱 지원은 후속 검증 대상으로 설정</td>
+<td>특정 브라우저나 운영체제가 제품의 대상처럼 읽힘</td>
+<td>제품은 PC 업무 전반을 대상으로 정의하고, 시연 앱 조합과 앱별 관측 범위를 별도로 명시</td>
 </tr>
 <tr>
 <td>P1</td>
 <td>수집·저장 기능이 이미 구현된 프로젝트의 확장안처럼 읽힘</td>
-<td>아이디어와 개발 계획으로 서술을 통일하고, Chrome 확장·.NET/WPF·SQLite·LLM API의 활용 목적과 수집·저장 개발 일정 명시</td>
+<td>키보드·마우스 이벤트·접근성 API·로컬 DB·LLM API를 활용할 개발 계획으로 통일</td>
 </tr>
 <tr>
 <td>P2</td>
-<td>사용자가 넓고 개인 편익에 비해 조직 효과가 약함</td>
-<td>운영·지원 담당자로 시작하고, 선택한 요약이 반복 문의·공통 안내·자동화 우선순위 논의에 쓰이는 경로 추가</td>
+<td>대상 직무가 좁고 평가노트의 공통 필요가 드러나지 않음</td>
+<td>SDS 임직원의 업무 기억·기여 사례 축적을 중심에 두고, 주간·월간 보고는 선택적 활용으로 정리</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>반복 개선의 조직적 활용 경로가 약함</td>
+<td>사용자가 선택한 요약으로 반복 수작업의 표준화·자동화 우선순위를 설명하는 경로 추가</td>
 </tr>
 <tr>
 <td>P2</td>
@@ -626,8 +639,8 @@
 <tr>
 <td>문제 및 기획 정의</td>
 <td>15%</td>
-<td>조회·문의 대응과 주간보고를 반복하는 운영·지원 담당자, 짧은 지원업무 누락과 정리 부담</td>
-<td>실제 사용자가 겪는 누락·보고 과정 확인</td>
+<td>PC로 일하는 SDS 임직원, 업무 기억 누락과 평가노트 사례 정리 부담</td>
+<td>다양한 직무의 업무 기억·분류·평가노트 작성 과정 확인</td>
 </tr>
 <tr>
 <td>새로운 방식 적용</td>
@@ -638,8 +651,8 @@
 <tr>
 <td>AI 활용도</td>
 <td>15%</td>
-<td>의미 분석·맥락 연결·반복 후보·보고 생성과 코드 집계를 구분</td>
-<td>단순 공통 단어 묶음보다 나은 결과인지 비교</td>
+<td>앱을 넘나드는 업무 연결·분류, 반복 패턴·개선 후보·평가노트용 초안과 코드 집계를 구분</td>
+<td>입력 횟수·좌표·공통 단어를 넘는 업무 해석이 가능한지 비교</td>
 </tr>
 <tr>
 <td>AI 활용방식</td>
@@ -650,14 +663,14 @@
 <tr>
 <td>구현 가능성</td>
 <td>20%</td>
-<td>활용할 기술, Chrome 테스트 페이지로 한정한 개발 범위, 1일 차 수집·저장 및 의미 복원 검증 계획</td>
-<td>수집·저장부터 실제 모델·확인·주간보고까지 구현 가능한지 확인</td>
+<td>활용할 기술, 대표 프로그램 조합과 시나리오, 1일 차 수집·저장 및 업무 분류 검증 계획</td>
+<td>수집·분류·확인·반복 발견·평가노트용 사례까지 구현 가능한지 확인</td>
 </tr>
 <tr>
 <td>기대효과</td>
 <td>20%</td>
-<td>빠뜨린 업무 복원, 보고 준비 총시간, 반복 지원업무를 설명할 자료</td>
-<td>실제 누락 발견·검토 비용·보고 품질·개선 후보 유용성</td>
+<td>빠뜨린 업무 복원, 평가노트용 사례 정리 부담 감소, 반복 수작업 개선 후보</td>
+<td>실제 누락 발견·분류 정확성·검토 비용·사례 품질·개선 후보 유용성</td>
 </tr>
 </tbody>
 </table></div>
@@ -674,17 +687,17 @@
 <tr>
 <td>업무/서비스 단계 변화</td>
 <td>15%</td>
-<td>기억을 다시 모아 보고하던 과정이 작업 기록의 업무 목록을 검토하고 보고에 재사용하는 과정으로 바뀜</td>
+<td>평가노트 작성 때 기억을 다시 모으던 과정이 확인된 업무 사례를 축적·보완하는 과정으로 바뀜</td>
 </tr>
 <tr>
 <td>사용자 경험 변화</td>
 <td>15%</td>
-<td>빠뜨린 업무와 반복 지원업무의 발견, 보고로 이어지는 전후 비교</td>
+<td>빠뜨린 업무와 반복 수작업 발견, 분류·개선 후보·평가노트 활용으로 이어지는 전후 비교</td>
 </tr>
 <tr>
 <td>기능구현</td>
 <td>10%</td>
-<td>기밀 없는 실제 입력·클릭 수집부터 실제 모델·확인 저장·주간보고까지 동작</td>
+<td>두 개 이상의 프로그램에서 조작·맥락 수집부터 업무 분류·확인·반복 후보·사례 초안까지 동작</td>
 </tr>
 <tr>
 <td>사용자 편의성</td>
@@ -706,15 +719,15 @@
 <p>제공된 최종발표 표는 효과성 40%라고 적혀 있지만 해당 세부행은 기대효과 20%만 있다. 명시된 세부 배점의 합은 80%다. 나머지 20%의 항목을 추측해 추가하거나 예상 총점을 계산하지 않는다.</p>
 </div></details>
 <details class="review-item"><summary>아직 해결됐다고 볼 수 없는 핵심 질문</summary><div class="prose"><ol>
-<li><strong>수집할 기록에 업무 의미를 복원할 정보가 충분한가?</strong> Chrome 테스트 페이지에서 입력·클릭을 수집하고, 서로 다른 짧은 업무와 무관한 중간 행동을 섞어 모델이 근거 있는 후보를 생성하는지 확인할 계획이다.</li>
+<li><strong>수집할 기록에 업무 의미를 복원할 정보가 충분한가?</strong> 키보드·마우스 조작에 앱·문서·조작 대상의 맥락을 결합하고, 프로그램 간 연결과 분류를 검증한다. 앱별 관측 범위와 부족한 맥락도 표시할 계획이다.</li>
 <li><strong>확인하는 수고보다 얻는 편익이 큰가?</strong> 카드 수, 잘못된 연결·누락, 수정 횟수와 검토 총시간을 측정한다. 선택 묶음 확인이 잘못된 후보를 그대로 받아들이게 하지 않는지도 본다.</li>
 <li><strong>새로운 발견인가, 보기 좋게 정리한 목록인가?</strong> 사용자에게 새로 드러난 업무와 반복 흐름이 무엇인지 묻는다. 시연용 가상 3건이나 계획된 작업을 실제 기억 누락 감소의 실측으로 제시하지 않는다.</li>
-<li><strong>주간·월간의 누적이 근거를 유지하는가?</strong> MVP는 실제 분석 범위를 표시하고 조회 한도를 넘으면 중단·기간 축소를 안내한다. 장기 확장 전 전체 기간 조회와 같은 업무의 중복 집계를 검증한다.</li>
+<li><strong>평가기간에 걸친 누적이 근거를 유지하는가?</strong> MVP는 실제 분석 범위를 표시한다. 장기 확장 전 전체 기간 조회, 업무 분류·수정 보존과 같은 업무의 중복 집계를 검증한다.</li>
 <li><strong>조직의 개선에 실제로 쓰이는가?</strong> 선택해 공유한 요약이 개선 대상을 고르는 데 유용한지 확인한다. 채택·실행·실제 효과는 서로 다른 단계로 추적한다.</li>
 </ol>
 </div></details>
-<details class="review-item"><summary>발표 구성</summary><div class="prose"><p>첫 장면은 ‘Chrome을 얼마나 썼는가’보다 **‘각각의 조회·응답이 내가 반복해서 맡고 있던 지원업무였다’**는 발견에 둔다. 이어서 실제 로그의 업무 후보, 잘못된 연결 한 개의 수정, 확인한 업무가 반영된 주간보고와 근거 열기를 보여준다.</p>
-<p>누적 반복 분석과 월간은 선택 기능으로 보여주되, 준비한 장기 자료의 출처와 실제 구현 여부를 표시한다. 기능을 넓게 보여주는 것보다 실제 로그에서 유용한 업무 의미가 만들어지는 한 흐름을 완성하는 것을 우선한다.</p>
+<details class="review-item"><summary>발표 구성</summary><div class="prose"><p>첫 장면은 **‘여러 파일과 프로그램 사이의 자료 이동·서식 정리가 반복 수작업이었다’**는 발견으로 잡는다. 이어서 실제 조작·맥락 기록에서 생성된 업무 분류, 잘못된 연결 수정, 반복 패턴과 개선 후보, 평가노트용 사례 초안과 근거 열기를 보여준다.</p>
+<p>짧은 실제 반복 작업과 별도의 가상 장기 자료를 구분한다. 평가노트 전체 서식과 주간·월간 보고는 확장 방향으로 설명하고, 실제 기록에서 업무 분류·반복 발견·사례 정리로 이어지는 흐름을 우선 시연한다.</p>
 </div></details>
       </section>
       <footer class="footer"><span>WorkMemory AI · AX 해커톤 아이디어 기획서</span><span><a href="AX-hackathon-proposal.md">기획서 원문</a> · <a href="AX-hackathon-implementation-notes.md">설계 메모</a> · <a href="AX-hackathon-review.md">검증 기록</a></span></footer>
@@ -758,7 +771,7 @@
       });
       document.getElementById('print-document').addEventListener('click', () => window.print());
       document.getElementById('download-text').addEventListener('click', () => {
-        const bytes = Uint8Array.from(atob('77u/QVgg7ZW07Luk7YakIOyVhOydtOuUlOyWtCDquLDtmo3shJwNCg0K7KCc7JWI66qFOiBXb3JrTWVtb3J5IEFJIOKAlCDrgpjrj4Qg66qw656Q642YIOuCmOydmCDsnbzsnYQg7LC+7JWE7KO864qUIEFJIOyXheustCDquLDslrUg67mE7IScDQoNCu2VteyLrCDsoJzslYg6IO2PieyGjOyymOufvCDsnbztlZjrqbQgQUnqsIAg7Z2p7Ja07KeEIOyhsO2ajMK37J6F66ClwrfsnZHri7Ug7J6R7ISxIOq4sOuhneydhCDsl7DqsrDtlbQsIOuCtOqwgCDrr7jsspgg6riw66Gd7ZWY7KeAIOuqu+2VnCDsnbzqs7wg67CY67O17ZW07IScIOunoeqzoCDsnojrjZgg7JeF66y066W8IOuztOyXrOyjvOuKlCDshJzruYTsiqTrpbwg6rCc67Cc7ZWY6rOg7J6QIO2VnOuLpC4g7IKs7Jqp7J6Q64qUIO2VmOujqCDsl4XrrLQg66qp66Gd7J2EIOynp+qyjCDqsoDthqDtlZjqs6AsIO2ZleyduO2VnCDrgrTsmqnsnYQg7KO86rCEwrfsm5TqsIQg67O06rOg7JeQIOyerOyCrOyaqe2VoCDsiJgg7J6I64ukLiDsnbzsg4HsnZgg7J6R7J2AIO2WieuPmeyXkOyEnCDrgpjsnZgg7JeF66y066W8IOyDiOuhreqyjCDsnbTtlbTtlZjqs6AsIOuwmOuzteuQmOuKlCDsnbzsnYQg6rCc7ISg7ZWgIOuLqOyEnOulvCDslrvripQg7JeF66y0IOq4sOyWtSDruYTshJzrpbwg7KCc7JWI7ZWc64ukLg0KDQrrjIDtkZwg6rK97ZeYOiDigJzsnpDro4wg7J6R7ISx6rO8IOyEpOu5hCDsobDtmozrp4wg7ZaI64uk6rOgIOyDneqwge2WiOuKlOuNsCwg6re4IOyCrOydtOyXkCDsobDtmowg67Cp67KV7J2EIOyViOuCtO2VmOuKlCDsp4Dsm5Ag7JeF66y064+EIOuwmOuzte2VtOyEnCDtlZjqs6Ag7J6I7JeI64SkLuKAnSDsnbQg67Cc6rKs7J20IOq3vOqxsOqwgCDsl7DqsrDrkJwg7JeF66y0IOq4sOuhneqzvCDso7zqsITrs7Tqs6DroZwg7J207Ja07KeE64ukLiDslYTrnpgg7IKs66GA7JmAIOqysOqzvOuKlCDsoJztkogg6rK97ZeY7J2EIOyEpOuqhe2VmOq4sCDsnITtlZwg6rCA7IOB7J2YIOyYiOyLnOuLpC4NCg0KMS4gQUnroZwg7ZW06rKw7ZWY6rOg7J6QIO2VmOuKlCDrrLjsoJwg7IOB7ZmpIOuYkOuKlCDsg4jroa3qsowg7Iuc64+E7ZW067O06rOgIOyLtuydgCDsl4XrrLQv7ISc67mE7Iqk64qUIOustOyXh+yduOqwgOyalD8NCg0K4oCc7ZWY66OoIOyiheydvCDrsJTrubTripTrjbAsIOygleyekSDrrLTsl4fsnYQg7ZaI64qU7KeAIOyTsOugpOuLiCDsg53qsIHrgpjsp4Ag7JWK64qU64ukLuKAnQ0KDQrso7zsmpQg64yA7IOBIOyCrOyaqeyekOuKlCDsgqzrgrQg7Iuc7Iqk7YWc7J2YIOyhsO2ajMK366y47J2YIOuMgOydkeydhCDrsJjrs7XtlZjrqbTshJwg7KO86rCE67O06rOg66W8IOyekeyEse2VmOuKlCDsmrTsmIHCt+yngOybkCDri7Tri7nsnpDri6QuIFdpbmRvd3PsmYAgQ2hyb21l7J2EIOyYpOqwgOupsCDsnpDro4zrpbwg7KGw7ZqM7ZWY6rOgLCDsnZHri7XsnYQg7J6R7ISx7ZWY6rOgLCDrrLjshJwg64K07Jqp7J2EIOuztOyZhO2VnOuLpC4g7J20IOqzvOygleyXkOyEnCDsg53quLDripQg7Ken7J2AIOusuOydmCDrjIDsnZEsIOyekOujjCDtmZXsnbgsIOuPmeujjCDsp4Dsm5DsnYAg7JeF66y0IO2LsOy8k+ydtOuCmCDqsJzsnbgg66mU66qo7JeQIOuqqOuRkCDrgqjquLDquLAg7Ja066C164ukLiDsnbzsnYQg7IiY7ZaJ7ZWY64qUIOqyg+qzvCDrs4TqsJzroZwg66y07JeH7J2EIO2WiOuKlOyngCDquLDslrXtlbQg6riw66Gd7ZW07JW8IO2VmOuKlCDrtoDri7TsnbQg7J6I64ukLg0KDQrquLDroZ3sl5DshJwg67mg7KeEIOydvOydgCDso7zqsITCt+yblOqwhCDrs7Tqs6DsmYAg7Y+J6rCAIOykgOu5hOyXkOyEnOuPhCDrhpPsuZjquLAg7Im964ukLiDqsJnsnYAg7KGw7ZqM7JmAIOyViOuCtOulvCDrsJjrs7XtlZjqs6Ag7J6I7Ja064+EIOqwnOuzhCDsmpTssq3snLzroZzrp4wg6riw7Ja17ZWY66m0LCDslrTrlqQg7JeF66y066W8IOqwnOyEoO2VoCDsiJgg7J6I7J2E7KeAIOuwnOqyrO2VmOq4sCDslrTroLXri6QuIO2UhOuhnOq3uOueqOuzhCDsgqzsmqkg7Iuc6rCE7J2EIOyVjOyVhOuPhCDqt7gg7JWI7JeQ7IScIOyWtOuWpCDsnbzsnYQg7ZaI64qU7KeAIOyEpOuqhe2VmOugpOuptCDstpTqsIDsoIHsnbgg7ZW07ISd7J20IO2VhOyalO2VmOuLpC4NCg0KV29ya01lbW9yeSBBSeuKlCDsnpHsl4Ug7KSRIOyekOuPmeycvOuhnCDsjJPsnbTripQg6riw66Gd7J2ELCDsgqzsmqnsnpDqsIAg7J207ZW07ZWY6rOgIO2ZnOyaqe2VoCDsiJgg7J6I64qUIOyXheustCDquLDslrXsnLzroZwg67CU6r6464qUIOyEnOu5hOyKpOulvCDsoJzslYjtlZzri6QuIOuovOyggCDtlZjro6jsnZgg7JeF66y066W8IOuzteybkO2VtCDquLDslrXsl5DshJwg67mg7KeEIOydvOydhCDtmZXsnbjtlZjrj4TroZ0g64+V64qU64ukLiDsnbTslrTshJwg6rCc67OEIOyhsO2ajOyZgCDsnZHri7XsnLzroZzrp4wg7Jes6rK8642YIO2WieuPmeuTpOydtCDslrTrlqQg67CY67O1IOyXheustOulvCDsnbTro6jripTsp4Ag67O07Jes7KSA64ukLiDsgqzsmqnsnpDqsIAg64KY7KSR7JeQIOq4sOyWteydhCDrqqjslYQg67O06rOg66W8IOyekeyEse2VmOuNmCDqs7zsoJXsnYQsIOyekeyXhSDquLDroZ3sl5DshJwg66eM65Ok7Ja07KeEIOyXheustCDrqqnroZ3snYQg6rKA7Yag7ZWY6rOgIOuztOqzoOyXkCDtmZzsmqntlZjripQg6rO87KCV7Jy866GcIOuwlOq+vOuLpC4NCg0K7J2066W8IOychO2VtCBQQ+yZgCDruIzrnbzsmrDsoIDsl5DshJwg7IKs7Jqp7J6Q6rCAIOyEoO2Dne2VnCDsnpHsl4Ug6riw66Gd7J2EIOyImOynke2VmOqzoCwgQUnqsIAg7JeF66y0IOuLqOychOuhnCDsoJXrpqztlZjripQg6riw64ql7J2EIOqwnOuwnO2VoCDqs4Ttmo3snbTri6QuIOuqqO2YuO2VnCDsl4XrrLTripQg7IKs7Jqp7J6Q6rCAIOynp+qyjCDsiJjsoJXtlZjqsbDrgpgg7ZmV7J247ZWgIOyImCDsnojqsowg7ZWc64ukLiDtlbTsu6TthqTsl5DshJzripQg6riw66GdIOyImOynkcK37KCA7J6l67aA7YSwIEFJIOyXheustCDrs7Xsm5Dqs7wg7KO86rCE67O06rOgIOyDneyEseq5jOyngCDsnbTslrTsp4DripQg7ZSE66Gc7Yag7YOA7J6F7J2EIOq1rO2YhO2VtCwg67OE64+E7J2YIOyXheustCDsnbzsp4Drpbwg66ek67KIIOyekeyEse2VmOyngCDslYrslYTrj4Qg7Zmc7Jqp7ZWgIOyImCDsnojripTsp4Ag6rKA7Kad7ZWY6rOg7J6QIO2VnOuLpC4NCg0KMi4g7KCc7JWI7ZWcIOyVhOydtOuUlOyWtOulvCDsi6TtmITtlZjquLAg7JyE7ZW0IEFJ66W8IOyWtOuWu+qyjCDtmZzsmqntlaAg6rOE7ZqN7J246rCA7JqUPw0KDQrikaAg7Z2p7Ja07KeEIO2WieuPmeydhCDsl4XrrLTroZwg67O17JuQOiDigJzsmKTripgg64K06rCAIO2VnCDsnbzigJ0NCg0KQUnqsIAg7J6F66ClIOuCtOyaqSwg7YG066at7ZWcIOyalOyGjCwg7ZSE66Gc6re4656oIOuYkOuKlCDsgqzsnbTtirgsIOuwnOyDnSDsi5zqsIHsnYQg7ZWo6ruYIOu2hOyEne2VtCDqtIDroKgg6riw66Gd7J2EIOyXheustCDtm4Trs7TroZwg66y264+E66GdIO2VoCDqs4Ttmo3snbTri6QuIOyXrOufrCDsnpHsl4Ug7ZmU66m07JeQ7IScIOydtOyWtOynhCDtlonrj5nrj4Qg7Jew6rKwIOq3vOqxsOqwgCDsnojsnYQg65WMIOqwmeydgCDsl4XrrLTsnZgg7J2867aA66GcIOygnOyViO2VmOuPhOuhnSDshKTqs4TtlZzri6QuDQoNCuuLpOydjOydgCDquLDriqXsnYQg7ISk66qF7ZWY6riwIOychO2VnCDqsIDsg4HsnZgg6riw66Gd7J2064ukLg0KDQrqtIDsuKHrkJwg6riw66GdOiDsgqzrgrQg7Ju57Y6Y7J207KeA7JeQ7IScIOyEpOu5hOuyiO2YuCBFUS0xMDIg7J6F66ClLCDigJjsobDtmozigJkg7YG066atDQpBSeqwgCDsoJzslYjtlZjripQg7JeF66y0IO2bhOuztDogRVEtMTAyIOq0gOugqCDsoJXrs7Qg7KGw7ZqMDQoNCuq0gOy4oeuQnCDquLDroZ06IOydtO2bhCDthYzsiqTtirgg7Ju57Y6Y7J207KeA7J2YIOydkeuLtSDsnpHshLEg7ZWE65Oc7JeQ7IScIOKAmEVRLTEwMiDsobDtmowg7KGw6rG07J2EIO2ZleyduO2VtCDso7zshLjsmpTigJkg7J6F66Cl6rCSIOuzgOqyvSDqtIDsuKENCkFJ6rCAIOygnOyViO2VmOuKlCDsl4XrrLQg7ZuE67O0OiDslZ7shKAg7KGw7ZqM7JmAIOq0gOugqOuQnCDrrLjsnZgg7J2R64u1IOyekeyEsSDqsIDriqXshLENCg0K7IKs7Jqp7J6Q64qUIOuRkCDquLDroZ3snYQg67O06rOgIOKAmOyEpOu5hCDsobDtmowg66y47J2YIOuMgOydkeKAmeydtOudvOuKlCDtlZjrgpjsnZgg7JeF66y066GcIO2ZleyduO2VmOqxsOuCmCwg7J6Y66q7IOyXsOqysOuQnCDtla3rqqnsnYQg7KCc7Jm47ZWgIOyImCDsnojri6QuIOybkOuzuCDsnbTrsqTtirgg64yA7IugIO2VmOujqOydmCDsl4XrrLQg66qp66Gd7J2EIOuovOyggCDrs7Tqs6AsIOyEoO2Dne2VnCDsubTrk5wg66y27J2M7J2EIO2VnCDrsojsl5Ag7ZmV7J247ZWc64ukLiDqt7zqsbDripQg7ZWE7JqU7ZWgIOuVjOunjCDtjrzsuZjqs6AsIOuqqO2YuO2VnCDsoJzrqqnsnbTrgpgg7Jew6rKw66eMIOynp+qyjCDqs6DsuZzri6QuIOyXrOufrCDrsojsnZgg7J6F66ClIOyImOygleqzvCDtgbTrpq3snYQg6rOn67CU66GcIOyXrOufrCDqsbTsnZgg7JeF66y066GcIOyEuOyngCDslYrripTri6QuIOqzoOq4iSDtlansuZjquLDCt+u2hOumrCDtjrjsp5HsnYAg7ZuE7IaNIOq4sOuKpeycvOuhnCDtmZXsnqXtlZzri6QuDQoNCkFJ7J2YIO2VteyLrCDsl63tlaDsnYAg7ZGc7ZiE6rO8IOuqqeyggeydhCDtlajqu5gg7ZW07ISd7ZWY64qUIOqyg+ydtOuLpC4g4oCY64Kg7KecIOuylOychOulvCDrsJTqv5Qg7KGw7ZqM4oCZ7JmAIOKAmOyhsO2ajCDquLDqsIQg7JWI64K04oCZ66W8IOqwmeydgCDsnKDtmJXsnZgg7KeA7JuQIOyXheustCDtm4Trs7TroZwg7Jew6rKw7ZWY6rOgLCDqsJnsnYAg7ISk67mE67KI7Zi46rCAIOyeiOyWtOuPhCDigJjsoJXquLDsoJDqsoAg7J6Q66OMIOyekeyEseKAmeydgCDrs4Trj4Qg66qp7KCB7J2YIOyXheustOuhnCDqtazrtoTtlZjrj4TroZ0g7ZWc64ukLiDsnbTrn7Ag7IKs66GA66W8IO2PrO2VqO2VtCDtlITroZzqt7jrnqjrs4Qg7Iuc6rCEIOynkeqzhOyZgCDqs7XthrUg64uo7Ja066eM7Jy866GcIOustuydgCDqsrDqs7zrs7Tri6Qg7JeF66y0IOydmOuvuOulvCDsnpgg67O17JuQ7ZWY64qU7KeAIOqygOymne2VnOuLpC4NCg0K4pGhIOu5oOucqOumsCDsnbzqs7wg7J247Iud7ZWY7KeAIOuqu+2WiOuNmCDrsJjrs7Ug7JeF66y0IOuwnOqyrDog4oCc7J2065+wIOydvOydhCDqs4Tsho3tlZjqs6Ag7J6I7JeI64Sk7JqU4oCdDQoNCuuwnOqyrOydgCDrkZAg64uo6rOE66GcIOygnOqzte2VmOqzoOyekCDtlZzri6QuIOuovOyggCDrs7Xsm5DrkJwg7JeF66y0IOuqqeuhneyXkOyEnCDsnorqs6Ag7J6I642YIOusuOydmCDrjIDsnZHCt+yekOujjCDtmZXsnbjCt+yngOybkCDsl4XrrLTrpbwg65ag7Jis66aw64ukLiDri6TsnYzsnLzroZwg6rCB6riwIOuLpOuluCDsnpHsnYAg7J2866GcIOq4sOyWte2WiOuNmCDquLDroZ3rk6TsnbQg67mE7Iq37ZWcIOuqqeyggeydmCDrsJjrs7Ug7JeF66y07JiA64uk64qUIOygkOydhCDtmZXsnbjtlZzri6QuIOuLpOydjOydgCDsl6zrn6wg64Kg7J2YIOqwgOyDgSDquLDroZ3qs7wg7IKs7Jqp7J6QIO2ZleyduOydhCDsoITsoJzroZwg7ZWcIOyYiOyDgSDqsrDqs7zrrLzsnbTri6QuDQoNCuuLqOqzhDog7IKs7Jqp7J6Q6rCAIOq4sOyWte2VnCDsnbwNCuyCrOyaqeyekOyXkOqyjCDrs7TsnbTripQg64K07JqpOiDigJjso7zqsIQg7J6Q66OMIOyekeyEseKAmSwg4oCY7ISk67mEIOyhsO2ajOKAmQ0KDQrri6jqs4Q6IOq4sOuhneyXkOyEnCDrs7Xsm5DtlZwg7J28DQrsgqzsmqnsnpDsl5Dqsowg67O07J2064qUIOuCtOyaqTog7ISc66GcIOuLpOuluCDsi5zsoJDsnZgg7KGw7ZqMIOyhsOqxtCDtmZXsnbjqs7wg7JWI64K0IOydkeuLtSDsnpHshLEg7ZuE67O0DQoNCuuLqOqzhDog7IKs7Jqp7J6Q6rCAIO2ZleyduO2VnCDsl4XrrLQNCuyCrOyaqeyekOyXkOqyjCDrs7TsnbTripQg64K07JqpOiDshJzroZwg64uk66W4IOyalOyyreyXkCDrjIDtlZwg4oCY7KGw7ZqMIOuwqeuylSDslYjrgrTigJkgM+qxtC4g7J6F66ClIOyImOygleuzuOydgCDrs4Trj4Qg6rG07IiY66GcIOyEuOyngCDslYrsnYwNCg0K64uo6rOEOiDsg4jroa3qsowg7JWM6rKMIOuQnCDsoJANCuyCrOyaqeyekOyXkOqyjCDrs7TsnbTripQg64K07JqpOiDrlLDroZwg6riw66Gd7ZWY7KeAIOyViuyVmOuNmCDsi5zsiqTthZwg7IKs7JqpIOyngOybkOydhCDrsJjrs7XtlbTshJwg66eh6rOgIOyeiOyXiOydjA0KDQrri6jqs4Q6IOqwnOyEoOqzvCDrs7Tqs6Dsl5Ag7Zmc7JqpDQrsgqzsmqnsnpDsl5Dqsowg67O07J2064qUIOuCtOyaqTog6rO17Ya1IOyViOuCtOusuOydhCDqsoDthqDtlaAg7ZuE67O066GcIOuCqOq4sOqzoCwg7ZmV7J2465CcIDPqsbTsnYQg6re86rGw7JmAIO2VqOq7mCDso7zqsITrs7Tqs6Dsl5Ag67CY7JiBDQoNCuydtCDruYTqtZAg66qp66Gd7J2AIOuwnOqyrOydhCDshKTrqoXtlZjqs6Ag7Zqo6rO866W8IOqygOymne2VmOq4sCDsnITtlZwg7J6Q66OM64ukLiDsi6TsoJwg7IKs7JqpIOuVjCDrp6Tsnbwg6riw7Ja17Jy866GcIOyekeyEse2VnCDrs4Trj4Qg7J287KeA66W8IOyalOq1rO2VmOyngCDslYrripTri6QuDQoNCu2ZleyduOuQnCDsl4XrrLTqsIAg64iE7KCB65CY66m0IEFJ6rCAIOu5hOyKt+2VnCDrqqnsoIHsnZgg7J6R7JeF6rO8IOuwmOuzteuQmOuKlCDsspjrpqwg7Z2Q66aE7J2EIOywvuyVhCDqsJzshKAg7ZuE67O066W8IOygnOyLnO2VnOuLpC4g7JiI66W8IOuTpOyWtCDshJzroZwg64uk66W4IOuCoOydmCDsobDtmozCt+yViOuCtCDsl4XrrLTqsIAg7Jyg7IKs7ZWY64uk66m0IOKAnOu5hOyKt+2VnCDsobDtmozsmYAg7JWI64K0IO2dkOumhOydtCDrsJjrs7XrkJDsirXri4jri6QuIOyekOyjvCDsk7DripQg7JWI64K066y47J2064KYIOyhsO2ajCDsoIjssKjrpbwg7KCV66as7ZW067O86rmM7JqUP+KAneudvOqzoCDsoJzslYjtlZzri6QuIOy5tOuTnOyXkOyEnCDslrTrlqQg7JeF66y065Ok7J20IOq3vOqxsOyduOyngOyZgCDrrLbsnYAg7J207Jyg66W8IO2ZleyduO2VmOqzoCwg7J6Y66q7IOyXsOqysOuQnCDtla3rqqnsnYQg7KCc7Jm47ZWgIOyImCDsnojri6QuDQoNCuybkOyLnCDsnbTrsqTtirjsnZgg67CY67O16rO8IOyLpOygnCDsl4XrrLTsnZgg67CY67O17J2EIOq1rOu2hO2VnOuLpC4g67CY67O1IO2an+yImOuKlCDsgqzsmqnsnpDqsIAg7ZmV7J247ZWcIOyXheustCDri6jsnITrpbwg6riw7KSA7Jy866GcIOynkeqzhO2VmOupsCwg7JWE7KeBIO2ZleyduO2VmOyngCDslYrsnYAg66y27J2M7J2AIO2bhOuztOuhnCDtkZzsi5ztlZzri6QuIOqwnOyEoCDsoJzslYjsnYAg7JeF66y066W8IOuwlOq/lOuzvCDqsIDshKTroZwg7KCc6rO17ZWY6rOgLCDsoIjqsJAg7Iuc6rCE7J2064KYIO2aqOqzvOuKlCDsi6TsoJwg7KCB7JqpIO2bhCDtmZXsnbjtlZzri6QuDQoNCuKRoiDqsJnsnYAg6riw7Ja17J2EIOq4sOqwhOuzhCDrs7Tqs6DroZwg7Zmc7JqpOiDigJzsnbTrsogg7KO87JmAIOydtOuyiCDri6zsnZgg64KY4oCdDQoNCuyCrOyaqeyekOqwgCDtmZXsnbjtlZwg7JeF66y07JmAIOuztOyZhO2VnCDrgrTsmqnsnYQg67CU7YOV7Jy866GcIEFJ6rCAIOuqqeyggeyXkCDrp57ripQg67O06rOg7IScIOy0iOyViOydhCDsnpHshLHtlZjrj4TroZ0g7ZWgIOqzhO2ajeydtOuLpC4g6riw6rCE6rO8IOyEnOyLneydhCDshKDtg53tlbQg6rCZ7J2AIOyXheustCDquLDroZ3snYQg7Jes65+sIOuyiCDtmZzsmqntlaAg7IiYIOyeiOqyjCDtlZzri6QuDQoNCuqysOqzvOusvDog7J287J28IOyXheustCDsoJXrpqwNCuygleumrO2VoCDrgrTsmqk6IOyYpOuKmCDsiJjtlontlZwg7JeF66y0LCDqtIDroKgg6riw66GdLCDstpTqsIAg7ZmV7J247J20IO2VhOyalO2VnCDtla3rqqkNCuyCrOyaqeyekOyXkOqyjCDsoJzqs7XtlZjripQg6rCA7LmYOiDtlZjro6jrpbwg7J6K6riwIOyghOyXkCDsp6fqsowg7ZmV7J247ZWY6rOgIOyImOyglQ0KDQrqsrDqs7zrrLw6IOyjvOqwhCDsl4XrrLTrs7Tqs6ANCuygleumrO2VoCDrgrTsmqk6IOyjvOyalCDsl4XrrLQsIOyCrOyaqeyekCDtmZXsnbgg6rKw6rO8wrfsnbTsiogsIOynhO2WiSDrgrTsmqkNCuyCrOyaqeyekOyXkOqyjCDsoJzqs7XtlZjripQg6rCA7LmYOiDsp4Drgpwg6riw66Gd7J2EIOuLpOyLnCDrqqjsnLzripQg7Iuc6rCEIOygiOyVvQ0KDQrqsrDqs7zrrLw6IOyblOqwhCDsl4XrrLTrs7Tqs6ANCuygleumrO2VoCDrgrTsmqk6IOyjvOygnOuzhCDsl4XrrLQg7Z2Q66aELCDrsJjrs7Ug7JeF66y0LCDtmZXsnbjrkJwg67OA7ZmU7JmAIOqwnOyEoCDsi5zrj4QNCuyCrOyaqeyekOyXkOqyjCDsoJzqs7XtlZjripQg6rCA7LmYOiDsl6zrn6wg7KO87JeQIOqxuOy5nCDsnbzsnYQg7Jew6rKw7ZW0IO2VnCDri6zsnZgg7Z2Q66aEIO2MjOyVhQ0KDQrqsrDqs7zrrLw6IO2Wpe2bhCDtj4nqsIDrhbjtirgNCuygleumrO2VoCDrgrTsmqk6IOyEoO2Dne2VnCDquLDqsITsnZgg7JeF66y0wrfsp4Dsm5DCt+qwnOyEoCDsgqzroYDsmYAg6re86rGwDQrsgqzsmqnsnpDsl5Dqsowg7KCc6rO17ZWY64qUIOqwgOy5mDog66qHIOuLrCDsoITsnZgg7J287J2EIOuLpOyLnCDrlqDsmKzrprQg7J6Q66OMIOy2leyggQ0KDQrtlbTsu6TthqTsnZgg7ZWE7IiYIOqysOqzvOusvOydgCDqt7zqsbDqsIAg7Jew6rKw65CcIOyjvOqwhOuztOqzoCDtlZwg7KKF66WY66GcIOygle2VnOuLpC4g7J287J28IOygleumrOuKlCDsl4XrrLQg7Lm065OcIO2ZlOuptOycvOuhnCDsoJzqs7XtlZjqs6AsIOyblOqwhOydgCDqsJnsnYAg7ZmV7J24IOyXheustOulvCDrjZQg6ri0IOq4sOqwhOycvOuhnCDrrLbripQg7ISg7YOdIOq1rO2YhCDtla3rqqnsnLzroZwg65GU64ukLiDsm5TqsITCt+2PieqwgOuFuO2KuOq5jOyngCDsnbTslrTsp4DripQg6riw7Ja17J2YIOy2leyggeydgCDsoJztkojsnZgg7ZmV7J6lIOuwqe2WpeydtOuLpC4NCg0KTVZQ64qUIOuztOqzoOydmCDsl4XrrLQg7ZWt66qp66eI64ukIOq0gOugqCDsubTrk5zsmYAg7JuQ67O4IOq3vOqxsOulvCDsl7DqsrDtlZjqs6AsIOusuOyepeuzhCDsg4HshLgg7Jew6rKw7J2AIOyEoO2DnSDqtaztmITsnLzroZwg65GU64ukLiDsmYTro4wg7Jes67aALCDtlbTqsrAg6rKw6rO8LCDsi6TsoJwg6riw7Jes7JmAIOuLpOydjCDqs4Ttmo3snYAg7IKs7Jqp7J6QIO2ZleyduOydtOuCmCDstpTqsIAg7J6Q66OM6rCAIOyeiOydhCDrlYwg7Y+s7ZWo7ZWc64ukLiDrtoDsobHtlZwg7KCV67O064qUIOuztOyZhCDtla3rqqnsnLzroZwg64Ko6riw6rOgLCDtmZXsnbjrkJjsp4Ag7JWK7J2AIO2bhOuztOuKlCDrs4Trj4TroZwg67O07Jes7KSA64ukLiDsnbzsg4HsoIHsnbgg6rKA7Yag64qUIOyXheustCDsnbTrpoTqs7wg66y27J2M7J2EIO2ZleyduO2VmOuKlCDsiJjspIDsnLzroZwg7Iuc7J6R7ZWY6rOgLCDqsrDqs7wg7ISk66qF7J2AIOuztOqzoOyXkCDtlYTsmpTtlZwg7Iuc7KCQ7JeQIOuztOyZhO2VoCDsiJgg7J6I6rKMIO2VnOuLpC4NCg0K4pGjIEFJIO2VtOyEneydhCDtmZXsnbgg6rCA64ql7ZWcIOqysOqzvOuhnCDsoJzqs7UNCg0K7LKY66asIO2dkOumhOydgCDquLDroZ0g7IiY7KeRwrfsoIDsnqUg4oaSIOyXheustCDtm4Trs7Qg6rWs7ISxIOKGkiDsgqzsmqnsnpAg7ZmV7J24wrfsiJjsoJUg4oaSIOuwmOuztSDtnZDrpoQg67aE7ISdIOKGkiDquLDqsITrs4Qg67O06rOgIOyDneyEseycvOuhnCDshKTqs4TtlZzri6QuIOqxtOyImMK364Kg7KecIOuTseydgCDsvZTrk5zroZwg6rOE7IKw7ZWY6rOgLCBBSeuKlCDsnZjrr7jsl5Ag65Sw66W4IOustuydjMK37JqU7JW9wrfqsJzshKAg7ZuE67O0wrfrrLjshJwg7LSI7JWI7J2EIOyDneyEse2VmOuPhOuhnSDsl63tlaDsnYQg64KY64iI64ukLiDsgqzsmqnsnpDsnZgg7IiY7KCVIOuCtOyaqeydhCDsnbTtm4Qg67O06rOg7J2YIOq4sOykgOycvOuhnCDsnKDsp4DtlaAg6rOE7ZqN7J2064ukLg0KDQrqtaztmITsl5DripQgQ2hyb21lIO2ZleyepeqzvCBKYXZhU2NyaXB07J2YIERPTSDsnbTrsqTtirjrpbwg7Zmc7Jqp7ZW0IOyngOygle2VnCDthYzsiqTtirgg7Ju57Y6Y7J207KeA7J2YIOyeheugpeqwkiDrs4Dqsr3Ct+2BtOumrcK37Iuc6rCB7J2EIOyImOynke2VmOqzoCwgLk5FVC9XUEbsmYAgU1FMaXRl66GcIOuhnOy7rCDsoIDsnqXqs7wg7JeF66y0IOy5tOuTnCDtmZTrqbTsnYQg6rCc67Cc7ZWgIOqzhO2ajeydtOuLpC4gTExNIEFQSeyXkOuKlCDtlYTsmpTtlZwg6riw66Gd7J2EIEpTT07snLzroZwg7KCE64us7ZWY6rOgLCDsl4XrrLQg7ZuE67O0wrfsmpTslb3Ct+uztOqzoCDstIjslYjsnYQg6rWs7KGw7ZmU65CcIO2YleyLneycvOuhnCDrsJvslYQg7JuQ67O4IOq4sOuhnSBJROyZgCDrjIDsobDtlaAg7JiI7KCV7J2064ukLiBXaW5kb3dzIOyVseydmCDquLDroZ0g7IiY7KeR7JeQ64qUIFVJIEF1dG9tYXRpb27snYQg7Zmc7Jqp7ZWY64qUIOuwqeyViOydhCDtm4Tsho0g7ZmV7J6l7Jy866GcIOqygO2GoO2VnOuLpC4NCg0K7IiY7KeRIO2VreuqqeydgCDsl4XrrLQg7ZW07ISd7JeQIO2VhOyalO2VnCDsnoXroKXCt+2BtOumrcK37Iuc6rCBwrfsgqzsnbTtirgg65Ox7J2YIOygleuztOuhnCDshKTqs4TtlZjqs6AsIOyghOyytCDtmZTrqbTqs7wg7KCE7LK0IO2OmOydtOyngCDrgrTsmqnsnYAg6riw67O4IOyImOynkSDrjIDsg4Hsl5DshJwg7KCc7Jm47ZWgIOqzhO2ajeydtOuLpC4gQUnqsIAg6rSA7Lih7ZWcIO2WieuPmeqzvCDsl4XrrLTsl5Ag64yA7ZWcIO2VtOyEneydhCDqtazrtoTtlZjrj4TroZ0g7ZWc64ukLiDsmIjrpbwg65Ok7Ja0IOKAmOyghOyGoeKAmSDtgbTrpq3snYQg7KCE7IahIOyEseqzteycvOuhnCwg7KGw7ZqMIOq4sOuhneydhCDrrLjsoJwg7ZW06rKwIOyZhOujjOuhnCDtkZztmITtlZjsp4Ag7JWK6rKMIO2VnOuLpC4g7JeF66y067OEIOyLnOqwhOydgCDqtIDroKgg6rWs6rCE7J2EIOyXsOqysO2VoCDsiJgg7J6I64qUIOqyveyasOyXkOunjCDstpTsoJUg6re86rGw7JmAIO2VqOq7mCDsoJzqs7XtlZjripQg7ISg7YOdIOq4sOuKpeycvOuhnCDqsoDthqDtlZzri6QuDQoNCjMuIO2VtOy7pO2GpCAy7J28IOuPmeyViCDqtaztmITtlbQg67O06rOgIOyLtuydgCDso7zsmpQg6riw64ql7J2AIOustOyXh+yduOqwgOyalD8NCg0KMuydvCDrj5nslYgg7J6R7JeFIOq4sOuhnSDsiJjsp5HCt+yggOyepSDihpIgQUkg7JeF66y0IOy5tOuTnCDihpIg67mg65yo66awIOydvCDtmZXsnbgg4oaSIOq3vOqxsOqwgCDsl7DqsrDrkJwg7KO86rCE67O06rOg66GcIOydtOyWtOyngOuKlCDtlITroZzthqDtg4DsnoXsnYQg6rCc67Cc7ZWY6rOg7J6QIO2VnOuLpC4g6rWs7ZiEIOuylOychOuKlCBDaHJvbWXsnZgg7KeA7KCVIO2FjOyKpO2KuCDsm7ntjpjsnbTsp4DroZwg7ZWc7KCV7ZW0LCDsobDtmozsmYAg7J2R64u1IOyekeyEsSDquLDroZ3snYQg7KeB7KCRIOyImOynke2VmOqzoCBBSeqwgCDsnZjrr7gg7J6I64qUIOyXheustOuhnCDrs7Xsm5DtlaAg7IiYIOyeiOuKlOyngCDtmZXsnbjtlaAg6rOE7ZqN7J2064ukLg0KDQrsmrDshKDsiJzsnIQ6IO2VhOyImA0K6rWs7ZiEIO2VreuqqTog7J6R7JeFIOq4sOuhnSDsiJjsp5HCt+yggOyepQ0K7JmE66OMIOq4sOykgDogQ2hyb21lIO2ZleyepeycvOuhnCDthYzsiqTtirgg7Y6Y7J207KeA7J2YIOyeheugpcK37YG066atwrfsi5zqsIHsnYQg7IiY7KeR7ZWY6rOgIOuhnOy7rCBEQuyXkOyEnCDsobDtmowNCg0K7Jqw7ISg7Iic7JyEOiDtlYTsiJgNCuq1rO2YhCDtla3rqqk6IEFJIOyXheustCDsubTrk5wg7IOd7ISxDQrsmYTro4wg6riw7KSAOiDsp4HsoJEg7IiY7KeR7ZWcIOq4sOuhneydhCDrqqjrjbjsl5Ag7KCE64us7ZW0IOyXheustCDtm4Trs7TsmYAg7Jyg7Zqo7ZWcIOq3vOqxsCDsoJzsi5wNCg0K7Jqw7ISg7Iic7JyEOiDtlYTsiJgNCuq1rO2YhCDtla3rqqk6IOqwhOuLqO2VnCDqsoDthqDCt+2ZleyduCDsoIDsnqUNCuyZhOujjCDquLDspIA6IOydtOumhCDsiJjsoJXCt+yemOuqu+uQnCDsl7DqsrAg7KCc7Jm4wrfshKDtg50g7Lm065OcIOustuydjCDtmZXsnbgsIOyImOyglSDrgrTsmqkg7Jyg7KeADQoNCuyasOyEoOyInOychDog7ZWE7IiYDQrqtaztmIQg7ZWt66qpOiDso7zqsITrs7Tqs6Ag7ZWcIOyiheulmA0K7JmE66OMIOq4sOykgDog7ZmV7J24IOyXheustOuhnCDstIjslYgg7IOd7ISxLCDsl4XrrLQg7ZWt66qp67OEIOq3vOqxsCDsl7TquLAsIOyImOyglcK37KCA7J6lwrdNYXJrZG93biDrgrTrs7TrgrTquLANCg0K7Jqw7ISg7Iic7JyEOiDshKDtg50NCuq1rO2YhCDtla3rqqk6IOuwmOuztSDsl4XrrLTsmYAg6rCc7ISgIO2bhOuztA0K7JmE66OMIOq4sOykgDog7Ken7J2AIOyLpOygnCDsnpHsl4Ug65iQ64qUIOuzhOuPhCDriITsoIEg7Iuc7JewIOyekOujjOyXkOyEnCDrsJjrs7Ug66y27J2MIO2VnCDqsJzsmYAg6re86rGwIOygnOyLnA0KDQrsmrDshKDsiJzsnIQ6IOyEoO2DnQ0K6rWs7ZiEIO2VreuqqTog7JuU6rCEIOuztOqzoOyZgCDqs6DquIkg7Y647KeRDQrsmYTro4wg6riw7KSAOiDqsJnsnYAg7ZmV7J24IOyXheustOydmCDquLDqsIQg7ZmV7J6lLCDtlansuZjquLDCt+u2hOumrCwg66y47J6l67OEIOyDgeyEuCDqt7zqsbANCg0K7Jqw7ISg7Iic7JyEOiDtm4Tsho0g7ZmV7J6lDQrqtaztmIQg7ZWt66qpOiBXaW5kb3dzIOyVsSDquLDroZ0g7IiY7KeRDQrsmYTro4wg6riw7KSAOiBVSSBBdXRvbWF0aW9u7J2EIO2ZnOyaqe2VnCDsnoXroKXCt+2BtOumrSDsiJjsp5Eg6rCA64qlIOuylOychCDqsoDspp0NCg0KMeydvCDssKgg7Jik7KCE7JeQ64qUIENocm9tZSDtmZXsnqXqs7wg66Gc7LusIOyggOyepeydhCDqtaztmITtlbQg7YWM7Iqk7Yq4IOyekeyXheydmCDsnoXroKXCt+2BtOumrSDquLDroZ3snYQg7ZmV67O07ZWgIOqzhO2ajeydtOuLpC4g7Jik7ZuE7JeQ64qUIExMTSBBUEnrpbwg7Jew6rKw7ZWY6rOgIOyXheustCDsubTrk5wg7IOd7ISx6rO8IOqwhOuLqO2VnCDsiJjsoJXCt+2ZleyduCDsoIDsnqXsnYQg6rWs7ZiE7ZWc64ukLiDsiJjsp5HtlZwg6riw66Gd66eM7Jy866GcIOyXheustCDsnZjrr7jrpbwg67O17JuQ7ZWY6riwIOyWtOugpOyasOuptCDthYzsiqTtirgg7JeF66y07JmAIOyImOynkSDtla3rqqnsnYQg7KGw7KCV7ZWc64ukLiAy7J28IOywqOyXkOuKlCDso7zqsITrs7Tqs6Ag7IOd7ISx6rO8IOq3vOqxsCDsl7TquLDCt+uCtOuztOuCtOq4sOulvCDqtaztmITtlZjqs6Ag7KCE7LK0IO2dkOumhOydhCDqsoDspp3tlZzri6QuIOuwmOuztSDsl4XrrLQg67aE7ISdIOuTsSDshKDtg50g6riw64ql7J2AIO2VhOyImCDtnZDrpoTsnbQg64+Z7J6R7ZWcIOuSpCDstpTqsIDtlaAg7JiI7KCV7J2064ukLg0KDQrso7zqsITrs7Tqs6Dsl5DripQg7Iuk7KCcIOyImOynke2VnCDrgqDsp5zsmYAg67KU7JyE66W8IO2RnOyLnO2VoCDqs4Ttmo3snbTri6QuIOyXrOufrCDrgqDsnZgg7Z2Q66aE6rO8IOyblOqwhCDtmZXsnqXsnYAg67OE64+E66GcIOykgOu5hO2VnCDqsIDsg4Eg64iE7KCBIOyekOujjOuhnCDrs7Tsl6zso7zqs6Ag7Lac7LKY66W8IO2RnOyLnO2VnOuLpC4g7Iuk7KCcIOuplOyLoOyggMK3SURFIO2YuO2ZmOyEsSwg7ZWY66OoIOyXsOyGjSDquLDroZ3qs7wg64uk7JaR7ZWcIFdpbmRvd3Mg7JWxIOyngOybkOydgCDtm4Tsho0g6rKA7KadIOuMgOyDgeycvOuhnCDrkZTri6QuIOygleq4sCDsnpDrj5kg7IOd7ISxLCDrsJjquLAg7Y+J6rCA64W47Yq4LCDsl7DqsIQg66qp7ZGcIOyXsOqysCwg7YyAIOu2hOyEneqzvCDsmbjrtoAg7JeF66y0IOyLnOyKpO2FnCDsl7Drj5nrj4Qg7Zal7ZuEIO2ZleyepSDrsKntlqXsnLzroZwg6rKA7Yag7ZWc64ukLg0KDQrqtaztmIQg7ZuE7JeQ64qUIOuLpOydjCDsiJzshJzroZwg7Iuc7Jew7ZWgIOqzhO2ajeydtOuLpC4NCg0KMS4g7Y+J7IaM7LKY65+8IOyekeyXhTog6riw67CAIOyXhuuKlCBDaHJvbWUg7YWM7Iqk7Yq4IOybue2OmOydtOyngOyXkOyEnCDsobDtmozCt+ydkeuLtSDsnpHshLHsnYQg7IiY7ZaJ7ZWc64ukLiDri6Trpbgg66qp7KCB7J2YIOyekeyXheqzvCDqsJnsnYAg67KI7Zi466W8IOyTsOuKlCDrs4Trj4Qg7J6R7JeF64+EIOyEnuuKlOuLpC4NCjIuIOuwnOqyrOydmCDsoITtm4Qg67mE6rWQOiDsi5zsl7DsnpDqsIAg6riw7Ja17Jy866GcIOyggeydgCDrqqnroZ3qs7wg7Iuk7KCcIOq4sOuhneyXkOyEnCBBSeqwgCDrs7Xsm5DtlZwg7JeF66y0IO2bhOuztOulvCDrgpjrnoDtnogg67O07Jes7KSA64ukLiDqs4Ttmo3rkJwg7Iuc7Jew7J2YIOu5hOq1kOyehOydhCDrsJ3tnozri6QuDQozLiDsp6fqsowg7ZmV7J24OiDsnpjrqrsg7Jew6rKw65CcIO2VreuqqSDtlZjrgpjrpbwg7KCc7Jm47ZWY6rGw64KYIOygnOuqqeydhCDqs6DsuZwg65KkIOyEoO2DnSDsubTrk5wg66y27J2M7J2EIO2ZleyduO2VnOuLpC4g7JuQ67O47J2AIO2VhOyalO2VnCDsubTrk5zsl5DshJzrp4wg7Jew64ukLg0KNC4g67O06rOg7JeQIOuwmOyYgTog7ZmV7J2465CcIOyngOybkCDsl4XrrLTqsIAg7Y+s7ZWo65CcIOyjvOqwhOuztOqzoOulvCDsg53shLHtlZjqs6AsIOuztOqzoOydmCDsl4XrrLQg7ZWt66qp7JeQ7IScIOy5tOuTnOyZgCDsm5Drs7jsnLzroZwg64+M7JWE6rCEIOuSpCDsoIDsnqXtlZzri6QuDQo1LiDriITsoIEg7IucIOuNlCDrs7TsnbTripQg6rKDOiDshKDtg50g6rWs7ZiE7J20IOyZhOujjOuQmOuptCDrs4Trj4Qg64iE7KCBIOyLnOyXsCDsnpDro4zroZwg67CY67O1IOyngOybkOyXheustOyZgCDslYjrgrTrrLgg6rKA7YagIO2bhOuztOulvCDrs7Tsl6zspIDri6QuIOyblOqwhOuPhCDqsJnsnYAg7JeF66y0IOq4sOyWteydmCDquLDqsIQg7ZmV7J6l7Jy866GcIOyEpOuqhe2VnOuLpC4NCg0KNC4g7J20IOyVhOydtOuUlOyWtOydmCDso7zsmpQg7IKs7Jqp7J6Q64qUIOuIhOq1rOydtOupsCwg7Ja065akIOq4sOuMgO2aqOqzvOqwgCDsnojrgpjsmpQ/DQoNCuyjvOyalCDrjIDsg4Eg7IKs7Jqp7J6Q64qUIOyhsO2ajMK366y47J2YIOydkeuLtSDsnpHshLHsnbQg67CY67O165CY6rOgIOyjvOqwhOuztOqzoOulvCDsnpHshLHtlZjripQg7IKs64K0IOyLnOyKpO2FnCDsmrTsmIHCt+yngOybkCDri7Tri7nsnpDri6QuIOyXrOufrCDsi5zsiqTthZzsl5DshJwg7IiY7ZaJ7ZWcIOynp+ydgCDsl4XrrLTrpbwg6riw7Ja17ZWY6rOgIOygleumrO2VtOyVvCDtlZjripQg7IKs656M7JeQ6rKMIOuPhOybgOydtCDrkKAg6rKD7Jy866GcIOq4sOuMgO2VnOuLpC4g7ZW07Luk7Yak7JeQ7ISc64qUIFdpbmRvd3PCt0Nocm9tZSDtmZjqsr3snZgg7YWM7Iqk7Yq4IOyekeyXheycvOuhnCDtlbXsi6wg7Z2Q66aE7J2EIOq1rO2YhO2VmOqzoCwg7J207ZuEIOqwnOuwnOyekMK36riw7ZqN7J6QIOuTsSDri6Trpbgg7KeB66y07JeQ7ISc64+EIO2ZnOyaqe2VoCDsiJgg7J6I64qU7KeAIOqygO2GoO2VoCDqs4Ttmo3snbTri6QuDQoNCuyCrOyaqeyekOydmCDsg4Htmak6IOynp+ydgCDsl4XrrLTqsIAg6riw66Gd7JeQ7IScIOyekOyjvCDruaDsp5ANCuq4sOuMgO2aqOqzvDog66+47LKYIOyggeyngCDrqrvtlZwg7J287J2EIOuWoOyYrOumtCDri6jshJwg7KCc6rO1DQrqsoDspp0g67Cp67KVOiBBSSDtmZXsnbgg7KCEIOyekeyEse2VnCDsl4XrrLQg66qp66Gd6rO8IOu5hOq1kO2VtCDsnKDsmqntlZjqsowg7LaU6rCA65CcIOyXheustCDtmZXsnbgNCg0K7IKs7Jqp7J6Q7J2YIOyDge2ZqTog7Jes65+sIOyVseydmCDtlonrj5nsnYQg64uk7IucIOygleumrO2VtOyVvCDtlagNCuq4sOuMgO2aqOqzvDog7JeF66y0IOuLqOychOydmCDtlZjro6gg66qp66GdIOygnOqztQ0K6rKA7KadIOuwqeuylTog7IKs7Jqp7J6Q6rCAIOyekeyEse2VnCDquLDspIAg66qp66Gd6rO8IOyXheustCDsubTrk5zsnZgg7KCV7ZmV7ISxwrfriITrnb0g67CPIOyImOyglSDrtoDri7Qg67mE6rWQDQoNCuyCrOyaqeyekOydmCDsg4Htmak6IOyjvOqwhMK37JuU6rCEIOuztOqzoCDrlYwg6riw7Ja17J2EIOuLpOyLnCDrqqjsnYwNCuq4sOuMgO2aqOqzvDog7ZmV7J247ZWcIOyXheustOulvCDrs7Tqs6Ag7LSI7JWI7Jy866GcIOyerOyCrOyaqQ0K6rKA7KadIOuwqeuylTog7IiY64+ZIOyekeyEsSDsi5zqsITqs7wgQUkg7LSI7JWIIOqygO2GoMK37IiY7KCV6rmM7KeA7J2YIOyLnOqwhCDruYTqtZANCg0K7IKs7Jqp7J6Q7J2YIOyDge2ZqTog67mE7Iq37ZWcIOyhsO2ajMK37JWI64K066W8IOuwmOuzte2VqA0K6riw64yA7Zqo6rO8OiDqsJzshKDtlaAg7JeF66y066W8IOuwnOqyrO2VoCDquLDtmowg7KCc6rO1DQrqsoDspp0g67Cp67KVOiDsgqzsmqnsnpDqsIAg7Jyg7Zqo7ZWY64uk6rOgIO2MkOuLqO2VnCDrsJjrs7Ug66y27J2M6rO8IOyLpO2Wie2VtOuzvCDsoJzslYgg7ZmV7J24DQoNCuyCrOyaqeyekOydmCDsg4Htmak6IOyhsOyngeyXkOyEnCDsnpHsnYAg7KeA7JuQ7JeF66y07J2YIOyLpOyytOulvCDslYzquLAg7Ja066Ck7JuADQrquLDrjIDtmqjqs7w6IOyCrOyaqeyekOqwgCDshKDtg53tlZwg7JqU7JW97Jy866GcIOuwmOuztSDrrLjsnZjsmYAg6rO17Ya1IOyViOuCtMK37J6Q64+Z7ZmUIOqygO2GoCDrjIDsg4HsnYQg7ISk66qF7ZWgIOq3vOqxsCDtmZXrs7QNCuqygOymnSDrsKnrspU6IOyEoO2Dne2VtCDrgrTrs7Trgrgg7JqU7JW97J20IOqwnOyEoCDsmrDshKDsiJzsnIQg64W87J2Y7JeQIOuPhOybgOydtCDrkJjripTsp4Ag6rKA7YagDQoNCu2aqOqzvOulvCDqsoDspp3tlZjquLAg7JyE7ZW0IO2VtOy7pO2GpOyXkOyEnOuKlCDsl4XrrLQg66y27J2M7J2YIOygle2ZleyEscK364iE6529LCDsnpjrqrvrkJwg7Jew6rKw7J2EIOqzoOy5nCDtmp/siJgsIOq3vOqxsOydmCDtg4Dri7nshLHqs7wg7KCE7LK0IOqygO2GoCDsi5zqsITsnYQg7Lih7KCV7ZWgIOqzhO2ajeydtOuLpC4g7Iuk7KCc66GcIOyeiuydgCDsl4XrrLTsnZgg67Cc6rKs6rO8IOuztOqzoCDsi5zqsIQg7KCI6rCQ7J2AIOyCrOyaqeyekCDthYzsiqTtirjroZwg7ZmV7J247ZWY6rOg7J6QIO2VnOuLpC4gQUnrpbwg67O06riwIOyghCDsnpHshLHtlZwg66qp66Gd7JeQ7IScIOu5oOyhjOyngOunjCDsi6TsoJwg7IiY7ZaJ7ZaI64uk6rOgIO2ZleyduO2VnCDsnbzsnYQg7KeR6rOE7ZWY6rOgLCDsiJjrj5kg67O06rOg7JmAIEFJIO2ZnOyaqSDsi5zsnZgg6riw66GdIO2ZleyduMK37IiY7KCVwrfrs7Tqs6DquYzsp4Ag7LSd7Iuc6rCE7J2EIOu5hOq1kO2VnOuLpC4g7LWc7LSIIOyImOynkSDshKTsoJUg7Iuc6rCE64+EIOuzhOuPhOuhnCDquLDroZ3tlZzri6QuIOyjvOqwhOuztOqzoCDsnpHshLEg7Iuc6rCEIDUwJSDqsJDshozrpbwg6rKA7KadIOuqqe2RnOuhnCDshKTsoJXtlZzri6QuDQoNCuuhnOq3uOunjOycvOuhnCDrqqjrk6Ag7JeF66y066W8IOq0gOy4oe2VoCDsiJgg7JeG7Jy866+A66GcIOyYpO2UhOudvOyduCDsl4XrrLTrgpgg66+47KeA7JuQIOyVseydmCDsnpHsl4XsnYAg7IKs7Jqp7J6Q6rCAIOyEoO2DneyggeycvOuhnCDstpTqsIDtlaAg7IiYIOyeiOqyjCDtlZzri6QuIO2ZnOuPmeuficK37J6F66ClIO2an+yImMK37Jyg7Zy0IOyLnOqwhOydhCDqsJzsnbjsnZgg7IOd7IKw7ISxIOygkOyImOuhnCDtmZjsgrDtlZjsp4Ag7JWK64qU64ukLiDrsJjrs7Ug7JeF66y0IOqwnOyEoOydmCDtmqjqs7zripQg7Iuk7KCcIOyggeyaqeqzvCDtm4Tsho0g7IKs7JqpIOq4sOqwhOydtCDtlYTsmpTtlZjrr4DroZwg7ZW07Luk7Yak7J2YIOuwnOqyrMK37KCc7JWIIOqygOymneqzvCDrgpjriITslrQg7Lih7KCV7ZWc64ukLg0KDQo1LiDslYTsnbTrlJTslrTqsIAg6rWs7ZiE65CcIOuqqOyKteydhCDtlZwg7KSE66GcIOyalOyVve2VmOuptCDslrTrlqQg66qo7Iq17J286rmM7JqUPw0KDQrtj4nshozsspjrn7wg7J287ZWY66m0LCBBSeqwgCDruaDrnKjrprAg7J286rO8IOuwmOuzte2VtOyEnCDrp6Hqs6Ag7J6I642YIOyXheustOulvCDssL7slYTrgrTqs6Ag6re86rGwIOyeiOuKlCDrs7Tqs6DsmYAg6rCc7ISg7J2YIOuLqOyEnOuhnCDsoJXrpqztlbTso7zripQg7JeF66y0IOq4sOyWtSDruYTshJwuDQoNCjYuIFvshKDtg51dIOyVhOydtOuUlOyWtCDqtaztmITsl5Ag7ZWE7JqU7ZWcIOuNsOydtO2EsOqwgCDsnojrgpjsmpQ/DQoNCu2VhOyalO2VnCDrjbDsnbTthLDripQg7ZW07Luk7YakIOykkSDquLDrsIAg7JeG64qUIO2FjOyKpO2KuCDsl4XrrLTrpbwg7IiY7ZaJ7ZWY66mwIOyngeygkSDsiJjsp5HtlZjqsbDrgpgg7IOd7ISx7ZWgIOqzhO2ajeydtOuLpC4g7Jes65+sIOuCoOydmCDrsJjrs7Ug7Z2Q66aE7J2EIOyEpOuqhe2VoCDsnpDro4zripQg6rCA7IOB7J2YIOyLnOyXsCDrjbDsnbTthLDroZwg67OE64+EIOykgOu5hO2VnOuLpC4NCg0K6rWs67aEOiDsiJjsp5HtlaAg7J6R7JeFIOq4sOuhnQ0K7ZWt66qp66qFOiDsnpHsl4Ug7Iuc6rCBwrfsgqzsnbTtirjCt+yekeyXhSDrp6Xrnb0NCu2ZleuztMK37IOd7ISxIOuwqeuylSAvIOyggOyepSDqs4Ttmo06IOqwnOuwnO2VoCBDaHJvbWUg7ZmV7J6l7JeQ7IScIOyImOynke2VtCDqsJzsnbggUEPsnZgg66Gc7LusIERC7JeQIOyggOyepQ0K642w7J207YSwIO2PrOuntzogSlNPTiAvIFNRTGl0ZQ0KDQrqtazrtoQ6IOyImOynke2VoCDsg4HtmLjsnpHsmqkg6riw66GdDQrtla3rqqnrqoU6IOyeheugpeqwkiDrs4Dqsr3Ct+2BtOumrSDsmpTshozCt+yLnOqwgcK37IiY7KeRIOyDge2DnA0K7ZmV67O0wrfsg53shLEg67Cp67KVIC8g7KCA7J6lIOqzhO2ajTog7YWM7Iqk7Yq4IO2OmOydtOyngOydmCBET00g7J2067Kk7Yq466W8IOyImOynke2VtCDroZzsu6zsl5Ag7KCA7J6lDQrrjbDsnbTthLAg7Y+s66e3OiBKU09OIC8gU1FMaXRlDQoNCuq1rOu2hDog67aE7ISdIOqzvOygleyXkOyEnCDsg53shLHtlaAg642w7J207YSwDQrtla3rqqnrqoU6IOyXheustCDsubTrk5zCt+q3vOqxsMK37IKs7Jqp7J6QIOyImOyglcK37ZmV7J24IOuCtOyXrQ0K7ZmV67O0wrfsg53shLEg67Cp67KVIC8g7KCA7J6lIOqzhO2ajTogQUkg67aE7ISdIOqysOqzvOyZgCDsgqzsmqnsnpAg7ZmV7J24IOuCtOyaqeydhCDroZzsu6wgRELsl5Ag7KCA7J6lDQrrjbDsnbTthLAg7Y+s66e3OiDqtazsobDtmZQg642w7J207YSwDQoNCuq1rOu2hDog7ISg7YOd7KCBIOyCrOyaqeyekCDsnoXroKUNCu2VreuqqeuqhTog6rKw6rO8wrfsnbTsiojCt+uLpOydjCDqs4Ttmo3Ct+uvuOyImOynkSDsl4XrrLQNCu2ZleuztMK37IOd7ISxIOuwqeuylSAvIOyggOyepSDqs4Ttmo06IOyCrOyaqeyekOqwgCDshKDtg53tlbQg7JeF66y0IOy5tOuTnOyXkCDrs7TsmYQNCuuNsOydtO2EsCDtj6zrp7c6IO2FjeyKpO2KuCAvIOq1rOyhsO2ZlCDrjbDsnbTthLANCg0K6rWs67aEOiDrs7Tqs6Ag6rO87KCV7JeQ7IScIOyDneyEse2VoCDrjbDsnbTthLANCu2VreuqqeuqhTog67aE7ISdwrfrs7Tqs6Ag6rKw6rO87JmAIOybkOuzuCDsl7DqsrANCu2ZleuztMK37IOd7ISxIOuwqeuylSAvIOyggOyepSDqs4Ttmo06IOqwnOuwnO2VoCDrs7Tqs6Ag6riw64ql7JeQ7IScIOyDneyEse2VtCDroZzsu6zsl5Ag7KCA7J6lDQrrjbDsnbTthLAg7Y+s66e3OiBKU09OIC8gTWFya2Rvd24NCg0K6rWs67aEOiDsi5zsl7DCt+qygOymnSDsnpDro4wNCu2VreuqqeuqhTog7Iuk7KCcIO2FjOyKpO2KuCDsnpHsl4Xqs7wg6rCA7IOB7J2YIOyepeq4sCDquLDroZ0NCu2ZleuztMK37IOd7ISxIOuwqeuylSAvIOyggOyepSDqs4Ttmo06IOq4sOuwgCDsl4bripQg7YWM7Iqk7Yq4IOybue2OmOydtOyngOyZgCDrs4Trj4Qg7Iuc7JewIOyekOujjOuhnCDsp4HsoJEg7KSA67mEDQrrjbDsnbTthLAg7Y+s66e3OiBKU09OIC8gU1FMaXRlDQoNCuq4sOuhneydgCDsgqzsmqnsnpDqsIAg7Iuc7J6R7ZWcIOuSpCDsp4DsoJXtlZwg64yA7IOB7JeQ7ISc66eMIOyImOynke2VmOuPhOuhnSDshKTqs4TtlaAg6rOE7ZqN7J2064ukLiBNVlDsl5DripQg6riw66GdIOyLnOyekcK37KSR7KeALCDrjIDsg4Eg7IKs7J207Yq4IOyEoO2DneqzvCDsoITssrQg7IKt7KCc66W8IO2PrO2VqO2VmOqzoCwg7ZSE66Gc6re4656o67OEIOygnOyZuMK37IS467aAIOuztOq0gCDquLDqsIQg7ISk7KCV7J2AIO2ZleyepSDquLDriqXsnLzroZwg6rKA7Yag7ZWc64ukLiDsnoXroKUg7JuQ66y47J2EIOuhnOy7rOyXkCDsoIDsnqXtlaAg65WM64qUIFdpbmRvd3MgRFBBUEkg65OxIOyatOyYgeyytOygnOydmCDrs7TtmLgg6riw64ql7J2EIO2ZnOyaqe2VoCDqs4Ttmo3snbTri6QuDQoNCkFJIOu2hOyEnSDsoITsl5DripQg64yA7IOBIOq4sOqwhMK37IKs7J207Yq47JmAIOyghOyGoSDsnpDro4zrpbwg7ISg7YOd7ZWgIOyImCDsnojqsowg7ZWgIOyYiOygleydtOuLpC4g7Jm467aAIOuqqOuNuOydhCDsgqzsmqntlaAg65WM64qUIO2VhOyalO2VnCDquLDroZ3rp4wg7LaU7Lac7ZWY6rOgLCDsoITshqEg7KCEIOuvvOqwkOygleuztCDqsIDrprwg7LKY66as7JmAIOyeheugpSDsnpDro4wg66+466as67O06riw66W8IOygnOqzte2VmOuPhOuhnSDshKTqs4TtlZzri6QuIOu2hOyEnSDqsrDqs7zsmYAg7IKs7Jqp7J6QIO2ZleyduCDsl4XrrLTrj4Qg67O06rSAwrfsgq3soJwg64yA7IOB7JeQIO2PrO2VqO2VnOuLpC4g66Gc7LusIOuqqOuNuOydgCDsi6Ttlokg7ZmY6rK96rO8IOu2hOyEnSDtkojsp4jsnYQg7ZmV7J247ZWcIOuSpCDshKDtg53sp4DroZwg6rKA7Yag7ZWgIOqzhO2ajeydtOuLpC4NCg0K7ZWE7JqUIOyngOybkCDsgqztla06IOyCrOyaqe2VoCBBSSDrqqjrjbjsnZgg7Zi47LacIOq2jO2VnOqzvCDsoJHsho0g7ZmY6rK9LCDquLDrsIAg7JeG64qUIO2FjOyKpO2KuCDsnpHsl4XsnYQg7IiY7ZaJ7ZWgIFdpbmRvd3PCt0Nocm9tZSDtmZjqsr0sIOyXheustCDrs7Xsm5Dqs7wg67O06rOgIOy0iOyViOydhCDqsoDthqDtlaAg7IKs7Jqp7J6QIO2YkeyhsOqwgCDtlYTsmpTtlZjri6QuIOyCrOuCtCDsnpDro4zrpbwg7Zmc7Jqp7ZWgIOqyveyasOyXkOuKlCDtlbTri7kg7ZmY6rK97JeQ7IScIO2XiOyaqeuQnCDrqqjrjbjqs7wg7J6Q66OMIOuylOychOulvCDtmZXsnbjtlbQg7KCB7Jqp7ZWc64ukLg0KDQo3LiDsoJzslYjtlbQg7KO87IugIOyVhOydtOuUlOyWtOyXkCDrjIDtlbQg7LaU6rCA66GcIOyWuOq4ie2VmOqzoCDsi7bsnYAg64K07Jqp7J20IOyeiOycvOuptCDsnpHshLHtlbQg7KO87IS47JqULg0KDQrsnpDrj5kg7Zmc64+ZIOq4sOuhneqzvCBBSSDsmpTslb3snYQg7KCc6rO17ZWY64qUIOq0gOugqCDshJzruYTsiqTqsIAg7J6I64ukLiBUaW1lbHkgQXV0b1NoZWV0IChodHRwczovL3d3dy50aW1lbHkuY29tL2hlbHAvaGFuZGJvb2svYXV0b3NoZWV0L3RpbWVseS1hdXRvc2hlZXQvKeuKlCDsiJjsp5HtlZwg7Zmc64+Z7J2EIOyLnOqwhCDruJTroZ3snLzroZwg66y26rOgIO2UhOuhnOygne2KuOyZgCDsmpTslb3snYQg7KCc7JWI7ZWc64ukLiBSZXNjdWVUaW1lIFRpbWVzaGVldHMgKGh0dHBzOi8vaGVscC5yZXNjdWV0aW1lLmNvbS9hcnRpY2xlLzQyNy1nZXR0aW5nLXN0YXJ0ZWQtd2l0aC1yZXNjdWV0aW1lLXRpbWVzaGVldHMp64+EIO2ZnOuPmeydhCDtlITroZzsoJ3tirjsl5Ag67Cw7KCV7ZWY64qUIOyekOuPmeyZhOyEsSDquLDriqXsnYQg7KCc6rO17ZWc64ukLg0KDQpXb3JrTWVtb3J5IEFJ66W8IO2Gte2VtCDqsoDspp3tlZjqs6DsnpAg7ZWY64qUIOqwgOyEpOydgCDsgqzrgrQg7Iuc7Iqk7YWc7J2YIOyeheugpcK37YG066atIOunpeudveydhCDsnbTsmqntlZjrqbQg7Yuw7LyT7JeQIOuCqOyngCDslYrripQg7KGw7ZqMwrfslYjrgrQg7JeF66y07JmAIOq3uCDrsJjrs7Ug7Z2Q66aE7J2EIOycoOyaqe2VmOqyjCDrs7Xsm5DtlaAg7IiYIOyeiOuKlOqwgOuLpC4g64yA7IOBIOyCrOyaqeyekOyXkOqyjCDsi6TsoJzroZwg64+E7JuA7J20IOuQmOuKlCDsl4XrrLQg7J2Y66+46rCAIOuCmOyYpOuKlOyngCwg7ZmV7J24IOu2gOuLtOq5jOyngCDtj6ztlajtlbQg67O06rOgIOykgOu5hOqwgCDsiazsm4zsp4DripTsp4Drpbwg7ZmV7J247ZWgIOqzhO2ajeydtOuLpC4g64uk7J2MIOyEuCDqsIDsp4Drpbwg7KCc7ZKI7J2YIOyEpOqzhCDrsKntlqXsnLzroZwg7KCc7JWI7ZWc64ukLg0KDQrsp5HspJHtlaAg7KeA7KCQOiDrgpjsnZgg7JeF66y066W8IOuLpOyLnCDrsJzqsqwNCuygnOqzte2VmOugpOuKlCDqsr3tl5g6IOu5oOucqOumsCDsnbzsnYQg67O17JuQ7ZWY6rOgLCDqsJzrs4Qg7ZaJ64+Z7Jy866GcIOyXrOqyvOuNmCDquLDroZ3sl5DshJwg67CY67O17ZW07IScIOunoeqzoCDsnojrjZgg7KeA7JuQIOyXheustCDtmZXsnbgNCg0K7KeR7KSR7ZWgIOyngOygkDog67Cc6rKs7J2EIOqwnOyEoCDquLDtmozroZwg7Jew6rKwDQrsoJzqs7XtlZjroKTripQg6rK97ZeYOiDsgqzsmqnsnpDqsIAg7ZmV7J247ZWcIOuwmOuztSDsl4XrrLTsl5DshJwg7JWI64K066y4wrfssrTtgazrpqzsiqTtirjCt+yekOuPme2ZlCDqsoDthqAg7ZuE67O0IOygnOyViA0KDQrsp5HspJHtlaAg7KeA7KCQOiDqt7zqsbDqsIAg7IyT7J2064qUIOyXheustCDquLDslrUNCuygnOqzte2VmOugpOuKlCDqsr3tl5g6IOyXheustCDsubTrk5zsnZgg7IiY7KCVwrftmZXsnbgg64K07Jqp7J2EIOycoOyngO2VmOupsCDsnbzqsITCt+yjvOqwhMK37JuU6rCEIOuztOqzoOuhnCDsnqzsgqzsmqkNCg0K6rCc7J247J20IOyekOyLoOydmCDsl4XrrLTrpbwg7J207ZW07ZWY6rOgIOygleumrO2VmOuKlCDsoJztkojsnYQg66qp7ZGc66GcIO2VnOuLpC4g7IKs7Jqp7J6Q6rCAIOyImOynkSDrspTsnITsmYAg67aE7ISdIOuMgOyDgeydhCDsoJXtlZjqs6AsIOqzteycoO2VoCDrs7Tqs6DshJzsmYAg64K07Jqp7J2EIOyEoO2Dne2VmOuPhOuhnSDshKTqs4TtlaAg6rOE7ZqN7J2064ukLiDtlqXtm4Tsl5DripQg7ZmV7J247ZWcIOyXheustOulvCDsl7DqsIQg66qp7ZGc7JmAIOyXsOqysO2VmOqxsOuCmCDtj4nqsIDrhbjtirjroZwg7ZmV7J6l7ZWY6rOg7J6QIO2VnOuLpC4NCg0K7ZW07Luk7Yak7JeQ7IScIOuztOyXrOykhCDtlbXsi6wg7J6l66m07J2AIOKAnOydtOufsCDsnbzrj4Qg7ZWY6rOgIOyeiOyXiOuEpOKAneudvOuKlCDrsJzqsqzsnbQsIOq3vOqxsOulvCDtmZXsnbjtlaAg7IiYIOyeiOuKlCDsl4XrrLQg6riw66Gd6rO8IOuwlOuhnCDtmZzsmqntlaAg67O06rOg7ISc66GcIOydtOyWtOyngOuKlCDsiJzqsITsnbTri6QuDQo='), character => character.charCodeAt(0));
+        const bytes = Uint8Array.from(atob('77u/QVgg7ZW07Luk7YakIOyVhOydtOuUlOyWtCDquLDtmo3shJwNCg0K7KCc7JWI66qFOiBXb3JrTWVtb3J5IEFJIOKAlCDrgpjrj4Qg66qw656Q642YIOuCmOydmCDsnbzsnYQg7LC+7JWE7KO864qUIEFJIOyXheustCDquLDslrUg67mE7IScDQoNCu2VteyLrCDsoJzslYg6IFBD7JeQ7IScIO2PieyGjOyymOufvCDsnbztlZjrqbQgQUnqsIAg7YKk67O065Ocwrfrp4jsmrDsiqQg7KGw7J6R6rO8IOyekeyXhSDrp6Xrnb3snYQg7Jew6rKw7ZW0LCDrgrTqsIAg7Ja065akIOyXheustOulvCDtlojripTsp4Ag6riw7Ja17ZWY6rOgIOu2hOulmO2VtOyjvOuKlCDshJzruYTsiqTrpbwg6rCc67Cc7ZWY6rOg7J6QIO2VnOuLpC4gRXhjZWwsIOybueu4jOudvOyasOyggCwg66y47IScIO2OuOynkeq4sCDrk7Eg7Jes65+sIOuPhOq1rOyXkCDtnanslrTsp4Qg7J287J2EIOyXheustCDri6jsnITroZwg7KCV66as7ZWY6rOgLCDtj4nqsIDrhbjtirjsl5Ag7Zmc7Jqp7ZWgIOyXheustMK36riw7JesIOyCrOuhgOyZgCDrsJjrs7Ug7J6R7JeF7J2EIOqwnOyEoO2VoCDsnbjsgqzsnbTtirjrpbwg7KCc6rO17ZWY64qUIOyXheustCDquLDslrUg67mE7ISc66W8IOygnOyViO2VnOuLpC4NCg0K64yA7ZGcIOqyve2XmDog4oCc7J6Q66OMIOygleumrOunjCDtlojri6Tqs6Ag7IOd6rCB7ZaI64qU642wLCDsl6zrn6wg7YyM7J286rO8IOyLnOyKpO2FnCDsgqzsnbTsl5DshJwg642w7J207YSw66W8IOyYruq4sOqzoCDtmJXsi53snYQg66ee7LaU64qUIOydvOydhCDqs4Tsho0g67CY67O17ZWY6rOgIOyeiOyXiOuEpC7igJ0gQUnqsIAg7JeF66y07J2YIO2dkOumhOqzvCDrsJjrs7Ug7Yyo7YS07J2EIOuztOyXrOyjvOuptCwg7IKs7Jqp7J6Q64qUIOyekOyLoOydmCDsnbzsnYQg64uk7IucIOydtO2VtO2VmOqzoCDtkZzspIAg7JaR7Iud7J2064KYIOyekOuPme2ZlOulvCDqsoDthqDtlaAg7IiYIOyeiOuLpC4g7ZmV7J247ZWcIOq4sOuhneydgCDtj4nqsIDrhbjtirjsl5Ag7JO4IOyXheustCDsgqzroYDroZzrj4Qg7Zmc7Jqp7ZWc64ukLiDslYTrnpgg7IKs66GA7JmAIOqysOqzvOuKlCDsoJztkogg6rK97ZeY7J2EIOyEpOuqhe2VmOq4sCDsnITtlZwg6rCA7IOB7J2YIOyYiOyLnOuLpC4NCg0KMS4gQUnroZwg7ZW06rKw7ZWY6rOg7J6QIO2VmOuKlCDrrLjsoJwg7IOB7ZmpIOuYkOuKlCDsg4jroa3qsowg7Iuc64+E7ZW067O06rOgIOyLtuydgCDsl4XrrLQv7ISc67mE7Iqk64qUIOustOyXh+yduOqwgOyalD8NCg0K4oCc7ZWY66OoIOyiheydvCDrsJTrubTripTrjbAsIOygleyekSDrrLTsl4fsnYQg7ZaI64qU7KeAIOyTsOugpOuLiCDsg53qsIHrgpjsp4Ag7JWK64qU64ukLuKAnQ0KDQrso7zsmpQg64yA7IOBIOyCrOyaqeyekOuKlCBQQ+uhnCDsl4XrrLTrpbwg7IiY7ZaJ7ZWY64qUIFNEUyDsnoTsp4Hsm5DsnbTri6QuIOyekOujjOulvCDsoJXrpqztlZjripQg7IKs656MLCDrrLjshJzrpbwg7J6R7ISx7ZWY64qUIOyCrOuejCwg6rCc67Cc7ZWY64qUIOyCrOuejCwg7Iuc7Iqk7YWc7J2EIOyatOyYge2VmOuKlCDsgqzrnowg66qo65GQIOyXrOufrCDtlITroZzqt7jrnqjsnYQg7Jik6rCA66mwIOydvO2VnOuLpC4g7Ken7J2AIOyekOujjCDtmZXsnbgsIOusuOyEnCDsiJjsoJUsIOuPmeujjCDsp4Dsm5Dqs7wg66y47KCcIO2VtOqysCDqs7zsoJXsnYAg67OE64+E7J2YIOyXheustCDquLDroZ3sl5Ag67mg7KeQ7JeG7J20IOuCqOq4sOq4sCDslrTroLXri6QuIOydvOydhCDsiJjtlontlZjripQg6rKD6rO8IOuzhOqwnOuhnCDrrLTsl4fsnYQg7ZaI64qU7KeAIOq4sOyWte2VmOqzoCDsoJXrpqztlbTslbwg7ZWY64qUIOu2gOuLtOydtCDsnojri6QuDQoNCu2PieqwgOuFuO2KuOulvCDsnpHshLHtlaAg65WM7JeQ64qUIOuqhyDri6wg64+Z7JWIIOyImO2Wie2VnCDsl4XrrLTsmYAg6riw7JesIOyCrOuhgOulvCDri6Tsi5wg65ag7Jis66Ck7JW8IO2VnOuLpC4g64iI7JeQIOudhOuKlCDqsrDqs7zrrLzsnYAg6riw7Ja17ZW064+EIOq3uCDqs7zsoJXsnZgg7J6Q66OMIOygleumrCwg6rKA7YagLCDtmJHsl4Xqs7wg7J6R7J2AIOqwnOyEoCDsi5zrj4TripQg64aT7LmY6riwIOyJveuLpC4g67mE7Iq37ZWcIOuzteyCrMK37J6F66ClwrfshJzsi50g67OA6rK97J2EIOuwmOuzte2VmOqzoCDsnojslrTrj4Qg6rCB6rCB7J2YIOyekeyXheycvOuhnOunjCDquLDslrXtlZjrqbQg7Ja065akIOqzvOygleydhCDqsJzshKDtlaAg7IiYIOyeiOydhOyngCDrsJzqsqztlZjquLAg7Ja066C164ukLiDtlITroZzqt7jrnqjrs4Qg7IKs7JqpIOyLnOqwhOydtOuCmCDsnoXroKUg7Zqf7IiY66eM7Jy866Gc64qUIOyLpOygnCDsl4XrrLTsnZgg66qp7KCB6rO8IOydmOuvuOulvCDshKTrqoXtlZjquLDrj4Qg7Ja066C164ukLg0KDQpXb3JrTWVtb3J5IEFJ64qUIFBDIOyhsOyekeydmCDrp6Xrnb3snYQg7JeF66y07J2YIOq4sOyWtcK367aE66WYwrfqsJzshKDsnLzroZwg7Jew6rKw7ZWY64qUIOyEnOu5hOyKpOulvCDsoJzslYjtlZzri6QuIO2VmOujqOydmCDsnbzsnYQg7JeF66y0IOuLqOychOuhnCDrs7Xsm5DtlZjqs6AsIOyXrOufrCDtlITroZzqt7jrnqjsl5DshJwg7J207Ja07KeEIO2WieuPmeydhCDqsJnsnYAg66qp7KCB7J2YIOydvOuhnCDsl7DqsrDtlZjqs6DsnpAg7ZWc64ukLiDriITsoIHrkJwg6riw66Gd7JeQ7ISc64qUIOuwmOuztSDsnpHsl4Xqs7wg7JeF66y0IO2dkOumhOydhCDssL7slYQg6rCc7ISgIO2bhOuztOulvCDsoJzsi5ztlZzri6QuIOyCrOyaqeyekOqwgCDtmZXsnbjtlZwg64K07Jqp7J2AIO2PieqwgOuFuO2KuOydmCDsl4XrrLTCt+q4sOyXrCDsgqzroYDroZwg7LaV7KCB7ZWY6rOgLCDtlYTsmpTtlZwg6rK97JqwIOyXheustCDsnbzsp4Drgpgg7KO86rCEwrfsm5TqsIQg67O06rOg7JeQ64+EIOyerOyCrOyaqe2VoCDsiJgg7J6I6rKMIO2VnOuLpC4NCg0K7KCB7JqpIOuMgOyDgeydgCBQQ+ulvCDsgqzsmqntlZjripQg7JeF66y0IOyghOuwmOycvOuhnCDshKTsoJXtlZzri6QuIO2VtOy7pO2GpOyXkOyEnOuKlCDrjIDtkZwg7JeF66y0IOyLnOuCmOumrOyYpOyZgCDtlITroZzqt7jrnqgg7KGw7ZWp7J2EIOygle2VtCDquLDroZ0g7IiY7KeRwrfsoIDsnqXrtoDthLAgQUkg7JeF66y0IOu2hOulmCwg67CY67O1IO2MqO2EtCDrsJzqsqwsIO2PieqwgOuFuO2KuOyaqSDsgqzroYAg7KCV66as6rmM7KeAIOydtOyWtOyngOuKlCDtlITroZzthqDtg4DsnoXsnYQg6rCc67Cc7ZWgIOqzhO2ajeydtOuLpC4g66qo7Zi47ZWcIOyXheustOuKlCDsgqzsmqnsnpDqsIAg7Ken6rKMIOyImOygle2VmOqxsOuCmCDtmZXsnbjtlZjrj4TroZ0g7ISk6rOE7ZWc64ukLg0KDQoyLiDsoJzslYjtlZwg7JWE7J2065SU7Ja066W8IOyLpO2YhO2VmOq4sCDsnITtlbQgQUnrpbwg7Ja065a76rKMIO2ZnOyaqe2VoCDqs4Ttmo3snbjqsIDsmpQ/DQoNCuKRoCDtnanslrTsp4Qg7ZaJ64+Z7J2EIOyXheustOuhnCDrs7Xsm5A6IOKAnOyYpOuKmCDrgrTqsIAg7ZWcIOydvOKAnQ0KDQrtgqTrs7Trk5zCt+uniOyasOyKpCDsobDsnpEsIOyCrOyaqSDspJHsnbgg7ZSE66Gc6re4656o6rO8IOusuOyEnMK37Y6Y7J207KeALCDsobDsnpEg64yA7IOBLCDrsJzsg50g7Iuc6rCB7J2EIO2VqOq7mCDrtoTshJ3tlbQg6rSA66CoIOq4sOuhneydhCDsl4XrrLQg7ZuE67O066GcIOustuuPhOuhnSDtlaAg6rOE7ZqN7J2064ukLiDtgqQg7J6F66ClIO2an+yImOuCmCDrp4jsmrDsiqQg7KKM7ZGc7JeQIOuNlO2VtCDshKDtg53Ct+yeheugpcK37YG066atIOuMgOyDgeydmCDrp6Xrnb3snYQg7Zmc7Jqp7ZW0LCDsl6zrn6wg7ZSE66Gc6re4656o7JeQ7IScIOydtOyWtOynhCDsnpHsl4XsnZgg66qp7KCB7J2EIO2VtOyEne2VmOqzoOyekCDtlZzri6QuDQoNCuuLpOydjOydgCDquLDriqXsnYQg7ISk66qF7ZWY6riwIOychO2VnCDqsIDsg4HsnZgg6riw66Gd7J2064ukLg0KDQrqtIDsuKHrkJwg6riw66GdOiBFeGNlbOydmCDigJjtlITroZzsoJ3tirggQeKAmSDsnpDro4zsl5DshJwg67KU7JyEIOyEoO2DncK367O17IKsDQpBSeqwgCDsoJzslYjtlZjripQg7JeF66y0IO2bhOuztDog7ZSE66Gc7KCd7Yq4IEEg7J6Q66OMIOy3qO2VqSDtm4Trs7QNCg0K6rSA7Lih65CcIOq4sOuhnTog67iM65287Jqw7KCA7JeQ7IScIOKAmO2UhOuhnOygne2KuCBB4oCZIOq0gOugqCDsoJXrs7Trpbwg7KGw7ZqMDQpBSeqwgCDsoJzslYjtlZjripQg7JeF66y0IO2bhOuztDog7JWe7ISgIOyekOujjOyZgCDqtIDroKjrkJwg7KCV67O0IO2ZleyduCDtm4Trs7QNCg0K6rSA7Lih65CcIOq4sOuhnTog66y47IScIO2OuOynkeq4sOyXkOyEnCDigJjtlITroZzsoJ3tirggQeKAmSDrgrTsmqnsnYQg7J6F66Cl7ZWY6rOgIO2RnOulvCDsoJXrpqwNCkFJ6rCAIOygnOyViO2VmOuKlCDsl4XrrLQg7ZuE67O0OiDsl6zrn6wg64+E6rWs7J2YIOyekeyXheydtCDsnbTslrTsp4Qg7ZSE66Gc7KCd7Yq4IEEg7J6Q66OMIOyekeyEsSDtm4Trs7QNCg0K7IKs7Jqp7J6Q64qUIOyXsOqysOuQnCDquLDroZ3snYQg67O06rOgIOKAmO2UhOuhnOygne2KuCBBIOyekOujjCDsnpHshLHigJnsnbTrnbzripQg7ZWY64KY7J2YIOyXheustOuhnCDtmZXsnbjtlZjqsbDrgpgsIOyemOuquyDsl7DqsrDrkJwg7ZWt66qp7J2EIOygnOyZuO2VoCDsiJgg7J6I64ukLiDsl4XrrLTripQg7J6Q66OMIOyekeyEscK367aE7ISdwrfqsJzrsJzCt+qygO2GoMK37ZiR7JeFIOuTsSDrqqnsoIHsl5Ag65Sw6528IOu2hOulmO2VmOqzoCwg7IKs7Jqp7J6Q6rCAIOydtOumhOqzvCDrtoTrpZjrpbwg7IiY7KCV7ZWgIOyImCDsnojqsowg7ZWc64ukLiDtlZjro6jsnZgg7JeF66y0IOuqqeuhneydhCDrqLzsoIAg67O07Jes7KO86rOgIOq3vOqxsOuKlCDtlYTsmpTtlaAg65WMIO2OvOy5mOuPhOuhnSDshKTqs4TtlZzri6QuIOyXrOufrCDrsojsnZgg7J6F66ClIOyImOygleqzvCDtgbTrpq3snYQg6rOn67CU66GcIOyXrOufrCDqsbTsnZgg7JeF66y066GcIOyEuOyngCDslYrripTri6QuDQoNCkFJ7J2YIO2VteyLrCDsl63tlaDsnYAg7J6R7JeF7J2YIOunpeudveqzvCDrqqnsoIHsnYQg7ZWo6ruYIO2VtOyEne2VmOuKlCDqsoPsnbTri6QuIEV4Y2Vs7J2YIOyekOujjCDst6jtlanqs7wg66y47IScIO2OuOynkeq4sOydmCDtkZwg7KCV66as66W8IO2VmOuCmOydmCDsnpDro4wg7J6R7ISxIOyXheustOuhnCDsl7DqsrDtlZjqs6AsIOqwmeydgCDtlITroZzsoJ3tirgg7J2066aE7J20IOyeiOyWtOuPhCDigJjqsJzrsJwg7Jik66WYIOyImOygleKAmeydgCDrs4Trj4Qg66qp7KCB7J2YIOyXheustOuhnCDqtazrtoTtlZjrj4TroZ0g7ZWc64ukLiDtlITroZzqt7jrnqjrs4Qg7IKs7JqpIOyLnOqwhCDsp5Hqs4Trgpgg6rO17Ya1IOuLqOyWtOunjOycvOuhnCDrrLbsnYAg6rKw6rO87JmAIOu5hOq1kO2VtCDsl4XrrLQg7J2Y66+466W8IOyemCDrs7Xsm5DtlZjripTsp4Ag6rKA7Kad7ZWgIOqzhO2ajeydtOuLpC4NCg0K4pGhIOu5oOucqOumsCDsnbzqs7wg7J247Iud7ZWY7KeAIOuqu+2WiOuNmCDrsJjrs7Ug7JeF66y0IOuwnOqyrDog4oCc7J2065+wIOydvOydhCDqs4Tsho3tlZjqs6Ag7J6I7JeI64Sk7JqU4oCdDQoNCuuwnOqyrOydgCDrkZAg64uo6rOE66GcIOygnOqzte2VmOqzoOyekCDtlZzri6QuIOuovOyggCDrs7Xsm5DrkJwg7JeF66y0IOuqqeuhneyXkOyEnCDsnorqs6Ag7J6I642YIOyekOujjCDtmZXsnbjCt+qygO2GoMK37ZiR7JeFIOuTseydhCDrlqDsmKzrprDri6QuIOuLpOydjOycvOuhnCDqsJzrs4Qg7KGw7J6R7Jy866Gc66eMIOyXrOqyvOuNmCDtlonrj5nsnbQg7Ja065akIOuwmOuztSDsl4XrrLTrpbwg7J2066Oo64qU7KeAIO2ZleyduO2VnOuLpC4g64uk7J2M7J2AIOyXrOufrCDrgqDsnZgg6rCA7IOBIOq4sOuhneqzvCDsgqzsmqnsnpAg7ZmV7J247J2EIOyghOygnOuhnCDtlZwg7JiI7IOBIOqysOqzvOusvOydtOuLpC4NCg0K64uo6rOEOiDsgqzsmqnsnpDqsIAg6riw7Ja17ZWcIOydvA0K7IKs7Jqp7J6Q7JeQ6rKMIOuztOydtOuKlCDrgrTsmqk6IOKAmO2UhOuhnOygne2KuCDsnpDro4wg7J6R7ISx4oCZDQoNCuuLqOqzhDog6riw66Gd7JeQ7IScIOuzteybkO2VnCDsnbwNCuyCrOyaqeyekOyXkOqyjCDrs7TsnbTripQg64K07JqpOiDsl6zrn6wg7YyM7J287JeQ7IScIOyekOujjCDst6jtlaksIOyLnOyKpO2FnCDsobDtmowsIOusuOyEnOydmCDtkZzCt+2YleyLnSDsoJXrpqwNCg0K64uo6rOEOiDsgqzsmqnsnpDqsIAg7ZmV7J247ZWcIOyXheustA0K7IKs7Jqp7J6Q7JeQ6rKMIOuztOydtOuKlCDrgrTsmqk6IOyEnOuhnCDri6Trpbgg7J6Q66OMIOyekeyEsSDqs7zsoJXsl5DshJwg67mE7Iq37ZWcIOKAmOyekOujjCDst6jtlanCt+yEnOyLnSDrp57stqTigJnsnYQgM+2ajCDsiJjtlokNCg0K64uo6rOEOiDsg4jroa3qsowg7JWM6rKMIOuQnCDsoJANCuyCrOyaqeyekOyXkOqyjCDrs7TsnbTripQg64K07JqpOiDsl6zrn6wg7ZSE66Gc6re4656oIOyCrOydtOyXkOyEnCDrjbDsnbTthLDrpbwg7Jiu6riw6rOgIO2YleyLneydhCDrp57stpTripQg7IiY7J6R7JeF7J20IOuwmOuzteuQmOqzoCDsnojsnYwNCg0K64uo6rOEOiDqsJzshKDqs7wg6riw66Gd7JeQIO2ZnOyaqQ0K7IKs7Jqp7J6Q7JeQ6rKMIOuztOydtOuKlCDrgrTsmqk6IO2RnOykgCDslpHsi53Ct+yekOujjCDst6jtlakg7J6Q64+Z7ZmU66W8IOqygO2GoO2VoCDtm4Trs7TroZwg64Ko6riw6rOgLCDsiJjtlontlZwg7JeF66y064qUIO2PieqwgOuFuO2KuOyaqSDsgqzroYDroZwg7LaV7KCBDQoNCuydtCDruYTqtZAg66qp66Gd7J2AIOuwnOqyrOydhCDshKTrqoXtlZjqs6Ag7Zqo6rO866W8IOqygOymne2VmOq4sCDsnITtlZwg7J6Q66OM64ukLiDsi6TsoJwg7IKs7JqpIOuVjCDrp6Tsnbwg6riw7Ja17Jy866GcIOyekeyEse2VnCDrs4Trj4Qg7J287KeA66W8IOyalOq1rO2VmOyngCDslYrripTri6QuDQoNCu2ZleyduOuQnCDsl4XrrLTqsIAg64iE7KCB65CY66m0IEFJ6rCAIOu5hOyKt+2VnCDrqqnsoIHqs7wg7Iic7ISc6rCAIOuwmOuzteuQmOuKlCDtnZDrpoTsnYQg7LC+7JWEIOqwnOyEoCDtm4Trs7Trpbwg7KCc7Iuc7ZWY64+E66GdIO2VoCDqs4Ttmo3snbTri6QuIOyYiOulvCDrk6TslrQg4oCc7Jes65+sIO2MjOydvOydmCDqsJLsnYQg7Jiu6riw6rOgIOqwmeydgCDtmJXsi53snLzroZwg7KCV66as7ZWY64qUIO2dkOumhOydtCDrsJjrs7XrkJDsirXri4jri6QuIOqzte2GtSDthZztlIzrpr/snbTrgpgg7J6Q64+ZIOy3qO2VqeydhCDqsoDthqDtlbTrs7zquYzsmpQ/4oCd65286rOgIOygnOyViO2VnOuLpC4g6rCc67CcwrfrtoTshJ3Ct+usuOyEnCDsnpHshLHCt+yLnOyKpO2FnCDsmrTsmIEg65OxIOqwgSDsl4XrrLTsl5DshJzrj4Qg67CY67O165CY64qUIOykgOu5hMK37ZmV7J24wrfsoJXrpqwg6rO87KCV7J2EIOywvuyVhOuzvCDsiJgg7J6I64ukLiDslrTrlqQg7JeF66y065Ok7J20IOq3vOqxsOyduOyngOyZgCDrrLbsnYAg7J207Jyg66W8IO2ZleyduO2VmOqzoCDsnpjrqrsg7Jew6rKw65CcIO2VreuqqeydgCDsoJzsmbjtlaAg7IiYIOyeiOqyjCDtlZzri6QuDQoNCuybkOyLnCDsnbTrsqTtirjsnZgg67CY67O16rO8IOyLpOygnCDsl4XrrLTsnZgg67CY67O17J2EIOq1rOu2hO2VnOuLpC4g67CY67O1IO2an+yImOuKlCDsgqzsmqnsnpDqsIAg7ZmV7J247ZWcIOyXheustCDri6jsnITrpbwg6riw7KSA7Jy866GcIOynkeqzhO2VmOupsCwg7JWE7KeBIO2ZleyduO2VmOyngCDslYrsnYAg66y27J2M7J2AIO2bhOuztOuhnCDtkZzsi5ztlZzri6QuIOqwnOyEoCDsoJzslYjsnYAg7JeF66y066W8IOuwlOq/lOuzvCDqsIDshKTroZwg7KCc6rO17ZWY6rOgLCDsoIjqsJAg7Iuc6rCE7J2064KYIO2aqOqzvOuKlCDsi6TsoJwg7KCB7JqpIO2bhCDtmZXsnbjtlZzri6QuDQoNCuKRoiDqsJnsnYAg6riw7Ja17J2EIO2PieqwgOuFuO2KuOyZgCDtlYTsmpTtlZwg67O06rOg7JeQIO2ZnOyaqTog4oCc6re464+Z7JWIIOuCtOqwgCDtlZwg7J284oCdDQoNCuyCrOyaqeyekOqwgCDtmZXsnbjtlZwg7JeF66y066W8IOq4sOqwhMK37ZSE66Gc7KCd7Yq4wrfsl4XrrLQg7Jyg7ZiV67OE66GcIOuqqOycvOqzoCwg7Y+J6rCA64W47Yq47JeQIO2ZnOyaqe2VoCDsl4XrrLTCt+q4sOyXrCDsgqzroYDrpbwg7KCV66as7ZWY64+E66GdIO2VoCDqs4Ttmo3snbTri6QuIOyCrOyaqeyekOqwgCDsi6TsoJwg6rKw6rO87JmAIOq4sOyXrOulvCDrs7TsmYTtlZjrqbQg7J2066W8IOuwmOyYge2VtCDstIjslYjsnYQg7J6R7ISx7ZWc64ukLiDso7zqsITCt+yblOqwhCDrs7Tqs6DripQg7JeF66y07JeQIOuUsOudvCDshKDtg53tlaAg7IiYIOyeiOuKlCDtmZzsmqkg67Cp7Iud7Jy866GcIOuRlOuLpC4NCg0K6rKw6rO866y8OiDsnbzsnbwg7JeF66y0IOygleumrA0K7KCV66as7ZWgIOuCtOyaqTog7Jik64qYIOyImO2Wie2VnCDsl4XrrLTsmYAg67aE66WYLCDqtIDroKgg6riw66GdLCDtmZXsnbjtlaAg7ZWt66qpDQrsgqzsmqnsnpDsl5Dqsowg7KCc6rO17ZWY64qUIOqwgOy5mDog7ZWY66Oo66W8IOyeiuq4sCDsoITsl5Ag7Ken6rKMIO2ZleyduO2VmOqzoCDsiJjsoJUNCg0K6rKw6rO866y8OiDtj4nqsIDrhbjtirjsmqkg7JeF66y0wrfquLDsl6wg7IKs66GADQrsoJXrpqztlaAg64K07JqpOiDshKDtg50g6riw6rCE7J2YIOyImO2WiSDsl4XrrLQsIOyCrOyaqeyekOqwgCDtmZXsnbjtlZwg6rKw6rO8wrfquLDsl6wsIOqwnOyEoCDsi5zrj4TsmYAg6re86rGwDQrsgqzsmqnsnpDsl5Dqsowg7KCc6rO17ZWY64qUIOqwgOy5mDog7Y+J6rCA64W47Yq4IOyekeyEsSDsi5wg6riw7Ja17J2EIOuLpOyLnCDrqqjsnLzripQg67aA64u0IOqwkOyGjA0KDQrqsrDqs7zrrLw6IOuwmOuztSDsnpHsl4Ug7J247IKs7J207Yq4DQrsoJXrpqztlaAg64K07JqpOiDruYTsirftlZwg66qp7KCBwrfsiJzshJzsnZgg7JeF66y0LCDrsJjrs7XrkJwg7IiY7J6R7JeFLCDqsJzshKAg7ZuE67O0DQrsgqzsmqnsnpDsl5Dqsowg7KCc6rO17ZWY64qUIOqwgOy5mDog7ZGc7KSA7ZmUwrfsnpDrj5ntmZTrpbwg6rKA7Yag7ZWgIOuLqOyEnCDsoJzqs7UNCg0K6rKw6rO866y8OiDshKDtg53soIEg7KO86rCEwrfsm5TqsIQg67O06rOgDQrsoJXrpqztlaAg64K07JqpOiDri7Tri7kg7JeF66y07JeQIO2VhOyalO2VnCDquLDqsITrs4Qg7KeE7ZaJIOuCtOyaqeqzvCDsnbTsiogNCuyCrOyaqeyekOyXkOqyjCDsoJzqs7XtlZjripQg6rCA7LmYOiDqsJnsnYAg6riw66Gd7J2EIOyngeustOuzhCDrs7Tqs6Dsl5Ag7J6s7IKs7JqpDQoNCu2VtOy7pO2GpOyXkOyEnOuKlCDsl4XrrLQg7Lm065OcLCDqt7zqsbDqsIAg7Jew6rKw65CcIO2PieqwgOuFuO2KuOyaqSDsgqzroYAg7LSI7JWIIO2VnCDsooXrpZgsIOuwmOuztSDtnZDrpoTqs7wg6rCc7ISgIO2bhOuztCDtlZwg6rCc66W8IO2VteyLrCDqsrDqs7zrrLzroZwg6rWs7ZiE7ZWgIOqzhO2ajeydtOuLpC4g7Ken7J2AIOyLnOyXsOyXkOyEnOuKlCDsi6TsoJwg6rSA7Lih7ZWcIOyXheustOyZgCDrs7TsmYTtlaAg64K07Jqp7J2EIOuztOyXrOyjvOqzoCwg7J6l6riwIOy2leyggeydmCDrqqjsirXsnYAg67OE64+E7J2YIOqwgOyDgSDriITsoIEg7J6Q66OM66GcIOyEpOuqhe2VnOuLpC4g7Y+J6rCA64W47Yq4IOyghOyytCDshJzsi53qs7wg7KO86rCEwrfsm5TqsIQg67O06rOgIOyEnOyLneydgCDtmZXsnqUg7ZWt66qp7Jy866GcIOuRlOuLpC4NCg0K7LSI7JWI7J2YIOyXheustCDtla3rqqnrp4jri6Qg6rSA66CoIOy5tOuTnOyZgCDsm5Drs7gg6re86rGw66W8IOyXsOqysO2VoCDqs4Ttmo3snbTri6QuIOyZhOujjCDsl6zrtoAsIO2VtOqysCDqsrDqs7zsmYAg7Iuk7KCcIOq4sOyXrOuKlCDsgqzsmqnsnpDqsIAg7ZmV7J247ZWY6rGw64KYIOy2lOqwgCDsnpDro4zqsIAg7J6I7J2EIOuVjCDtj6ztlajtlZzri6QuIOu2gOyhse2VnCDsoJXrs7TripQg67O07JmEIO2VreuqqeycvOuhnCDrgqjquLTri6QuIOydvOyDgeyggeyduCDqsoDthqDripQg7JeF66y0IOydtOumhOqzvCDrtoTrpZjrpbwg7ZmV7J247ZWY64qUIOyImOykgOycvOuhnCDsi5zsnpHtlZjqs6AsIOqysOqzvMK36riw7JesIOyEpOuqheydgCDtj4nqsIDrhbjtirgg7J6R7ISx7JeQIO2VhOyalO2VnCDsi5zsoJDsl5Ag67O07JmE7ZWgIOyImCDsnojqsowg7ZWc64ukLg0KDQrikaMgQUkg7ZW07ISd7J2EIO2ZleyduCDqsIDriqXtlZwg6rKw6rO866GcIOygnOqztQ0KDQrsspjrpqwg7Z2Q66aE7J2AIFBDIOyhsOyekcK366el6529IOq4sOuhnSDihpIg7JeF66y0IOuzteybkMK367aE66WYIOKGkiDsgqzsmqnsnpAg7ZmV7J24wrfsiJjsoJUg4oaSIOuwmOuztSDtnZDrpoQg67aE7ISdIOKGkiDtj4nqsIDrhbjtirjCt+2VhOyalO2VnCDrs7Tqs6Dsl5Ag7Zmc7Jqp7Jy866GcIOyEpOqzhO2VnOuLpC4g6rG07IiYwrfrgqDsp5wg65Ox7J2AIOy9lOuTnOuhnCDqs4TsgrDtlZjqs6AsIEFJ64qUIOuqqeyggeyXkCDrlLDrpbgg7JeF66y0IOustuydjMK367aE66WYwrfsmpTslb3Ct+qwnOyEoCDtm4Trs7TCt+usuOyEnCDstIjslYjsnYQg7IOd7ISx7ZWY64+E66GdIOyXre2VoOydhCDrgpjriIjri6QuIOyCrOyaqeyekOydmCDsiJjsoJUg64K07Jqp7J2AIOydtO2bhCDrtoTshJ3qs7wg7LSI7JWI7J2YIOq4sOykgOycvOuhnCDsnKDsp4DtlaAg6rOE7ZqN7J2064ukLg0KDQrqtaztmITsl5DripQg7YKk67O065Ocwrfrp4jsmrDsiqQg7J2067Kk7Yq4IOyImOynkeqzvCDsoJHqt7zshLEgQVBJ66W8IO2ZnOyaqe2VtCDsobDsnpHsnZgg7Iuc6rCBwrfrjIDsg4Hqs7wg7JWxwrfrrLjshJwg7KCE7ZmYIOunpeudveydhCDsl7DqsrDtlZjripQg67Cp7JWI7J2EIOqzhO2aje2VnOuLpC4g7ZSE66Gc6re4656o67OEIOyEuOu2gCDsoJXrs7TqsIAg7ZWE7JqU7ZWY66m0IOu4jOudvOyasOyggCDtmZXsnqXsnbTrgpgg7JWxIOyXsOuPmeydhCDrs7TsmYQg7IiY64uo7Jy866GcIO2ZnOyaqe2VnOuLpC4g66Gc7LusIERC7JmAIOyXheustCDsubTrk5wg7ZmU66m07JeQ7IScIOq4sOuhneqzvCDsgqzsmqnsnpAg7ZmV7J247J2EIOq0gOumrO2VmOqzoCwgTExNIEFQSeuhnCDsl4XrrLQg67aE66WYwrfrsJjrs7Ug7Yyo7YS0wrfqsJzshKAg7ZuE67O0wrftj4nqsIDrhbjtirjsmqkg7LSI7JWI7J2EIOyDneyEse2VoCDsmIjsoJXsnbTri6QuIOyImOynkSDrqqjrk4jsnYAg7Jq07JiB7LK07KCc7JmAIOyVseuzhOuhnCDrtoTrpqztlbQg7KeA7JuQIOuylOychOulvCDrhJPtmIDqsIgg7IiYIOyeiOuPhOuhnSDshKTqs4TtlZzri6QuDQoNCuq4sOuhneyXkOuKlCDqtIDsuKEg6rCA64ql7ZWcIOygleuztOyZgCDsiJjsp5HtlZjsp4Ag66q77ZWcIOuylOychOulvCDtlajqu5gg64Ko6riw6rOgLCBBSeqwgCDqtIDsuKHtlZwg7ZaJ64+Z6rO8IOyXheustOyXkCDrjIDtlZwg7ZW07ISd7J2EIOq1rOu2hO2VmOuPhOuhnSDtlaAg6rOE7ZqN7J2064ukLiDsmIjrpbwg65Ok7Ja0IOKAmOyggOyepeKAmSDtgbTrpq3snYQg7LWc7KKFIOyKueyduOycvOuhnCwg7J6F66Cl65+J7J2EIOq4sOyXrCDsiJjspIDsnLzroZwg7ZW07ISd7ZWY7KeAIOyViuqyjCDtlZzri6QuIOyXheustOuzhCDsi5zqsITsnYAg6rSA66CoIOq1rOqwhOydhCDsl7DqsrDtlaAg7IiYIOyeiOuKlCDqsr3smrDsl5Drp4wg6re86rGw7JmAIO2VqOq7mCDstpTsoJXtlZjripQg7ISg7YOdIOq4sOuKpeycvOuhnCDqsoDthqDtlZzri6QuDQoNCjMuIO2VtOy7pO2GpCAy7J28IOuPmeyViCDqtaztmITtlbQg67O06rOgIOyLtuydgCDso7zsmpQg6riw64ql7J2AIOustOyXh+yduOqwgOyalD8NCg0KMuydvCDrj5nslYggUEMg7J6R7JeFIOq4sOuhnSDsiJjsp5Eg4oaSIOyXheustCDrs7Xsm5DCt+u2hOulmCDihpIg67CY67O1IO2dkOumhCDrsJzqsqwg4oaSIO2PieqwgOuFuO2KuOyaqSDsgqzroYAg7KCV66as66GcIOydtOyWtOyngOuKlCDtlITroZzthqDtg4DsnoXsnYQg6rCc67Cc7ZWY6rOg7J6QIO2VnOuLpC4g64yA7ZGcIOyLnOuCmOumrOyYpOuKlCDigJjsiqTtlITroIjrk5zsi5ztirgg7J6Q66OMIOy3qO2VqSDihpIg67iM65287Jqw7KCAIOygleuztCDtmZXsnbgg4oaSIOusuOyEnCDsoJXrpqzigJnsspjrn7wg7Jes65+sIO2UhOuhnOq3uOueqOydhCDsmKTqsIDripQg7JeF66y066GcIOyeoeuKlOuLpC4g7ZW07Luk7Yak7JeQ7ISc64qUIOyImOynkSDqsIDriqXshLHsnYQg7ZmV7J247ZWcIOuRkCDqsJwg7J207IOB7J2YIO2UhOuhnOq3uOueqOyXkOyEnCDsp6fsnYAg7J6R7JeF7J2EIOyLnOyXsO2VmOqzoCwg7JWx67OEIOq0gOy4oSDrspTsnITrpbwg7ZGc7Iuc7ZWgIOqzhO2ajeydtOuLpC4NCg0K7Jqw7ISg7Iic7JyEOiDtlYTsiJgNCuq1rO2YhCDtla3rqqk6IFBDIOyhsOyekcK366el6529IOyImOynkeqzvCDsoIDsnqUNCuyZhOujjCDquLDspIA6IOyEoOygle2VnCDtlITroZzqt7jrnqjsl5DshJwg7J6F66ClwrftgbTrpq3Ct+yVsSDsoITtmZgg66el65297J2EIOyImOynke2VmOqzoCDroZzsu6zsl5DshJwg7JuQ67O4IOyhsO2ajA0KDQrsmrDshKDsiJzsnIQ6IO2VhOyImA0K6rWs7ZiEIO2VreuqqTog7JeF66y0IOuzteybkMK367aE66WYIOy5tOuTnA0K7JmE66OMIOq4sOykgDog7Jes65+sIO2UhOuhnOq3uOueqOydmCDqtIDroKgg6riw66Gd7J2EIOyXheustCDtm4Trs7TroZwg7Jew6rKw7ZWY6rOgIOu2hOulmMK36re86rGwIOygnOyLnA0KDQrsmrDshKDsiJzsnIQ6IO2VhOyImA0K6rWs7ZiEIO2VreuqqTog6rCE64uo7ZWcIOqygO2GoMK37ZmV7J24IOyggOyepQ0K7JmE66OMIOq4sOykgDog7J2066aEwrfrtoTrpZgg7IiY7KCVLCDsnpjrqrvrkJwg7Jew6rKwIOygnOyZuCwg7ISg7YOdIOy5tOuTnCDtmZXsnbjqs7wg7IiY7KCVIOuCtOyaqSDsnKDsp4ANCg0K7Jqw7ISg7Iic7JyEOiDtlYTsiJgNCuq1rO2YhCDtla3rqqk6IOuwmOuztSDtnZDrpoTqs7wg6rCc7ISgIO2bhOuztCDtlZwg6rCcDQrsmYTro4wg6riw7KSAOiDsi6TsoJwg7YWM7Iqk7Yq4IOyekeyXheyXkOyEnCDrsJjrs7Ug7Yyo7YS06rO8IOq3vOqxsOulvCDrs7Tsl6zso7zqs6Ag7YWc7ZSM66a/wrfsnpDrj5ntmZQg65OxIOqygO2GoCDtm4Trs7Qg7KCc7JWIDQoNCuyasOyEoOyInOychDog7ZWE7IiYDQrqtaztmIQg7ZWt66qpOiDtj4nqsIDrhbjtirjsmqkg7JeF66y0IOyCrOuhgCDstIjslYgNCuyZhOujjCDquLDspIA6IO2ZleyduO2VnCDsl4XrrLTsmYAg7IKs7Jqp7J6QIOuztOyZhCDrgrTsmqnsnLzroZwg7LSI7JWIIOyDneyEsSwg6re86rGwIOyXtOq4sMK37IiY7KCVwrfsoIDsnqXCt+2FjeyKpO2KuCDrgrTrs7TrgrTquLANCg0K7Jqw7ISg7Iic7JyEOiDtmZXsnqUNCuq1rO2YhCDtla3rqqk6IOuztOqzoCDshJzsi53qs7wg7KeA7JuQIO2ZmOqyvSDtmZXrjIANCuyZhOujjCDquLDspIA6IOyjvOqwhMK37JuU6rCEIOuztOqzoCwg7Y+J6rCA64W47Yq4IOyghOyytCDshJzsi50sIOqzoOq4iSDtjrjsp5Hqs7wg64uk7JaR7ZWcIOyVscK37Jq07JiB7LK07KCcIOyngOybkA0KDQox7J28IOywqCDsmKTsoITsl5DripQg7Iuc7JewIO2ZmOqyveqzvCDtlITroZzqt7jrnqgg7KGw7ZWp7J2EIOygle2VmOqzoCwg7YKk67O065Ocwrfrp4jsmrDsiqQg7J2067Kk7Yq47JmAIOygkeq3vOyEsSDsoJXrs7Trpbwg7Zmc7Jqp7ZWcIOy1nOyGjCDsiJjsp5HCt+yggOyepeydhCDqtaztmITtlaAg6rOE7ZqN7J2064ukLiDsmKTtm4Tsl5DripQgTExNIEFQSeulvCDsl7DqsrDtlbQg7JeF66y0IO2bhOuztMK367aE66WY7JmAIOqwhOuLqO2VnCDsiJjsoJXCt+2ZleyduCDquLDriqXsnYQg6rCc67Cc7ZWc64ukLiAy7J28IOywqOyXkOuKlCDsp6fsnYAg67CY67O1IOyekeyXheyXkOyEnCDtjKjthLTqs7wg6rCc7ISgIO2bhOuztOulvCDsoJzsi5ztlZjqs6AsIO2PieqwgOuFuO2KuOyaqSDsgqzroYAg7LSI7JWI6rO8IOq3vOqxsCDsl7TquLDCt+uCtOuztOuCtOq4sOulvCDqtaztmITtlZzri6QuIOyImOynke2VnCDsoJXrs7Trp4zsnLzroZwg7JeF66y0IOydmOuvuOqwgCDrk5zrn6zrgpjsp4Ag7JWK7Jy866m0IOyekeyXhSDsi5zrgpjrpqzsmKTsmYAg66el6529IOyImOynkSDrsKnrspXsnYQg7KGw7KCV7ZWgIOyYiOygleydtOuLpC4NCg0K7Ken7J2AIOyLnOyXsCDsnpDro4zsl5DripQg7Iuk7KCcIOyImOynke2VnCDrgqDsp5zCt+2UhOuhnOq3uOueqMK367KU7JyE66W8IO2RnOyLnO2VmOqzoCwg7Y+J6rCA6riw6rCEIOyghOyytOulvCDquLDroZ3tlZwg6rKD7LKY65+8IOygnOyLnO2VmOyngCDslYrripTri6QuIOyepeq4sCDriITsoIHqs7wg64uk7JaR7ZWcIOyngeustOydmCDtmZzsmqkg66qo7Iq17J2AIOuzhOuPhOuhnCDspIDruYTtlZwg6rCA7IOBIOyekOujjOuhnCDshKTrqoXtlaAg6rOE7ZqN7J2064ukLiDri6TslpHtlZwg7JWx6rO8IOyatOyYgeyytOygnOydmCDtmLjtmZjshLEsIO2VmOujqCDsl7Dsho0g6riw66GdLCDsoJXquLAg7J6Q64+ZIOyDneyEseqzvCDsl7DqsIQg66qp7ZGcIOyXsOqysOydgCDtm4Tsho0g6rWs7ZiEwrfqsoDspp0g64yA7IOB7Jy866GcIOuRlOuLpC4NCg0K6rWs7ZiEIO2bhOyXkOuKlCDri6TsnYwg7Iic7ISc66GcIOyLnOyXsO2VoCDqs4Ttmo3snbTri6QuDQoNCjEuIO2PieyGjOyymOufvCDsnpHsl4U6IOq4sOuwgCDsl4bripQg7YWM7Iqk7Yq4IOyekOujjOuhnCDsiqTtlITroIjrk5zsi5ztirjCt+u4jOudvOyasOyggMK366y47IScIO2OuOynkeq4sCDspJEg7ISg7KCV7ZWcIO2UhOuhnOq3uOueqOydhCDsmKTqsIDrqbAg7J287ZWc64ukLiDri6Trpbgg66qp7KCB7J2YIOyekeyXheuPhCDshJ7ripTri6QuDQoyLiDrsJzqsqzsnZgg7KCE7ZuEIOu5hOq1kDog7Iuc7Jew7J6Q6rCAIOq4sOyWteycvOuhnCDsoIHsnYAg66qp66Gd6rO8IOyLpOygnCDquLDroZ3sl5DshJwgQUnqsIAg67O17JuQ7ZWcIOyXheustCDtm4Trs7Trpbwg64KY656A7Z6IIOuztOyXrOykgOuLpC4g6rOE7ZqN65CcIOyLnOyXsOydmCDruYTqtZDsnoTsnYQg67Cd7Z6M64ukLg0KMy4g7Ken6rKMIO2ZleyduDog7J6Y66q7IOyXsOqysOuQnCDtla3rqqnsnYQg7KCc7Jm47ZWY6rGw64KYIOydtOumhMK367aE66WY66W8IOqzoOy5nCDrkqQg7JeF66y0IOy5tOuTnOulvCDtmZXsnbjtlZzri6QuIOybkOuzuOydgCDtlYTsmpTtlZwg7Lm065Oc7JeQ7ISc66eMIOyXsOuLpC4NCjQuIOuwmOuztSDsnpHsl4Ug67Cc6rKsOiDqsJnsnYAg7J6Q66OMIOy3qO2VqcK37ISc7IudIOunnuy2pCDrk7HsnYQg67CY67O17ZWcIOq4sOuhneyXkOyEnCDtjKjthLTqs7wg7ZGc7KSA7ZmUwrfsnpDrj5ntmZQg6rKA7YagIO2bhOuztOulvCDrs7Tsl6zspIDri6QuDQo1LiDtj4nqsIDrhbjtirjsl5Ag7Zmc7JqpOiDtmZXsnbjtlZwg7JeF66y066GcIOyCrOuhgCDstIjslYjsnYQg66eM65Ok6rOgLCDsi6TsoJwg6rKw6rO8wrfquLDsl6zrpbwg67O07JmE7ZWgIO2VreuqqeqzvCDsm5Drs7gg6re86rGw66W8IO2VqOq7mCDrs7Tsl6zspIDri6QuIOyepeq4sCDstpXsoIHsnZgg66qo7Iq17J2AIOuzhOuPhCDqsIDsg4Eg7J6Q66OM66GcIOyEpOuqhe2VnOuLpC4NCg0KNC4g7J20IOyVhOydtOuUlOyWtOydmCDso7zsmpQg7IKs7Jqp7J6Q64qUIOuIhOq1rOydtOupsCwg7Ja065akIOq4sOuMgO2aqOqzvOqwgCDsnojrgpjsmpQ/DQoNCuyjvOyalCDrjIDsg4Eg7IKs7Jqp7J6Q64qUIFBD66GcIOydvO2VmOupsCDtj4nqsIDrhbjtirjrpbwg7J6R7ISx7ZWY64qUIFNEUyDsnoTsp4Hsm5DsnbTri6QuIOq4sO2ajcK36rCc67CcwrfrtoTshJ3Ct+yatOyYgcK37KeA7JuQIOuTsSDsp4HrrLTsmYAg7IKs7Jqp7ZWY64qUIOuPhOq1rOqwgCDri6zrnbzrj4QsIOyekOyLoOydmCDsnbzsnYQg6riw7Ja17ZWY6rOgIOyEpOuqhe2VmOupsCDrsJjrs7Ug7J6R7JeF7J2EIOqwnOyEoO2VmOugpOuKlCDtlYTsmpTsl5Ag64yA7J2R7ZWY6rOg7J6QIO2VnOuLpC4g7KO86rCE67O06rOgIOyekeyEsSDsl6zrtoDsmYAg6rSA6rOE7JeG7J20IO2ZnOyaqe2VoCDsiJgg7J6I6rOgLCDsnqXquLDsoIHsnLzroZzripQgUEProZwg7J287ZWY64qUIOuLpOyWke2VnCDsobDsp4Hqs7wg7IKs7Jqp7J6Q7JeQ6rKMIO2Zleyepe2VoCDsiJgg7J6I64qUIOyVhOydtOuUlOyWtOuLpC4NCg0K7IKs7Jqp7J6Q7J2YIOyDge2ZqTog7Ken7J2AIOyXheustOqwgCDquLDroZ3sl5DshJwg7J6Q7KO8IOu5oOynkA0K6riw64yA7Zqo6rO8OiDrr7jsspgg7KCB7KeAIOuqu+2VnCDsnbzsnYQg65ag7Jis66a0IOuLqOyEnCDsoJzqs7UNCuqygOymnSDrsKnrspU6IEFJIO2ZleyduCDsoIQg7J6R7ISx7ZWcIOyXheustCDrqqnroZ3qs7wg67mE6rWQ7ZW0IOycoOyaqe2VmOqyjCDstpTqsIDrkJwg7JeF66y0IO2ZleyduA0KDQrsgqzsmqnsnpDsnZgg7IOB7ZmpOiDsl6zrn6wg7JWx7J2YIO2WieuPmeydhCDri6Tsi5wg7KCV66as7ZW07JW8IO2VqA0K6riw64yA7Zqo6rO8OiDsl4XrrLQg66qp7KCB7JeQIOuUsOuluCDrqqnroZ3qs7wg67aE66WYIOygnOqztQ0K6rKA7KadIOuwqeuylTog7IKs7Jqp7J6QIOq4sOykgCDrqqnroZ3qs7wg7Lm065Oc7J2YIOyXsOqysMK367aE66WYIOygle2ZleyEsSDrsI8g7IiY7KCVIOu2gOuLtCDruYTqtZANCg0K7IKs7Jqp7J6Q7J2YIOyDge2ZqTog7Y+J6rCA64W47Yq4IOyekeyEsSDrlYwg7KeA64KcIOyXheustOulvCDri6Tsi5wg65ag7Jis66a8DQrquLDrjIDtmqjqs7w6IOyXheustMK36riw7JesIOyCrOuhgOyZgCDqt7zqsbDrpbwg7KeA7IaN7KCB7Jy866GcIOy2leyggQ0K6rKA7KadIOuwqeuylTog7IiY64+Z7Jy866GcIOyCrOuhgOulvCDsoJXrpqztlaAg65WM7JmAIEFJIOy0iOyViCDqsoDthqDCt+uztOyZhOq5jOyngOydmCDsi5zqsIQg67mE6rWQDQoNCuyCrOyaqeyekOydmCDsg4Htmak6IOyekOujjCDsnbTrj5nCt+yeheugpcK37ZmV7J24wrfshJzsi50g66ee7LakIOuTseydhCDrsJjrs7XtlagNCuq4sOuMgO2aqOqzvDog67CY67O1IO2dkOumhOqzvCDqsJzshKDtlaAg7JeF66y066W8IOuwnOqyrO2VoCDquLDtmowg7KCc6rO1DQrqsoDspp0g67Cp67KVOiDsgqzsmqnsnpDqsIAg7Jyg7Zqo7ZWY64uk6rOgIO2MkOuLqO2VnCDrsJjrs7Ug7Yyo7YS06rO8IOyLpO2Wie2VtOuzvCDsoJzslYgg7ZmV7J24DQoNCuyCrOyaqeyekOydmCDsg4Htmak6IOuLtOuLuSDsl4XrrLTsl5Ag65Sw6528IOyjvOqwhMK37JuU6rCEIOuztOqzoOqwgCDtlYTsmpTtlagNCuq4sOuMgO2aqOqzvDog6rCZ7J2AIOyXheustCDquLDslrXsnYQg7ZWE7JqU7ZWcIOyEnOyLneycvOuhnCDsnqzsgqzsmqkNCuqygOymnSDrsKnrspU6IOqwgSDsp4HrrLTsnZgg67O06rOg7JeQIO2VhOyalO2VnCDrs7TsmYTrn4nqs7wg7J6R7ISxIOyLnOqwhCDtmZXsnbgNCg0K7IKs7Jqp7J6Q7J2YIOyDge2ZqTog7KGw7KeB7JeQ7IScIOuwmOuztSDsiJjsnpHsl4XsnZgg6rCc7ISgIOuMgOyDgeydhCDssL7quLAg7Ja066Ck7JuADQrquLDrjIDtmqjqs7w6IOyCrOyaqeyekOqwgCDshKDtg53tlZwg7JqU7JW97Jy866GcIO2RnOykgO2ZlMK37J6Q64+Z7ZmUIOqygO2GoCDrjIDsg4HsnYQg7ISk66qF7ZWgIOq3vOqxsCDtmZXrs7QNCuqygOymnSDrsKnrspU6IOqzteycoO2VnCDsmpTslb3snbQg6rCc7ISgIOyasOyEoOyInOychCDrhbzsnZjsl5Ag64+E7JuA7J20IOuQmOuKlOyngCDqsoDthqANCg0K7ZW07Luk7Yak7JeQ7ISc64qUIOyXheustCDsl7DqsrDCt+u2hOulmOydmCDsoJXtmZXshLEsIOuIhOudvSwg7IiY7KCVIO2an+yImCwg6re86rGw7J2YIO2DgOuLueyEseqzvCDsoITssrQg6rKA7YagIOyLnOqwhOydhCDsuKHsoJXtlaAg6rOE7ZqN7J2064ukLiDsgqzsmqnsnpAg7YWM7Iqk7Yq47JeQ7ISc64qUIEFJ66W8IOuztOq4sCDsoIQg66qp66Gd7JeQ7IScIOu5oOyhjOyngOunjCDsi6TsoJwg7IiY7ZaJ7ZaI64uk6rOgIO2ZleyduO2VnCDsnbzsnYQg7KeR6rOE7ZWY6rOgLCDtj4nqsIDrhbjtirjsmqkg7JeF66y0IOyCrOuhgOulvCDsiJjrj5nsnLzroZwg7KCV66as7ZWgIOuVjOyZgCBBSeulvCDtmZzsmqntlbQg7ZmV7J24wrfrs7TsmYTtlaAg65WM7J2YIOy0neyLnOqwhOydhCDruYTqtZDtlZjqs6DsnpAg7ZWc64ukLiDrsJjrs7Ug7Yyo7YS06rO8IOqwnOyEoCDsoJzslYjsnbQg7Iuk7KCcIOyXheustOyXkCDrj4Tsm4DsnbQg65CY64qU7KeA64+EIO2ZleyduO2VnOuLpC4g7Y+J6rCA6riw6rCEIOyghOyytOydmCDtmZzsmqkg7Zqo6rO87JmAIOqwnOyEoOyViOydmCDsi6TsoJwg7Iuc6rCEIOygiOqwkOydgCDtm4Tsho0g7IKs7Jqp7J2EIO2Gte2VtCDqsoDspp3tlaAg7JiI7KCV7J2064ukLg0KDQrroZzqt7jrp4zsnLzroZwg66qo65OgIOyXheustOulvCDqtIDsuKHtlaAg7IiYIOyXhuycvOuvgOuhnCDsmKTtlITrnbzsnbgg7JeF66y064KYIOuvuOyngOybkCDslbHsnZgg7J6R7JeF7J2AIOyCrOyaqeyekOqwgCDshKDtg53soIHsnLzroZwg7LaU6rCA7ZWgIOyImCDsnojqsowg7ZWc64ukLiDtmZzrj5nrn4nCt+yeheugpSDtmp/siJjCt+ycoO2ctCDsi5zqsITsnYQg6rCc7J247J2YIOyDneyCsOyEsSDsoJDsiJjroZwg7ZmY7IKw7ZWY7KeAIOyViuuKlOuLpC4g67CY67O1IOyXheustCDqsJzshKDsnZgg7Zqo6rO864qUIOyLpOygnCDsoIHsmqnqs7wg7ZuE7IaNIOyCrOyaqSDquLDqsITsnbQg7ZWE7JqU7ZWY66+A66GcIO2VtOy7pO2GpOydmCDrsJzqsqzCt+ygnOyViCDqsoDspp3qs7wg64KY64iE7Ja0IOy4oeygle2VnOuLpC4NCg0KNS4g7JWE7J2065SU7Ja06rCAIOq1rO2YhOuQnCDrqqjsirXsnYQg7ZWcIOykhOuhnCDsmpTslb3tlZjrqbQg7Ja065akIOuqqOyKteydvOq5jOyalD8NCg0KUEPsl5DshJwg7Y+J7IaM7LKY65+8IOydvO2VmOuptCwgQUnqsIAg7Z2p7Ja07KeEIOyhsOyekSDquLDroZ3snYQg7JeF66y066GcIOq4sOyWtcK367aE66WY7ZWY6rOgIO2PieqwgOuFuO2KuOyXkCDtmZzsmqntlaAg6re86rGw7JmAIOuwmOuztSDsnpHsl4XsnYQg6rCc7ISg7ZWgIOyduOyCrOydtO2KuOulvCDsoJzqs7XtlZjripQg7JeF66y0IOq4sOyWtSDruYTshJwuDQoNCjYuIFvshKDtg51dIOyVhOydtOuUlOyWtCDqtaztmITsl5Ag7ZWE7JqU7ZWcIOuNsOydtO2EsOqwgCDsnojrgpjsmpQ/DQoNCu2VhOyalO2VnCDrjbDsnbTthLDripQg7ZW07Luk7YakIOykkSDquLDrsIAg7JeG64qUIO2FjOyKpO2KuCDsl4XrrLTrpbwg7IiY7ZaJ7ZWY66mwIOyngeygkSDsiJjsp5HtlZjqsbDrgpgg7IOd7ISx7ZWgIOqzhO2ajeydtOuLpC4g7Jes65+sIOuCoOydmCDrsJjrs7Ug7Z2Q66aE7J2EIOyEpOuqhe2VoCDsnpDro4zripQg6rCA7IOB7J2YIOyLnOyXsCDrjbDsnbTthLDroZwg67OE64+EIOykgOu5hO2VnOuLpC4NCg0K6rWs67aEOiDsiJjsp5HtlaAg7J6R7JeFIOunpeudvQ0K7ZWt66qp66qFOiDsnpHsl4Ug7Iuc6rCBwrfsgqzsmqkg7ZSE66Gc6re4656owrfrrLjshJwg65iQ64qUIO2OmOydtOyngMK37KCE7ZmYIOunpeudvQ0K7ZmV67O0wrfsg53shLEg67Cp67KVIC8g7KCA7J6lIOqzhO2ajTog6rCc67Cc7ZWgIFBDIOyImOynkSDrqqjrk4jsl5DshJwg6rSA7LihIOqwgOuKpe2VnCDsoJXrs7Trpbwg66Gc7LusIERC7JeQIOyggOyepQ0K642w7J207YSwIO2PrOuntzogSlNPTiAvIFNRTGl0ZQ0KDQrqtazrtoQ6IOyImOynke2VoCDsobDsnpEg6riw66GdDQrtla3rqqnrqoU6IO2CpOuztOuTnMK366eI7Jqw7IqkIOyhsOyekeqzvCDsnoXroKXCt+2BtOumrSDrjIDsg4EsIOyImOynkSDsg4Htg5wNCu2ZleuztMK37IOd7ISxIOuwqeuylSAvIOyggOyepSDqs4Ttmo06IOyatOyYgeyytOygnCDsnbTrsqTtirjCt+ygkeq3vOyEsSBBUEnsmYAg7ZWE7JqU7ZWcIOyVsSDsl7Drj5nsnLzroZwg7IiY7KeRDQrrjbDsnbTthLAg7Y+s66e3OiBKU09OIC8gU1FMaXRlDQoNCuq1rOu2hDog67aE7ISdIOqzvOygleyXkOyEnCDsg53shLHtlaAg642w7J207YSwDQrtla3rqqnrqoU6IOyXheustCDsubTrk5zCt+q3vOqxsMK37IKs7Jqp7J6QIOyImOyglcK37ZmV7J24IOuCtOyXrQ0K7ZmV67O0wrfsg53shLEg67Cp67KVIC8g7KCA7J6lIOqzhO2ajTogQUkg67aE7ISdIOqysOqzvOyZgCDsgqzsmqnsnpAg7ZmV7J24IOuCtOyaqeydhCDroZzsu6wgRELsl5Ag7KCA7J6lDQrrjbDsnbTthLAg7Y+s66e3OiDqtazsobDtmZQg642w7J207YSwDQoNCuq1rOu2hDog7ISg7YOd7KCBIOyCrOyaqeyekCDsnoXroKUNCu2VreuqqeuqhTog6rKw6rO8wrfsnbTsiojCt+uLpOydjCDqs4Ttmo3Ct+uvuOyImOynkSDsl4XrrLQNCu2ZleuztMK37IOd7ISxIOuwqeuylSAvIOyggOyepSDqs4Ttmo06IOyCrOyaqeyekOqwgCDshKDtg53tlbQg7JeF66y0IOy5tOuTnOyXkCDrs7TsmYQNCuuNsOydtO2EsCDtj6zrp7c6IO2FjeyKpO2KuCAvIOq1rOyhsO2ZlCDrjbDsnbTthLANCg0K6rWs67aEOiDrtoTshJ3Ct+usuOyEnCDsg53shLEg642w7J207YSwDQrtla3rqqnrqoU6IOuwmOuztSDtjKjthLTCt+qwnOyEoCDtm4Trs7TCt+2PieqwgOuFuO2KuOyaqSDsgqzroYDsmYAg7JuQ67O4IOyXsOqysA0K7ZmV67O0wrfsg53shLEg67Cp67KVIC8g7KCA7J6lIOqzhO2ajTog7ZmV7J24IOyXheustOulvCDrtoTshJ3tlbQg7IOd7ISx7ZWY6rOgIOuhnOy7rOyXkCDsoIDsnqUNCuuNsOydtO2EsCDtj6zrp7c6IEpTT04gLyDthY3siqTtirgNCg0K6rWs67aEOiDsi5zsl7DCt+qygOymnSDsnpDro4wNCu2VreuqqeuqhTog7Iuk7KCcIO2FjOyKpO2KuCDsnpHsl4Xqs7wg6rCA7IOB7J2YIOyepeq4sCDquLDroZ0NCu2ZleuztMK37IOd7ISxIOuwqeuylSAvIOyggOyepSDqs4Ttmo06IOq4sOuwgCDsl4bripQg7Iqk7ZSE66CI65Oc7Iuc7Yq4wrfrrLjshJzCt+2FjOyKpO2KuCDtjpjsnbTsp4DsmYAg67OE64+EIOyLnOyXsCDsnpDro4zroZwg7KeB7KCRIOykgOu5hA0K642w7J207YSwIO2PrOuntzog66y47IScIC8gSlNPTiAvIFNRTGl0ZQ0KDQrquLDroZ3snYAg7IKs7Jqp7J6Q6rCAIOyLnOyeke2VnCDrkqQg7ISg7YOd7ZWcIO2UhOuhnOq3uOueqMK37J6R7JeF7JeQ7IScIOyImOynke2VmOuPhOuhnSDshKTqs4TtlaAg6rOE7ZqN7J2064ukLiDquLDroZ0g7Iuc7J6RwrfspJHsp4AsIOuMgOyDgSDshKDtg50sIOuvvOqwkCDsnoXroKUg7KCc7Jm47JmAIOyghOyytCDsgq3soJzrpbwg7KCc6rO17ZWY6rOgLCDsm5DrrLjsnYQg7KCA7J6l7ZWgIOuVjOuKlCDsmrTsmIHssrTsoJzsnZgg67O07Zi4IOq4sOuKpeydhCDtmZzsmqntlZjqs6DsnpAg7ZWc64ukLiDsoITssrQg7ZmU66m0wrftgbTrpr3rs7Trk5wg7JuQ66y4wrfrrLjshJwg7KCE7LK0IOuCtOyaqeydgCDquLDrs7gg7IiY7KeRIOuMgOyDgeyXkOyEnCDsoJzsmbjtlZjqs6AsIOyXheustCDtlbTshJ3sl5Ag7ZWE7JqU7ZWcIOunpeudveqzvCDqtIDsuKEg67KU7JyE66W8IOq4sOuhne2VnOuLpC4NCg0KQUkg67aE7ISdIOyghOyXkOuKlCDrjIDsg4Eg6riw6rCEwrftlITroZzqt7jrnqjqs7wg7KCE7IahIOyekOujjOulvCDshKDtg53tlaAg7IiYIOyeiOqyjCDtlaAg7JiI7KCV7J2064ukLiDsmbjrtoAg66qo64247J2EIOyCrOyaqe2VoCDrlYzripQg7ZWE7JqU7ZWcIOq4sOuhneunjCDstpTstpztlZjqs6AsIOyghOyGoSDsoIQg66+86rCQ7KCV67O0IOqwgOumvCDsspjrpqzsmYAg7J6F66ClIOyekOujjCDrr7jrpqzrs7TquLDrpbwg7KCc6rO17ZWY64+E66GdIOyEpOqzhO2VnOuLpC4g67aE7ISdIOqysOqzvOyZgCDsgqzsmqnsnpAg7ZmV7J24IOyXheustOuPhCDrs7TqtIDCt+yCreygnCDrjIDsg4Hsl5Ag7Y+s7ZWo7ZWc64ukLiDroZzsu6wg66qo64247J2AIOyLpO2WiSDtmZjqsr3qs7wg67aE7ISdIO2SiOyniOydhCDtmZXsnbjtlZwg65KkIOyEoO2DneyngOuhnCDqsoDthqDtlaAg6rOE7ZqN7J2064ukLg0KDQrtlYTsmpQg7KeA7JuQIOyCrO2VrTog7IKs7Jqp7ZWgIEFJIOuqqOuNuOydmCDtmLjstpwg6raM7ZWc6rO8IOygkeyGjSDtmZjqsr0sIOq4sOuwgCDsl4bripQg7YWM7Iqk7Yq4IOyXheustOulvCDsiJjtlontlaAgUEPsmYAg7ZSE66Gc6re4656oLCDri6TslpHtlZwg7KeB66y07J2YIOyXheustCDrtoTrpZjCt+qwnOyEoCDtm4Trs7TCt+2PieqwgOuFuO2KuOyaqSDsgqzroYDrpbwg6rKA7Yag7ZWgIFNEUyDsnoTsp4Hsm5DsnZgg7ZiR7KGw6rCAIO2VhOyalO2VmOuLpC4g7IKs64K0IOyekOujjOulvCDtmZzsmqntlaAg6rK97Jqw7JeQ64qUIO2VtOuLuSDtmZjqsr3sl5DshJwg7ZeI7Jqp65CcIOuqqOuNuOqzvCDsnpDro4wg67KU7JyE66W8IO2ZleyduO2VtCDsoIHsmqntlZzri6QuDQoNCjcuIOygnOyViO2VtCDso7zsi6Ag7JWE7J2065SU7Ja07JeQIOuMgO2VtCDstpTqsIDroZwg7Ja46riJ7ZWY6rOgIOyLtuydgCDrgrTsmqnsnbQg7J6I7Jy866m0IOyekeyEse2VtCDso7zshLjsmpQuDQoNCuyekOuPmSDtmZzrj5kg6riw66Gd6rO8IEFJIOyalOyVveydhCDsoJzqs7XtlZjripQg6rSA66CoIOyEnOu5hOyKpOqwgCDsnojri6QuIFRpbWVseSBBdXRvU2hlZXQgKGh0dHBzOi8vd3d3LnRpbWVseS5jb20vaGVscC9oYW5kYm9vay9hdXRvc2hlZXQvdGltZWx5LWF1dG9zaGVldC8p64qUIOyImOynke2VnCDtmZzrj5nsnYQg7Iuc6rCEIOu4lOuhneycvOuhnCDrrLbqs6Ag7ZSE66Gc7KCd7Yq47JmAIOyalOyVveydhCDsoJzslYjtlZzri6QuIFJlc2N1ZVRpbWUgVGltZXNoZWV0cyAoaHR0cHM6Ly9oZWxwLnJlc2N1ZXRpbWUuY29tL2FydGljbGUvNDI3LWdldHRpbmctc3RhcnRlZC13aXRoLXJlc2N1ZXRpbWUtdGltZXNoZWV0cynrj4Qg7Zmc64+Z7J2EIO2UhOuhnOygne2KuOyXkCDrsLDsoJXtlZjripQg7J6Q64+Z7JmE7ISxIOq4sOuKpeydhCDsoJzqs7XtlZzri6QuDQoNCldvcmtNZW1vcnkgQUnrpbwg7Ya17ZW0IOqygOymne2VmOqzoOyekCDtlZjripQg6rCA7ISk7J2AIOyXrOufrCBQQyDrj4TqtazsnZgg7KGw7J6R6rO8IOunpeudveydhCDsl7DqsrDtlZjrqbQg7IKs7Jqp7J6Q6rCAIOyImO2Wie2VnCDsnbzsnYQg7J2Y66+4IOyeiOuKlCDsl4XrrLTroZwg67O17JuQwrfrtoTrpZjtlZjqs6Ag67CY67O1IOyekeyXheydmCDqsJzshKAg6riw7ZqM66W8IOywvuydhCDsiJgg7J6I64qU6rCA64ukLiBFeGNlbMK367iM65287Jqw7KCAwrfrrLjshJwg7Y647KeR6riwwrfqsJzrsJwg64+E6rWs64qUIOyEnOuhnCDri6Trpbgg7J6R7JeF7J20IOydtOyWtOyngOuKlCDtmZzsmqkg7JiI7Iuc64ukLiDso7zsmpQg6rCA7LmY64qUIOyCrOyaqe2VmOuKlCDrj4Tqtazrpbwg64SY7Ja0IOyXheustOydmCDrqqnsoIHqs7wg7Z2Q66aE7J2EIOydtO2VtO2VmOqzoCwg6re4IOq4sOyWteydhCDqsJzsnbjsnbQg64uk7IucIO2ZnOyaqe2VoCDsiJgg7J6I6rKMIO2VmOuKlCDrjbAg65GU64ukLg0KDQrsp5HspJHtlaAg7KeA7KCQOiDrgpjsnZgg7JeF66y066W8IOq4sOyWte2VmOqzoCDrtoTrpZgNCuygnOqzte2VmOugpOuKlCDqsr3tl5g6IOyXrOufrCDrj4Tqtazsl5Ag7Z2p7Ja07KeEIO2WieuPmeydhCDsl4XrrLTsnZgg66qp7KCB7JeQIOuUsOudvCDsl7DqsrDtlZjqs6Ag67mg65yo66awIOydvCDtmZXsnbgNCg0K7KeR7KSR7ZWgIOyngOygkDog67CY67O1IOyekeyXheydhCDqsJzshKAg6riw7ZqM66GcIOyXsOqysA0K7KCc6rO17ZWY66Ck64qUIOqyve2XmDog7IKs7Jqp7J6Q6rCAIO2ZleyduO2VnCDrsJjrs7Ug7Z2Q66aE7JeQ7IScIO2FnO2UjOumv8K37KCI7LCoIOygleumrMK37J6Q64+Z7ZmUIOqygO2GoCDtm4Trs7Qg7KCc7JWIDQoNCuynkeykke2VoCDsp4DsoJA6IOq3vOqxsOqwgCDsjJPsnbTripQg7JeF66y0IOq4sOyWtQ0K7KCc6rO17ZWY66Ck64qUIOqyve2XmDog7ZmV7J24wrfsiJjsoJXtlZwg7JeF66y066W8IO2PieqwgOuFuO2KuOyaqSDsgqzroYDroZwg7LaV7KCB7ZWY6rOgIO2VhOyalO2VnCDrs7Tqs6Dsl5Ag7J6s7IKs7JqpDQoNCuqwnOyduOydtCDsnpDsi6DsnZgg7JeF66y066W8IOydtO2VtO2VmOqzoCDqsJzshKDtlZjripQg7KCc7ZKI7J2EIOuqqe2RnOuhnCDtlZzri6QuIOyCrOyaqeyekOqwgCDsiJjsp5Eg67KU7JyE7JmAIOu2hOyEnSDrjIDsg4HsnYQg7KCV7ZWY6rOgLCDtj4nqsIDrhbjtirjrgpgg67O06rOg7JeQIOyCrOyaqe2VoCDrgrTsmqnsnYQg7ISg7YOd7ZWY64+E66GdIOyEpOqzhO2VoCDqs4Ttmo3snbTri6QuIO2Wpe2bhOyXkOuKlCDsl7DqsIQg66qp7ZGc7JmAIOyXheustCDsgqzroYDrpbwg7Jew6rKw7ZWY6rOgLCDsp4HrrLTrs4Qg67aE66WY7JmAIOyngOybkCDtmZjqsr3snYQg7ZmV7J6l7ZWY6rOg7J6QIO2VnOuLpC4NCg0K7ZW07Luk7Yak7JeQ7IScIOuztOyXrOykhCDtlbXsi6wg7J6l66m07J2AIOKAnOydtOufsCDsnbzsnYQg67CY67O17ZWY6rOgIOyeiOyXiOuEpOKAneudvOuKlCDrsJzqsqzsnbQsIOuCmOydmCDsl4XrrLTrpbwg7ISk66qF7ZWgIO2PieqwgOuFuO2KuOyaqSDsgqzroYDsmYAg6rCc7ISg7J2EIOyLnOyeke2VoCDri6jshJzroZwg7J207Ja07KeA64qUIOyInOqwhOydtOuLpC4NCg=='), character => character.charCodeAt(0));
         const url = URL.createObjectURL(new Blob([bytes], { type: 'text/plain;charset=utf-8' }));
         const link = document.createElement('a');
         link.href = url;

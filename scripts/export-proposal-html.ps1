@@ -112,7 +112,7 @@ $template = @'
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="WorkMemory AI: 흩어진 작업 기록에서 빠뜨린 일과 반복 업무를 발견하고, 근거 있는 주간·월간 보고로 연결하는 AI 업무 기억 비서.">
+  <meta name="description" content="WorkMemory AI: SDS 임직원의 PC 업무를 기억·분류하고, 평가노트에 활용할 근거와 반복 작업 개선 인사이트를 제공하는 AI 업무 기억 비서.">
   <meta name="proposal-source-sha256" content="<!--PROPOSAL_HASH-->">
   <meta name="review-source-sha256" content="<!--REVIEW_HASH-->">
   <title>WorkMemory AI · AX 해커톤 기획서</title>
@@ -169,6 +169,9 @@ $template = @'
     .flow { display:flex; align-items:center; flex-wrap:wrap; gap:9px; font-size:12px; margin-top:23px; color:var(--green); }
     .flow b { font-weight:600; }
     .flow span { color:#93a493; }
+    .document-download { margin-top:18px; display:flex; flex-wrap:wrap; align-items:center; gap:12px; font-size:12px; }
+    .document-download a { font-weight:700; }
+    .document-download span { color:var(--muted); }
     .proposal-section { padding:39px 0 40px; border-top:1px solid var(--line); }
     .section-heading { display:flex; align-items:center; gap:15px; }
     .section-number { font-size:12px; font-weight:750; color:var(--green); width:30px; height:30px; display:grid; place-items:center; background:var(--wash); border-radius:8px; flex-shrink:0; }
@@ -299,18 +302,19 @@ $template = @'
         <div class="eyebrow">AX HACKATHON · WORK MEMORY</div>
         <h1 id="document-title">나도 몰랐던<br><em>나의 일을 발견하다.</em></h1>
         <div class="hero-description"><!--CORE_PROPOSAL--></div>
-        <div class="tags"><span class="tag">AI 업무 기억 비서</span><span class="tag">개인 업무 발견</span><span class="tag">근거 있는 보고</span></div>
+        <div class="tags"><span class="tag">PC 업무 기억·분류</span><span class="tag">평가노트 활용</span><span class="tag">반복 작업 개선</span></div>
         <div class="discovery">
           <div class="discovery-label">THE MOMENT OF DISCOVERY</div>
           <blockquote><!--DISCOVERY_QUOTE--></blockquote>
           <small><!--DISCOVERY_NOTE--></small>
         </div>
         <div class="journey" aria-label="핵심 가치의 흐름">
-          <article class="journey-card"><span>01 · RESTORE</span><h3>빠뜨린 일을 복원하고</h3><p>흩어진 입력·클릭을 연결해 기록하지 못한 업무를 떠올립니다.</p></article>
-          <article class="journey-card"><span>02 · DISCOVER</span><h3>반복하던 일을 발견하고</h3><p>작은 조회와 응답이 내가 맡아온 지원업무였다는 점을 확인합니다.</p></article>
-          <article class="journey-card"><span>03 · REPORT</span><h3>확인한 일을 보고로</h3><p>근거가 쌓인 업무 기억을 주간·월간 보고에 다시 활용합니다.</p></article>
+          <article class="journey-card"><span>01 · REMEMBER</span><h3>나의 일을 기억하고</h3><p>여러 PC 도구의 조작과 맥락을 연결해 업무를 복원하고 분류합니다.</p></article>
+          <article class="journey-card"><span>02 · DISCOVER</span><h3>반복 작업을 발견하고</h3><p>자료 이동·입력·정리의 반복에서 표준화와 자동화의 단서를 찾습니다.</p></article>
+          <article class="journey-card"><span>03 · REUSE</span><h3>평가노트의 근거로</h3><p>확인한 업무·기여·개선 사례를 축적하고 필요한 보고에도 활용합니다.</p></article>
         </div>
-        <div class="flow" aria-label="해커톤 개발 목표"><b>기록 수집·저장</b><span>→</span><b>AI 업무 카드</b><span>→</span><b>간단한 확인</b><span>→</span><b>근거 있는 주간보고</b></div>
+        <div class="flow" aria-label="해커톤 개발 목표"><b>PC 조작·맥락 기록</b><span>→</span><b>업무 복원·분류</b><span>→</span><b>반복 작업 개선</b><span>→</span><b>평가노트에 활용</b></div>
+        <div class="document-download screen-only"><a href="AX-hackathon-proposal.docx" download>Word 기획서 다운로드 (.docx)</a><span>편집 가능한 표 · 바탕체 14포인트</span></div>
       </section>
       <!--PROPOSAL_SECTIONS-->
       <section id="review" class="review-section" aria-labelledby="review-title">
@@ -388,5 +392,7 @@ $html = $html.Replace('<!--PROPOSAL_TEXT_BASE64-->', $proposalTextBase64)
 if ($html -match '<!--[A-Z_]+-->') { throw '채워지지 않은 HTML 템플릿 항목이 있습니다.' }
 [System.IO.File]::WriteAllText([System.IO.Path]::GetFullPath($OutputPath), $html, [System.Text.UTF8Encoding]::new($false))
 [System.IO.File]::WriteAllBytes($textOutputPath, $proposalTextBytes)
+$wordOutputPath = Join-Path (Split-Path -Parent ([System.IO.Path]::GetFullPath($OutputPath))) 'AX-hackathon-proposal.docx'
+& (Join-Path $PSScriptRoot 'export-proposal-word.ps1') -OutputPath $wordOutputPath
 Write-Output "HTML 생성 완료: $([System.IO.Path]::GetFullPath($OutputPath))"
 Write-Output "텍스트 생성 완료: $textOutputPath"

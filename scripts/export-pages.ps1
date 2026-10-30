@@ -31,7 +31,7 @@ $html = [regex]::Replace(
         'href="{0}/blob/main/{1}{2}"' -f $sourceRepositoryUrl, $link.Groups[1].Value, $link.Groups[2].Value
     }
 )
-if ($html -match 'href="(?!https?://|#)[^\"]+"') {
+if ($html -match 'href="(?!https?://|#|AX-hackathon-proposal\.docx")[^\"]+"') {
     throw '배포 대상에 포함되지 않은 상대 링크가 남아 있습니다.'
 }
 [System.IO.File]::WriteAllText($indexPath, $html, [System.Text.UTF8Encoding]::new($false))
